@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<beans xmlns="http://www.springframework.org/schema/beans"    
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"   
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xmlns:aop="http://www.springframework.org/schema/aop"   
+    xmlns:context="http://www.springframework.org/schema/context"  
+    xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:task="http://www.springframework.org/schema/task" 
+    xmlns:mvc="http://www.springframework.org/schema/mvc" 
+    xsi:schemaLocation="    
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.1.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        ">
+		
+		<!-- 加载配置文件 -->
+		<context:property-placeholder ignore-unresolvable="false" location="classpath:properties/dbconfig.properties"/>
+		
+		<!-- 自动扫描service dao层  注入spring中-->
+        <context:component-scan base-package="com.mm.bbs.dao"/>
+        <context:component-scan base-package="com.mm.bbs.service"/>
+		
+		 <!-- 配置数据源Druid连接池 -->
+        <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+          	<!-- 数据库基本信息配置 -->
+        	<property name="url" value="${jdbc.url}"/>
+        	<property name="username" value="${jdbc.username}"/>
+        	<property name="password" value="${jdbc.password}"/>
+        	<property name="driverClassName" value="${jdbc.driver}"/>
+        	
+        	<!-- 初始化连接数量、最小空闲连接数、最大并发连接数 -->
+        	<property name="initialSize" value="${jdbc.initialSize}"/>
+        	<property name="minIdle" value="${jdbc.minIdle}"/>
+        	<property name="maxActive" value="${jdbc.maxActive}"/>
+        	
+        	<!-- 配置获取连接等待超时的时间 -->
+        	<property name="maxWait" value="${jdbc.maxWait}"/>
+        	
+        	<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+			<property name="timeBetweenEvictionRunsMillis" value="${jdbc.timeBetweenEvictionRunsMillis}"/>
+         	<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+			<property name="minEvictableIdleTimeMillis" value="${jdbc.minEvictableIdleTimeMillis}"/>
+      		
+      		<!--用来检测连接是否有效的sql，要求是一个查询语句。如果validationQuery为null，testOnBorrow、testOnReturn、testWhileIdle都不会其作用 -->
+        	<property name="validationQuery" value="${jdbc.validationQuery}" />
+        	<!-- 建议配置为true，不影响性能，并且保证安全性。申请连接的时候检测，如果空闲时间大于timeBetweenEvictionRunsMillis,执行validationQuery检测连接是否有效。 -->
+		    <property name="testWhileIdle" value="${jdbc.testWhileIdle}" />
+		    <!-- 申请连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能。 -->
+		    <property name="testOnBorrow" value="${jdbc.testOnBorrow}" />
+		    <!-- 归还连接时执行validationQuery检测连接是否有效，做了这个配置会降低性能 -->
+		    <property name="testOnReturn" value="${jdbc.testOnReturn}" />
+        	
+        	 <!-- 配置监控统计拦截的filters -->
+      		<property name="filters" value="${jdbc.filters}" />
+      		
+        </bean>
+	
+			<!-- 配置SessionFactory(会话工厂),由Spring容器来管理Hibernate -->
+		<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+			<property name="dataSource" ref="dataSource" />
+			<!-- 配置自动扫描包下的实体，也可使用annotatedClasses属性进行单个实体配置-->
+			<property name="packagesToScan" value="com.mm.bbs.pojo"></property>
+			<!-- 配置Hibernate属性 -->
+			<property name="hibernateProperties">
+				<props>
+					<!-- 数据库方言 -->
+					<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+					<!--   加载hibernate自动更新数据库结构 -->
+					<prop key="hibernate.hbm2ddl.auto">update</prop>
+					<!-- <prop key="hibernate.current_session_context_class">org.springframework.orm.hibernate4.SpringSessionContext</prop> -->
+					<prop key="hibernate.show_sql">true</prop>
+					<prop key="hibernate.query.substitutions">true 1, false 0, yes 'Y', no 'N'</prop>
+				</props>
+			</property>
+			<!--
+				<property name="configLocation">
+				<value>classpath:hibernate.cfg.xml</value> </property>
+			-->
+		</bean>
+		
+		<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+	        <property name="sessionFactory" ref="sessionFactory"></property>
+	    </bean>
+		
+		<!-- 配置事务管理器 -->  
+	    <bean id="transactionManager"  
+	        class="org.springframework.orm.hibernate4.HibernateTransactionManager">  
+	        <property name="sessionFactory" ref="sessionFactory" />  
+	    </bean> 
+	    
+	    <!-- 配置事务增强处理Bean，指定事务管理器 -->  
+	    <tx:advice id="transactionAdvice" transaction-manager="transactionManager">  
+	        <!-- 配置详细事务处理语义 -->  
+	        <tx:attributes>  
+	        <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="upd*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
+            <tx:method name="edit*" propagation="REQUIRED" />
+            <tx:method name="del*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="repair" propagation="REQUIRED" />
+            <tx:method name="persistence*" propagation="REQUIRED" />
+
+            <!-- hibernate4必须配置为开启事务 否则 getCurrentSession()获取不到    -->
+            <tx:method name="get*" propagation="REQUIRED" />
+            <tx:method name="count*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="find*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="list*" propagation="REQUIRED" read-only="true" />
+            <tx:method name="*" propagation="REQUIRED" />
+
+	  
+	            <!-- 其他采用默认事务方式 -->  
+	            <!-- <tx:method name="*" />   -->
+	         
+	        </tx:attributes>  
+	    </tx:advice> 
+	    
+	    <!-- 配置切面(AOP)  保证数据一致性 -->
+	    <aop:config>
+	    	<!-- 切面 -->
+	    	
+	    	<!-- 
+	    		 把事务控制在Service层 	
+	    		切点(定义到方法)
+		    	     (* com.cnpay..service..*.*(..))说明如下：
+					     第一个*：代表任意返回值
+					     第一个..：cnpay包以及子包
+					     第二个*：包下的任意类
+					     第三个*：任意方法
+					     （..）：任意参数		     
+	    	-->
+	    	<aop:pointcut expression="execution(* com.mm.bbs.service.*.*(..))" id="businessService"/>
+	    	 <!-- 指定bussinessService切入点应用txAdvice处理器，即该切入点的所有符合特征的方法均具备了事务性 -->  
+	   		<aop:advisor advice-ref="transactionAdvice" pointcut-ref="businessService"/>
+	   
+	    </aop:config>
+	
+		<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+			<property name="dataSource" ref="dataSource"></property>
+		</bean>
+		
+		
+		<!-- shiro 配置框架 -->
+		<bean id="loginRealm" class="com.mm.bbs.realm.LoginRealm"/>
+        
+		<!-- 安全管理器 -->
+		<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager"> 
+		<!-- 注入realm --> 
+	  	  <property name="realm" ref="loginRealm"/>  
+		</bean>
+		
+		<!-- 配置shiro过滤器 -->
+		<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+			<!-- shiro核心安全接口,这个属性是必需要的 -->
+			<property name="securityManager" ref="securityManager"/>
+			<!-- 身份认证未通过,跳转到相应页面 -->
+			<property name="loginUrl" value="/index.jsp"/>
+			<!-- 权限认证未通过,跳转到相应的页面 -->
+			<property name="unauthorizedUrl" value="/error.jsp"/>
+			<!-- 自定义过滤器 -->
+			<property name="filters">
+				<map>
+					<entry key="roleOrFilter">
+						<bean class="com.mm.bbs.realm.CustomRolesAuthorizationFilter"></bean>
+					</entry>
+				</map>
+			</property>			
+			
+			<!-- Shiro连接约束配置,即过滤链的定义 -->
+			<property name="filterChainDefinitions">
+				<value>
+					<!-- 所有的URL都可以匿名访问 -->
+                	/** = anon
+                	<!-- 登录请求需要认证 -->
+                	/login.action = authc
+				</value>
+			</property>
+		</bean>
+		
+		
+		<!-- springMvc4 用于将对象转换为 JSON  -->  
+	    <bean id="stringConverter"  
+	        class="org.springframework.http.converter.StringHttpMessageConverter">  
+	        <property name="supportedMediaTypes">  
+	            <list>  
+	                <value>text/plain;charset=UTF-8</value>  
+	            </list>  
+	        </property>  
+	    </bean>  
+	    <bean id="jsonConverter"  
+	        class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"></bean>  
+	    <bean  
+	        class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">  
+	        <property name="messageConverters">  
+	            <list>  
+	                <ref bean="stringConverter" />  
+	                <ref bean="jsonConverter" />  
+	            </list>  
+	        </property>  
+	    </bean> 
+	    
+		
+		   
+	    
+	<!-- <mvc:annotation-driven>
+	    <mvc:message-converters>
+	        <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+	            <property name="objectMapper">
+	                <bean class="com.mm.bbs.util.HibernateAwareObjectMapper" />
+	            </property>
+	        </bean>
+	    </mvc:message-converters>
+	</mvc:annotation-driven>
+	     -->
+		
+		
+		<!-- 定时任务 -->
+        <!--(spring的定时任务默认是单线程，多个任务执行起来时间会有问题,需要采用,配置线程池的方式) -->
+        <task:scheduler id="myScheduler" pool-size="5"/>
+     	<!-- 加载定时任务 --> 
+        <task:annotation-driven/>  
+
+ 
+</beans>        
