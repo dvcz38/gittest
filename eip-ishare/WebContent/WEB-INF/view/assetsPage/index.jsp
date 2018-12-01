@@ -43,31 +43,22 @@
 		</div>
 	</div>
 	<div data-options="region:'west'" title="Menu" split="false" style="width: 200px; overflow: hidden;">
-        <!-- 
-         <div id="menuCode" class="easyui-accordion" data-options="fit:true,border:false,animate:true,plain:true">
-        
-  			 
-		
-			  <ul id="tree" class="easyui-tree">
-				 
-			  </ul>
-			    
-         </div>
-         -->
-         <!--  <div region="west" split="true" title="菜单" style="width:150px;">-->
+       
             <div id="aa" class="easyui-accordion" fit="true">
-            <div title="用户管理" iconCls="icon-pencil" style="overflow:auto;padding:10px;">
-                <a href="javascript:void(0)" onclick="tab('列表1','${ctx}/index/userlist.do')">用户列表</a>
+             <c:if test="${sessionScope.access.authorityId eq '1' }">
+            <div title="User" iconCls="icon-pencil" style="overflow:auto;padding:10px;">
+                <a href="javascript:void(0)" onclick="tab('USER','${ctx}/index/userlist.do')">USER LIST</a>
                 <br>
-                <a href="javascript:void(0)" onclick="tab('列表2','${ctx}/index/pagemanager.do')">角色列表</a>
+                <a href="javascript:void(0)" onclick="tab('ROLE','${ctx}/role/rolelistdo')">ROLE</a>
             </div>
-            <div title="设备管理" iconCls="icon-pencil" selected="true" collapsed="true">
-                <a href="javascript:void(0)" onclick="tab('device1','${ctx}/device/find.do')">device1</a>
+            </c:if>
+            <div title="DEVICE" iconCls="icon-pencil" selected="true" collapsed="true">
+                <a href="javascript:void(0)" onclick="tab('device management','${ctx}/device/getalldevice.do')">DOORSENSOR MANAGEMENT</a>
                 <br>
-                <a href="javascript:void(0)" onclick="tab('device2','${ctx}/device/pagemanager.do')">device2</a>
+                <a href="javascript:void(0)" onclick="tab('doorsensor detail','${ctx}/device/getalldtl.do')">DOORSENSOR DETAIL</a>
           
             </div>
-            <div title="联系人管理" iconCls="icon-pencil" style="padding:10px;">
+            <div title="OTHER" iconCls="icon-pencil" style="padding:10px;">
                  <a href="javascript:void(0)" onclick="tab('manu','${ctx}/menu/find.do')">menu1</a>
           
             </div>
