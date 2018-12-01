@@ -1,53 +1,208 @@
 package com.mm.bbs.dao.impl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
- 
+import javax.annotation.Resource;
 
 import org.hibernate.Query;
- 
+import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Repository; 
 
 import com.mm.bbs.dao.DoorSensorDtlDao;
 import com.mm.bbs.pojo.DoorSensorDtl;
+import com.mm.bbs.util.CheckState;
+import com.mm.bbs.util.TimeUtil;
 
  
 @Repository("doorSensorDtlDao")
 public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> implements DoorSensorDtlDao{
 
+	@Resource
+	private HibernateTemplate hibernateTemplate;
+	
  
-	public List<DoorSensorDtl> findDiviceByStaffCheckOnDate(boolean staffCheckInd, Date fdate) {
-		// TODO Auto-generated method stub
-		String staffCheck="F";
-		if (staffCheckInd=true) {
-			staffCheck="Y";
+	
+	public List<DoorSensorDtl> findDeviceByInd(Integer i) {
+		// TODO Auto-generated method stub 
+ 
+		return this.findDeviceByChnlNo(i, 0);
+	}
+	public List<DoorSensorDtl> findDeviceByChnlNo(Integer i,Integer channelNo){
+		// TODO Auto-generated method stub 
+		 
+		return this.findDeviceByParams(i, null, channelNo,null);
+	}
+	public List<DoorSensorDtl> findDeviceByParams(Integer i,String staffCheckInd,Integer channelNo,String doorStatus){
+	 return this.findDeviceByParams(i, null, staffCheckInd, channelNo, doorStatus);
+	}
+	public List<DoorSensorDtl> findDeviceByParams(Integer i,String deviceId,String staffCheckInd,Integer channelNo,String doorStatus){
+		// TODO Auto-generated method stub 
+		String ind="F";
+		
+		StringBuilder hql=new StringBuilder();
+		hql.append("FROM DoorSensorDtl a where datediff(now(),a.inputDt)=? ");
+		
+		if(deviceId!=null) {
+			hql.append("and a.device.id=? ");
 		}
-		String hql="from DoorSensorDtl where isStaffCheck=:checkInd and inputdt=:inputdate ";
-		Map<String, Object> params =new HashMap<String, Object>();
-		params.put("checkInd", staffCheck);
-		params.put("inputdate",fdate);
-//		.find("from DoorSensorDtl where isStaffCheck=? and inputdt=? ", staffCheck,fdate);
-//		this.getCurrentSession().createQuery(queryString)
-		List<DoorSensorDtl> lst = (List<DoorSensorDtl>)this.findByHQL(DoorSensorDtl.class, hql, params);
+		if(channelNo>0) {
+			hql.append("and a.device.channelNo=? ");
+		}
+		if(doorStatus!=null) {
+			hql.append("and a.doorStatus=? ");
+		}
+		if (CheckState.Manulcheck.getValue().equals(staffCheckInd)) {
+//			staffCheckInd="F";
+			hql.append("and a.isStaffCheck='T' ");
+		}else if(CheckState.Autocheck.getValue().equals(staffCheckInd)) {
+			hql.append("and a.isStaffCheck='F' ");
+		}
+		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		System.out.println("====hql>"+hql.toString());
+		Query query=this.getCurrentSession().createQuery(hql.toString());
+		int position=0;
+		query.setInteger(position,i);  
+		position++;
+		if(deviceId!=null) {
+//			hql.append("and a.device.id=? ");
+			query.setString(position,deviceId);  
+			position++;
+		}
+		if(channelNo>0) { 
+			query.setInteger(position,channelNo); 
+			position++;
+		}
+		if(doorStatus!=null) {
+			query.setString(position,doorStatus);  
+			position++;
+		}
+		List<DoorSensorDtl> lst = (List<DoorSensorDtl>)query.list();
 		return lst;
 	}
-
 	
-	public List<DoorSensorDtl> findDiviceByStaffCheck(boolean staffCheckInd, Date fdate, Date todate) {
-		// TODO Auto-generated method stub
-		String staffCheck="F";
-		if (staffCheckInd=true) {
-			staffCheck="Y";
+	
+	public List<DoorSensorDtl> findDeviceByParams(String inputDt,String staffCheckInd,Integer channelNo,String doorStatus)
+	{
+		// TODO Auto-generated method stub 
+		String ind="F";
+		
+		StringBuilder hql=new StringBuilder();
+		hql.append("FROM DoorSensorDtl a where 1=1 ");
+		if(inputDt!=null) {
+			hql.append("and inputDt=? ");
 		}
+		if(channelNo>0) {
+			hql.append("and a.device.channelNo=? ");
+		}
+		if(doorStatus!=null) {
+			hql.append("and a.doorStatus=? ");
+		}
+		
+		if (CheckState.Manulcheck.getValue().equals(staffCheckInd)) {
+			hql.append("and a.isStaffCheck='T' ");
+		}else if(CheckState.Autocheck.getValue().equals(staffCheckInd)) {
+			hql.append("and a.isStaffCheck='F' ");
+		}
+		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		System.out.println("====hql>"+"["+inputDt+"]"+hql.toString());
+		Query query=this.getCurrentSession().createQuery(hql.toString());
+		int position=0;
+		
+		if(inputDt!=null) {
+			query.setString(position,inputDt);  
+			position++;
+		}
+		
+		if(channelNo>0) { 
+			query.setInteger(position,channelNo); 
+			position++;
+		}
+		if(doorStatus!=null) {
+			query.setString(position,doorStatus);  
+			position++;
+		}
+		List<DoorSensorDtl> lst = (List<DoorSensorDtl>)query.list();
+		return lst;
+	}
+	
+	public List<DoorSensorDtl> findDeviceByParamsOnHour(String staffCheckInd,Integer channelNo,String doorStatus)  {
+		// TODO Auto-generated method stub 
+		String ind="F";
+ 
+		StringBuilder hql=new StringBuilder();
+		hql.append("FROM DoorSensorDtl a where  1=1 ");
+ 
+		hql.append("and a.inputDt in (");		 
+		List<Map<String, String>> lst;
+		try {
+			lst = TimeUtil.getAllHoursofDay();
+			int f=lst.size()-1;
+			for(int i=0;i<lst.size();i++) {
+				Map map=lst.get(i);
+				hql.append("'").append(map.get(String.valueOf(i))).append("'");
+				 
+				if(i!=f) {
+					hql.append(",");
+				} 
+			}
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		hql.append(") ");
+		if(channelNo>0) {
+			hql.append("and a.device.channelNo=? ");
+		}
+		if(doorStatus!=null) {
+			hql.append("and a.doorStatus=? ");
+		}
+		
+		if (CheckState.Manulcheck.getValue().equals(staffCheckInd)) {
+//			staffCheckInd="F";
+			hql.append("and a.isStaffCheck='T' ");
+		}else if(CheckState.Autocheck.getValue().equals(staffCheckInd)) {
+			hql.append("and a.isStaffCheck='F' ");
+		}
+		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		System.out.println("====hql>"+hql.toString());
+		Query query=this.getCurrentSession().createQuery(hql.toString());
+		int position=0;
+ 
+		if(channelNo>0) { 
+			query.setInteger(position,channelNo); 
+			position++;
+		}
+		if(doorStatus!=null) {
+			query.setString(position,doorStatus);  
+			position++;
+		}
+		List<DoorSensorDtl> list = (List<DoorSensorDtl>)query.list();
+		return list;
+	}
+	public List<DoorSensorDtl> findDeviceBtwDatetime(CheckState checkState, String fdate, String todate) {
+		// TODO Auto-generated method stub
+//		String staffCheck="F";
+//		if (staffCheckInd==true) {
+//			staffCheck="T";
+//		}
 //		Query query=session.createQuery(“from User user where user.name=? and user.age =? ”); 
-		Query query=this.getCurrentSession().createQuery("from DoorSensorDtl where isStaffCheck=? and inputdt>? and inputdt>?");
-		query.setString(0,staffCheck); 
-		query.setDate(1, fdate); 
-		query.setDate(2,todate); 
-//		, staffCheck,fdate, todate
+		StringBuilder hql=new StringBuilder();
+		hql.append("from DoorSensorDtl a where a.isStaffCheck=? ");
+		hql.append("and a.inputDt>=? ");
+		hql.append("and a.inputDt<=? ");
+		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		System.out.println("====hql>"+hql.toString());
+		Query query=this.getCurrentSession().createQuery(hql.toString());
+		query.setString(0,checkState.getValue()); 
+		query.setString(1, fdate); 
+		query.setString(2,todate); 
+	
 		List<DoorSensorDtl> lst = (List<DoorSensorDtl>)query.list();
 		return lst;
 	}
@@ -71,14 +226,10 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 			} 
 		}	*/
 	}
-
-
 	 
 
-
  
-
-
-
+ 
+ 
 
 }

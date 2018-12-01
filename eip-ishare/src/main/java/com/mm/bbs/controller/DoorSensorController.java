@@ -77,6 +77,18 @@ public class DoorSensorController {
 		return map;
 	}
 	
+	@RequestMapping(value = "/getchanel.do")
+	@ResponseBody
+	public Map<String,Object> getChannel(){
+		//
+		List<DoorSensor> lst = doorSensorService.getChannel();
+
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
 	/*
 	 * DoorSensor Detail
 	 * 
@@ -146,11 +158,11 @@ public class DoorSensorController {
 		return map;
 	}
 	
-	@RequestMapping(value = "/findautocheckontime.do")
+	@RequestMapping(value = "/getdevice.do")
 	@ResponseBody
-	public Map<String,Object> findCurrentDayDevices(){
+	public Map<String,Object> findCurrentDayDevices(String deviceId){
 		
-		 List<DoorSensorDtl> lst=doorSensorDtlService.findAutoCheckDeviceOnHour(0, null);
+		 List<DoorSensorDtl> lst=doorSensorDtlService.findDeviceOnCurrentDay(0, deviceId, null, null);
  
 		 Map<String,Object> map=new LinkedHashMap<String,Object>();
 		 map.put("total", lst.size());
@@ -162,7 +174,7 @@ public class DoorSensorController {
 	@ResponseBody
 	public Map<String,Object> findCurrentAutoCheckDevices(){
 		 
-		List<DoorSensorDtl> lst=doorSensorDtlService.findAutoCheckDeviceOnHour( 0, null);
+		List<DoorSensorDtl> lst=doorSensorDtlService.findAutoCheckDeviceOnHour( 0, DoorStatus.DOOR_OPEN.getValue());
 		 Map<String,Object> map=new LinkedHashMap<String,Object>();
 		 map.put("total", lst.size());
 		 map.put("rows", lst); 
@@ -173,7 +185,7 @@ public class DoorSensorController {
 	@ResponseBody
 	public Map<String,Object> findCurrentManulCheckDevices(){
 		 
-		 List<DoorSensorDtl> lst=doorSensorDtlService.findManulCheckDeviceOnCurrentDay(0, null);
+		 List<DoorSensorDtl> lst=doorSensorDtlService.findManulCheckDeviceOnCurrentDay(0, DoorStatus.DOOR_OPEN.getValue());
  
 		 Map<String,Object> map=new LinkedHashMap<String,Object>();
 		 map.put("total", lst.size());

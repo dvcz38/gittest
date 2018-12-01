@@ -38,15 +38,25 @@ public class AcctAuthorityServiceImpl implements AcctAuthorityService {
 		acctAuthorityDao.update(entity);
 	}
 
-	@Override
-	public AcctAuthority findById(Serializable id) {
-		// TODO Auto-generated method stub
-		return acctAuthorityDao.getById(AcctAuthority.class, id);
+	public AcctAuthority findById(Serializable id)
+	{
+	    return (AcctAuthority)this.acctAuthorityDao.getById(AcctAuthority.class, id);
+	}
+	  
+	public AcctAuthority getById(int id)
+	{
+	    return (AcctAuthority)this.acctAuthorityDao.getById(AcctAuthority.class, Integer.valueOf(id));
 	}
 
 	@Override
 	public List<AcctAuthority> getAll() {
 		return acctAuthorityDao.findAll(AcctAuthority.class);
+	}
+
+	@Override
+	public void deleteById(Serializable id) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
