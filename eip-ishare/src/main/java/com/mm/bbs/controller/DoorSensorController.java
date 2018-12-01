@@ -1,6 +1,8 @@
 package com.mm.bbs.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.LinkedHashMap;
@@ -14,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,12 +29,15 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mm.bbs.modelVo.MenuCodeVo;
 import com.mm.bbs.pojo.Admin;
+import com.mm.bbs.pojo.DoorSensor;
 import com.mm.bbs.pojo.DoorSensorDtl;
 import com.mm.bbs.pojo.MenuCode;
 import com.mm.bbs.pojo.SecCode;
 import com.mm.bbs.service.DoorSensorDtlService;
+import com.mm.bbs.service.DoorSensorService;
 import com.mm.bbs.service.MenuService;
-import com.mm.bbs.vo.DoorSensorDtlVo;
+import com.mm.bbs.util.DoorStatus;
+import com.mm.bbs.util.TimeUtil; 
 import com.mm.bbs.vo.Pagination;
 import com.mm.bbs.vo.TreeDataVo;
 import com.mm.bbs.vo.UserVo;
@@ -45,6 +51,10 @@ public class DoorSensorController {
 	 
 	
 	@Resource
+	private DoorSensorService doorSensorService;
+	
+
+	@Resource
 	private DoorSensorDtlService doorSensorDtlService;
 	
 	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
@@ -52,60 +62,128 @@ public class DoorSensorController {
 
 		return "/view/device/device";
 	}
- 
-	@RequestMapping(value = "/find.do",method = RequestMethod.GET)
+	/*
+	 * DoorSensor
+	 */
+	@RequestMapping(value = "/getalldevice.do")
 	@ResponseBody
-	public Map<String,Object> findAll(){
+	public Map<String,Object> getAllDevice(){
 		//
-		List<DoorSensorDtl> lst = doorSensorDtlService.getAll();
-		//.findDiviceByStaffCheckOnDate(false, new Date("2018-11-12"));
-				//.findDiviceByStaffCheck(false, fdate, todate)	
-		List<DoorSensorDtlVo> lstVo =new ArrayList<DoorSensorDtlVo>();
-		DoorSensorDtlVo dsVo= new DoorSensorDtlVo();
-		dsVo.setId(1);
-		dsVo.setDeviceDesc("deviceDesc");
-		dsVo.setDeviceId("1");
-		int i=0;
-		for(DoorSensorDtl ds:lst) {
-//			DoorSensorDtlVo dsVo=new DoorSensorDtlVo(ds);
-//			lstVo.add(dsVo);
-			i++;
-			if(i==1)
-				break;
-		}
-		 Map<String,Object> map=new LinkedHashMap<String,Object>();
-		 map.put("total", lstVo.size());
-		 map.put("rows", lstVo); 
+		List<DoorSensor> lst = doorSensorService.getAll();
+
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
 		return map;
 	}
 	
+	/*
+	 * DoorSensor Detail
+	 * 
+	 */
+	@RequestMapping(value = "/getalldtl.do")
+	@ResponseBody
+	public Map<String,Object> getAll(){
+		//
+		List<DoorSensorDtl> lst = doorSensorDtlService.getAll();
+ 
+ 
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
+	@RequestMapping(value = "/getall.do",method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String,Object> getDeviceAll(){
+		 
+//		return doorSensorService.getAll().size();
+		List<DoorSensor> lst = doorSensorService.getAll();
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
+	@RequestMapping(value = "/getlose.do",method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String,Object> getDeviceCountLose(){
+		//
+		Long i=(long) 0;
+		List<DoorSensorDtl> lst = doorSensorDtlService.getAll();
+ 
+ 
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
+	@RequestMapping(value = "/getclose.do",method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String,Object> getDeviceofDoorClose(){
+		
+		String inputDt=TimeUtil.getDateTime();
+		List<DoorSensorDtl> lst = doorSensorDtlService.findDeviceOnDatetime(inputDt, null, 0, DoorStatus.DOOR_CLOSE.getValue());
+
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
+	@RequestMapping(value = "/getopen.do",method = RequestMethod.GET)
+	@ResponseBody
+	public Map<String,Object> getDeviceofDoorOpen(){
+		//
+		String inputDt=TimeUtil.getDateTime();
+		List<DoorSensorDtl> lst = doorSensorDtlService.findDeviceOnDatetime(inputDt, null, 0, DoorStatus.DOOR_OPEN.getValue());
+
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
+	@RequestMapping(value = "/findautocheckontime.do")
+	@ResponseBody
+	public Map<String,Object> findCurrentDayDevices(){
+		
+		 List<DoorSensorDtl> lst=doorSensorDtlService.findAutoCheckDeviceOnHour(0, null);
+ 
+		 Map<String,Object> map=new LinkedHashMap<String,Object>();
+		 map.put("total", lst.size());
+		 map.put("rows", lst); 
+		 return map; 
+	}
 	
 	@RequestMapping(value = "/findautocheck.do")
 	@ResponseBody
 	public Map<String,Object> findCurrentAutoCheckDevices(){
 		 
-		 List<DoorSensorDtl> lst=doorSensorDtlService.findDiviceByStaffCheckOnDate(false, new Date());
- 
+		List<DoorSensorDtl> lst=doorSensorDtlService.findAutoCheckDeviceOnHour( 0, null);
 		 Map<String,Object> map=new LinkedHashMap<String,Object>();
 		 map.put("total", lst.size());
 		 map.put("rows", lst); 
-		return map;
+		 return map; 
 	}
 	
 	@RequestMapping(value = "/findmanulcheck.do")
 	@ResponseBody
 	public Map<String,Object> findCurrentManulCheckDevices(){
 		 
-		 List<DoorSensorDtl> lst=doorSensorDtlService.findDiviceByStaffCheckOnDate(false, new Date());
+		 List<DoorSensorDtl> lst=doorSensorDtlService.findManulCheckDeviceOnCurrentDay(0, null);
  
 		 Map<String,Object> map=new LinkedHashMap<String,Object>();
 		 map.put("total", lst.size());
 		 map.put("rows", lst); 
-		return map;
+		 return map;
+//		return null;
 	}
 	
-	
-	@RequestMapping(value = "update", method = RequestMethod.GET)
+	@CrossOrigin(origins = "*", maxAge = 3600)
+	@RequestMapping(value = "update.do", method = RequestMethod.GET)
 	@ResponseBody
 	public String update(@RequestBody String id) throws IOException{
 
@@ -113,7 +191,7 @@ public class DoorSensorController {
 		doorSensorDtlService.update(null); 
 	    return "success";
 	}
-	@RequestMapping(value = "delete", method = RequestMethod.DELETE)
+	@RequestMapping(value = "delete.do", method = RequestMethod.DELETE)
 	@ResponseBody
 	public String delete(@RequestBody String id) throws IOException{
 
@@ -121,4 +199,16 @@ public class DoorSensorController {
 		doorSensorDtlService.delete(null);
 	    return "success";
 	}
+	
+	 @CrossOrigin(origins = "*", maxAge = 3600)
+	 @RequestMapping(value="/json.do",produces="application/json;charset=utf-8")
+	 @ResponseBody
+	 public  Map<String,Object> jsontest(@RequestBody Map<String,Object> map,HttpServletRequest request, HttpServletResponse response) {
+	        response.addHeader("Access-Control-Allow-Origin", "*");
+
+	        map =new LinkedHashMap<String,Object>();
+			map.put("total", 2);
+			map.put("rows", null); 
+			return map; 
+	    }
 }

@@ -4,7 +4,11 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table; 
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -13,18 +17,21 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Table(name = "doorsensor")
 public class DoorSensorDtl {
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id")
-	private Integer id;
-	@Column(name = "deviceId")
-	private String   deviceId  ;
-	@Column(name = "deviceDesc")
-	private String   deviceDesc  ;
-	@Column(name = "seqNo")
-	private Integer   seqNo;
+	private int id;
+	
+	@ManyToOne
+	@JoinColumn(name="deviceId",referencedColumnName="id",updatable=false,insertable=false)
+	private DoorSensor device  ;
+//	@Column(name = "deviceDesc")
+//	private String   deviceDesc  ;
+//	@Column(name = "seqNo")
+//	private int   seqNo;
 	@Column(name = "nbSignalPwr")
-	private Float   nbSignalPwr  ;
+	private float   nbSignalPwr  ;
 	@Column(name = "doorDistance")
-	private Integer   doorDistance  ;
+	private int   doorDistance  ;
 	@Column(name = "doorStatus")
 	private String   doorStatus  ;
 	@Column(name = "isStaffCheck")
@@ -33,7 +40,7 @@ public class DoorSensorDtl {
 	private String   staffno  ;
 	
 	@Column(name = "battVol")
-	private Float battVol;
+	private float battVol;
 	
 	@JsonFormat(pattern="yyy-MM-dd HH:mm:ss",timezone = "GMT+8")
 	@Column(name = "inputDt")
@@ -46,13 +53,13 @@ public class DoorSensorDtl {
 	public DoorSensorDtl() {
 		super();
 	}
-	public DoorSensorDtl(Integer id, String deviceId, String deviceDesc, Integer seqNo, Float nbSignalPwr,Integer doorDistance, 
-			String doorStatus,String isStaffCheck,String staffno,Float battVol,Date inputDt, Date updateDt){
+	public DoorSensorDtl(int id, DoorSensor device, float nbSignalPwr,int doorDistance, 
+			String doorStatus,String isStaffCheck,String staffno,float battVol,Date inputDt, Date updateDt){
 		super();
 		this.id = id;
-		this.deviceId = deviceId;
-		this.deviceDesc = deviceDesc;
-		this.seqNo = seqNo;
+		this.device = device;
+//		this.deviceDesc = deviceDesc;
+//		this.seqNo = seqNo;
 		this.nbSignalPwr = nbSignalPwr;
 		this.doorDistance = doorDistance;
 		this.doorStatus = doorStatus;
@@ -65,10 +72,10 @@ public class DoorSensorDtl {
 		
 		 
 	}
-	public Integer getId() {
+	public int getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	
@@ -80,11 +87,11 @@ public class DoorSensorDtl {
 		this.inputDt = inputDt;
 	}
 	
-	public String getDeviceId() {
-		return deviceId;
+	public DoorSensor getDevice () {
+		return device;
 	}
-	public void setDeviceId(String deviceId) {
-		this.deviceId = deviceId;
+	public void setDevice (DoorSensor device ) {
+		this.device  = device ;
 	}
 	public float getBattVol() {
 		return battVol;
@@ -93,19 +100,19 @@ public class DoorSensorDtl {
 		this.battVol = battVol;
 	}
 
-	public String getDeviceDesc() {
-		return deviceDesc;
-	}
-	public void setDeviceDesc(String deviceDesc) {
-		this.deviceDesc = deviceDesc;
-	}
-	
-	public int getSeqNo() {
-		return seqNo;
-	}
-	public void setSeqNo(int seqNo) {
-		this.seqNo = seqNo;
-	}
+//	public String getDeviceDesc() {
+//		return deviceDesc;
+//	}
+//	public void setDeviceDesc(String deviceDesc) {
+//		this.deviceDesc = deviceDesc;
+//	}
+//	
+//	public int getSeqNo() {
+//		return seqNo;
+//	}
+//	public void setSeqNo(int seqNo) {
+//		this.seqNo = seqNo;
+//	}
 	
 	public float getNbSignalPwr() {
 		return nbSignalPwr;
