@@ -7,6 +7,8 @@ public interface BaseService<T> {
 	public void save(T entity);// 保存
 
     public void delete(T entity);// 删除用户
+    
+    public void deleteById(Serializable id);// 删除用户
 
     public void update(T entity);// 更新用户
 
