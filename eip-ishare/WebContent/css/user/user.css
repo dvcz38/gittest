@@ -16,3 +16,6 @@
 	  width:80px;
 	  height: 20px;
 }
+
+.main td{ height:40px; border:#CCCCCC 0px solid;}
+.main input{ color:blue;font-weight:bold;}
