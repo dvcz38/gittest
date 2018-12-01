@@ -47,30 +47,38 @@
  
 </head>
 <body class="easyui-layout">
-    <div region="north" border="false" style="height:75px;background:#B3DFDA;padding:10px"><h1>客户关系管理系统</h1></div>
-    <div region="west" split="true" title="菜单" style="width:150px;">
+    <div region="north" border="false" style="height:75px;background:#B3DFDA;padding:10px"><h1>IoT MANAGEMENT SYSTEM</h1></div>
+    <div region="west" split="true" title="MENU" style="width:150px;">
             <div id="aa" class="easyui-accordion" fit="true">
-            <div title="用户管理" iconCls="icon-pencil" style="overflow:auto;padding:10px;">
-                <a href="javascript:void(0)" onclick="addTab('列表1','${pageContext.request.contextPath}/index/userlist.do')">用户列表</a>
+            <!-- super admin -->
+             ${sessionScope.access.authorityId }
+            <c:if test="${sessionScope.access.authorityId eq '1' }">
+            <div title="USER CENTER" iconCls="icon-pencil" style="overflow:auto;padding:10px;">
+           
+                <a href="javascript:void(0)" onclick="addTab('USER','${ctx}/index/userlist.do')">USER</a>
                 <br>
-                <a href="javascript:void(0)" onclick="addTab('列表2','${pageContext.request.contextPath}/index/pagemanager.do')">角色列表</a>
+                <a href="javascript:void(0)" onclick="addTab('ROLE','${ctx}/role/rolelist.do')">ROLE</a>
             </div>
-            <div title="设备管理" iconCls="icon-pencil" selected="true" collapsed="true">
-                <a href="javascript:void(0)" onclick="addTab('device1','${pageContext.request.contextPath}/device/find.do')">device1</a>
+            </c:if>
+            <div title="DEVICE DETAIL" iconCls="icon-pencil" selected="true" collapsed="true">
+                <a href="javascript:void(0)" onclick="addTab('DEVICE','${ctx}/device/find.do')">device1</a>
                 <br>
-                <a href="javascript:void(0)" onclick="addTab('device2','${pageContext.request.contextPath}/device/list.do')">device2</a>
+                <a href="javascript:void(0)" onclick="addTab('DEVICE','${ctx}/device/list.do')">device2</a>
           
             </div>
-            <div title="联系人管理" iconCls="icon-pencil" style="padding:10px;">
-                 <a href="javascript:void(0)" onclick="addTab('manu','${pageContext.request.contextPath}/menu/find.do')">menu1</a>
+            <div title="TEST" iconCls="icon-pencil" style="padding:10px;">
+                 <a href="javascript:void(0)" onclick="addTab('manu','${ctx}/menu/find.do')">menu1</a>
           
             </div>
     </div>
     </div>
     <div region="center" >
         <div id="tt" class="easyui-tabs" tools="#tab-tools" fit="true">
-            <div title="主界面" tools="#p-tools" style="padding:20px;" >
-                <h2><font color="gray">欢迎您登陆!</font></h2>
+            <div title="Main" tools="#p-tools" style="padding:20px;" >
+                <h2><font color="gray">Welcome to Iot Backend</font></h2>
+                <c:if test="${sessionScope.access.authorityId eq '2' }">
+                Super Admin
+                </c:if>
             </div>
         </div>
     </div>
