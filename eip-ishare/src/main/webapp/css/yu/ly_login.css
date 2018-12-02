@@ -1,0 +1,46 @@
+html{
+
+	height: 100%;
+	width:100%;
+
+}
+body{
+	height: 100%;
+	width:100%;
+	background: url("../img/login1.png");
+	background-size: 100% 100%;
+}
+.loginform{
+	width: 550px;
+	height: 300px;
+	position: absolute;
+	left: 7%;
+	top:20%;
+	background: rgba(134, 150, 115, 0.5);
+	padding: 30px 30px;
+	border-radius: 20px;
+}
+.loginform .control-label{
+	width: 70px;
+	color:white;
+}
+.loginform .controls{
+	margin-left: 80px;
+	color:white;
+}
+.login-title{
+	color: white;
+	font-size: 50px;
+	margin-bottom: 20px;
+	line-height: 60px;
+	font-weight: lighter;
+	letter-spacing: 3px;
+}
+.signin-btn{
+	background: #fd6592;
+	color:white;
+}
+.signup-btn{
+	background: #ffedf3;
+	color: #4a4b4f;
+}

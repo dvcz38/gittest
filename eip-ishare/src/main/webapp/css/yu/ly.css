@@ -1,0 +1,20 @@
+.ly-time i{
+	font-size: 12px;
+	padding-left: 20px;
+}
+.ly-time a{
+	float: right;
+	padding-right: 20px;
+}
+
+.ly-shadow{
+   box-shadow: 0px 0px 2px 1px #464646;
+}
+.ly-bullet_star{
+	color:white;
+	display:inline-block !important;
+	padding-left:30px;
+	background-position:left center;
+	margin-right: 15px;
+	background: url("icons/32/bullet_star.png") no-repeat;
+}
