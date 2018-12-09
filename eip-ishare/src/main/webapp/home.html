@@ -78,9 +78,9 @@
 
 <!-- <script type="text/javascript" src="./js/yu/demo.dashboard.js"></script> -->
 <script type="text/javascript" src="./js/yu/highcharts.js"></script>
-
-<script type="text/javascript" src="./js/yu/ly-charts.js"></script>
-<script type="text/javascript" src="./js/yu/ly-charts2.js"></script>
+<!--2018 12-9日去掉第一个图表-->
+<!-- <script type="text/javascript" src="./js/yu/ly-charts.js"></script> -->
+<!-- <script type="text/javascript" src="./js/yu/ly-charts2.js"></script> -->
 <script type="text/javascript" src="./js/yu/ly.js"></script>
  
 <title>MWS Admin - Dashboard</title>
@@ -173,8 +173,9 @@
         	<!-- Main Container -->
             <div class="container">
                 
-            	<div class="mws-panel grid_4 ly-shadow">
-                	<div class="mws-panel-header">
+            	<div class="mws-panel grid_4 ly-shadow mws-collapsible">
+                    <!--2018 12-9日去掉第一个图表-->
+                	<!-- <div class="mws-panel-header">
                     	<span class="mws-i-24 i-graph">Charts
                            <select class="nbSignalPwr">
                                 
@@ -186,6 +187,82 @@
                     	<div class="mws-panel-content">
 	                    	<div id="ly-chart1" style="width:100%; height:215px;"></div>
                         </div>
+                    </div> -->
+                    <!--2018 12增加table表格-->
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-table-1">Loss Record</span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-table" style="background:#383838">
+                            <thead>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 4.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">4</td>
+                                    <td class="center">X</td>
+                                </tr>
+                                <tr class="gradeC">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 5.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5</td>
+                                    <td class="center">C</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 5.5</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5.5</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="mws-panel grid_4 ly-shadow">
@@ -198,7 +275,7 @@
                     </div>
                     <div class="mws-panel-body">
                         <div class="mws-panel-content">
-                            <div id="ly-chart2" style="width:100%; height:215px;"></div>
+                            <div id="ly-chart2" style="width:100%; height:238px;"></div>
                          
                         </div>
                     </div>
@@ -241,50 +318,270 @@
                 </div>
                  <div class="mws-panel grid_8">
                     <div class="mws-panel-header ly-channel">
-                      <!--  <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
                        <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
                        <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
                        <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
                        <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
-                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span> -->
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
                     </div>
                 </div>
 
 
-
+                <!--2018 12修改为table表格-->
             	<div class="mws-panel grid_4 ly-shadow">
                 	<div class="mws-panel-header">
                     	<span class="mws-i-24 i-books-2 ly-time">Automatic inspection<i>1030</i> <a>more</a></span>
                     </div>
                     <div class="mws-panel-body">
-                        <ul class="mws-summary ly-auto">
-                           <!--  <li>
-                                <span>20:15</span> 1/301-deviceone-20%-state
-                             
-                            </li>
-                            <li>
-                                <span>20:15</span> 1/301-deviceone-20%-state
-                             
-                            </li> -->
-                            
-                           
-                        </ul>
+                        <!-- <ul class="mws-summary ly-auto"></ul> -->
+                        <table class="mws-table" style="background:#383838">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Floor number</th>
+                                    <th>Device</th>
+                                    <th>Battery capacity</th>
+                                    <th>State</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 4.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">4</td>
+                                    <td class="center">X</td>
+                                </tr>
+                                <tr class="gradeC">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 5.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5</td>
+                                    <td class="center">C</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 5.5</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5.5</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
                     </div>
                 </div>
+                <!--2018 12修改为table表格-->
                 <div class="mws-panel grid_4 ly-shadow">
                     <div class="mws-panel-header">
                         <span class="mws-i-24 i-books-2 ly-time">Manual  inspection  <i>1030</i> <a>more</a></span>
                     </div>
                     <div class="mws-panel-body">
-                        <ul class="mws-summary ly-human">
-                            <!-- <li>
-                                <span>20:15</span> 1/301-deviceone-20%-state-name
-                            </li> -->
-                            
-                        </ul>
+                        <!-- <ul class="mws-summary ly-human"></ul> -->
+                        <table class="mws-table" style="background:#383838">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Floor number</th>
+                                    <th>Device</th>
+                                    <th>Battery capacity</th>
+                                    <th>State</th>
+                                    <th>Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">4</td>
+                                    <td class="center">X</td>
+                                    <td>tom</td>
+                                </tr>
+                                <tr class="gradeC">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5</td>
+                                    <td class="center">C</td>
+                                    <td>tom</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5.5</td>
+                                    <td class="center">A</td>
+                                    <td>tom</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                    <td>tom</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                    <td>tom</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                    <td>tom</td>
+                                </tr>
+                                 <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                    <td>tom</td>
+                                </tr>
+                               
+                            </tbody>
+                        </table>
                     </div>
                 </div>
-                
+                <!--2018 12 9 新增表格-->
+                <div class="mws-panel grid_8 mws-collapsible ly-shadow">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-table-1">Loss Record</span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-table" style="background:#383838">
+                            <thead>
+                                <tr>
+                                    <th>Rendering engine</th>
+                                    <th>Browser</th>
+                                    <th>Platform(s)</th>
+                                    <th>Engine version</th>
+                                    <th>CSS grade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="gradeX">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 4.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">4</td>
+                                    <td class="center">X</td>
+                                </tr>
+                                <tr class="gradeC">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 5.0</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5</td>
+                                    <td class="center">C</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 5.5</td>
+                                    <td>Win 95+</td>
+                                    <td class="center">5.5</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet
+                                         Explorer 6</td>
+                                    <td>Win 98+</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>Internet Explorer 7</td>
+                                    <td>Win XP SP2+</td>
+                                    <td class="center">7</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Trident</td>
+                                    <td>AOL browser (AOL desktop)</td>
+                                    <td>Win XP</td>
+                                    <td class="center">6</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Firefox 1.0</td>
+                                    <td>Win 98+ / OSX.2+</td>
+                                    <td class="center">1.7</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Firefox 1.5</td>
+                                    <td>Win 98+ / OSX.2+</td>
+                                    <td class="center">1.8</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Camino 1.5</td>
+                                    <td>OSX.3+</td>
+                                    <td class="center">1.8</td>
+                                    <td class="center">A</td>
+                                </tr>
+                                <tr class="gradeA">
+                                    <td>Gecko</td>
+                                    <td>Netscape 7.2</td>
+                                    <td>Win 95+ / Mac OS 8.6-9.2</td>
+                                    <td class="center">1.7</td>
+                                    <td class="center">A</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                
                 
             <!-- End Main Container -->
