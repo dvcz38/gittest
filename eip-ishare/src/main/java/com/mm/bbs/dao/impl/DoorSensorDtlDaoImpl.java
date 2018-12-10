@@ -62,14 +62,13 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		}else if(CheckState.Autocheck.getValue().equals(staffCheckInd)) {
 			hql.append("and a.isStaffCheck='F' ");
 		}
-		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		hql.append("order by a.inputDt desc, a.device.channelNo ");
 		System.out.println("====hql>"+hql.toString());
 		Query query=this.getCurrentSession().createQuery(hql.toString());
 		int position=0;
 		query.setInteger(position,i);  
 		position++;
-		if(deviceId!=null) {
-//			hql.append("and a.device.id=? ");
+		if(deviceId!=null) { 
 			query.setString(position,deviceId);  
 			position++;
 		}
@@ -86,7 +85,7 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 	}
 	
 	
-	public List<DoorSensorDtl> findDeviceByParams(String inputDt,String staffCheckInd,Integer channelNo,String doorStatus)
+	public List<DoorSensorDtl> findDeviceByParams(String inputDt,String deviceId,String staffCheckInd,Integer channelNo,String doorStatus)
 	{
 		// TODO Auto-generated method stub 
 		String ind="F";
@@ -95,6 +94,9 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		hql.append("FROM DoorSensorDtl a where 1=1 ");
 		if(inputDt!=null) {
 			hql.append("and inputDt=? ");
+		}
+		if(deviceId!=null) {
+			hql.append("and a.device.id=? ");
 		}
 		if(channelNo>0) {
 			hql.append("and a.device.channelNo=? ");
@@ -108,7 +110,7 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		}else if(CheckState.Autocheck.getValue().equals(staffCheckInd)) {
 			hql.append("and a.isStaffCheck='F' ");
 		}
-		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		hql.append("order by a.inputDt desc, a.device.channelNo ");
 		System.out.println("====hql>"+"["+inputDt+"]"+hql.toString());
 		Query query=this.getCurrentSession().createQuery(hql.toString());
 		int position=0;
@@ -117,7 +119,10 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 			query.setString(position,inputDt);  
 			position++;
 		}
-		
+		if(deviceId!=null) { 
+			query.setString(position,deviceId);  
+			position++;
+		}
 		if(channelNo>0) { 
 			query.setInteger(position,channelNo); 
 			position++;
@@ -169,7 +174,7 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		}else if(CheckState.Autocheck.getValue().equals(staffCheckInd)) {
 			hql.append("and a.isStaffCheck='F' ");
 		}
-		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		hql.append("order by a.inputDt desc , a.device.channelNo");
 		System.out.println("====hql>"+hql.toString());
 		Query query=this.getCurrentSession().createQuery(hql.toString());
 		int position=0;
@@ -185,7 +190,7 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		List<DoorSensorDtl> list = (List<DoorSensorDtl>)query.list();
 		return list;
 	}
-	public List<DoorSensorDtl> findDeviceBtwDatetime(CheckState checkState, String fdate, String todate) {
+	public List<DoorSensorDtl> findDeviceBtwDatetime(String deviceId,String checkState,String doorStatus,String fdate,String todate) {
 		// TODO Auto-generated method stub
 //		String staffCheck="F";
 //		if (staffCheckInd==true) {
@@ -193,16 +198,47 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 //		}
 //		Query query=session.createQuery(“from User user where user.name=? and user.age =? ”); 
 		StringBuilder hql=new StringBuilder();
-		hql.append("from DoorSensorDtl a where a.isStaffCheck=? ");
+		hql.append("from DoorSensorDtl a where 1=1 ");
 		hql.append("and a.inputDt>=? ");
 		hql.append("and a.inputDt<=? ");
-		hql.append("order by a.device.channelNo, a.inputDt desc ");
+		hql.append("order by a.inputDt desc, a.device.channelNo ");
+		
+		
+		if(deviceId!=null) {
+			hql.append("and a.device.id=? ");
+		} 
+		
+		if (checkState!=null) { 
+			hql.append("and a.isStaffCheck=? ");
+		} 
+		if(doorStatus!=null) {
+			hql.append("and a.doorStatus=? ");
+		}
+		hql.append("order by a.inputDt desc, a.device.channelNo ");
+		
+		
 		System.out.println("====hql>"+hql.toString());
 		Query query=this.getCurrentSession().createQuery(hql.toString());
-		query.setString(0,checkState.getValue()); 
-		query.setString(1, fdate); 
-		query.setString(2,todate); 
-	
+//		query.setString(0,checkState.getValue()); 
+		query.setString(0, fdate); 
+		query.setString(1,todate); 
+		int position=2;
+		  
+		if(deviceId!=null) {
+			query.setString(position,deviceId);  
+			position++;
+		} 
+		
+		if (checkState!=null) {
+			query.setString(position,checkState);  
+			position++;
+		} 
+		
+		if(doorStatus!=null) {
+			query.setString(position,doorStatus);  
+			position++;
+		}
+		
 		List<DoorSensorDtl> lst = (List<DoorSensorDtl>)query.list();
 		return lst;
 	}
@@ -227,9 +263,19 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		}	*/
 	}
 	 
-
+	public List getCount(String inputDt)  {
+		// TODO Auto-generated method stub 
+		String ind="F";
  
+		StringBuilder hql=new StringBuilder();
+		hql.append("select count(*) ,doorStatus from DoorSensorDtl a where a.inputDt=? group by doorStatus");  
+		Query query=this.getCurrentSession().createQuery(hql.toString());
+		query.setString(0,inputDt); 
+	
+		List lst =query.list();
+		return lst;
  
+	}
  
 
 }

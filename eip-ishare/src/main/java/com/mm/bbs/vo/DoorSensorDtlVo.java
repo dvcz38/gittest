@@ -2,6 +2,7 @@ package com.mm.bbs.vo;
 
 import java.util.Date;
 
+import com.mm.bbs.pojo.DoorSensor;
 import com.mm.bbs.pojo.DoorSensorDtl;
 
  
@@ -10,9 +11,8 @@ public class DoorSensorDtlVo {
 	
 	private Integer id;
 	 
-	private String   deviceId  ;
-	 
-	private String   deviceDesc  ;
+	private DoorSensor   device  ;
+	  
 	 
 	private int   seqNo;
 	 
@@ -38,8 +38,8 @@ public class DoorSensorDtlVo {
 	public DoorSensorDtlVo(DoorSensorDtl ds) {
 		this.battVol=ds.getBattVol();
 		this.id=ds.getId();
-		this.deviceDesc=ds.getDeviceDesc();
-		this.deviceId=ds.getDeviceId();
+		this.device=ds.getDevice();
+		 
 		this.doorDistance=ds.getDoorDistance();
 		this.doorStatus=ds.getDoorStatus();
 		this.isStaffCheck=ds.getIsStaffCheck();
@@ -54,21 +54,14 @@ public class DoorSensorDtlVo {
 		this.id = id;
 	}
 
-	public String getDeviceId() {
-		return deviceId;
+	public DoorSensor getDevice () {
+		return device ;
 	}
 
-	public void setDeviceId(String deviceId) {
-		this.deviceId = deviceId;
+	public void setDevice (DoorSensor device ) {
+		this.device  = device ;
 	}
-
-	public String getDeviceDesc() {
-		return deviceDesc;
-	}
-
-	public void setDeviceDesc(String deviceDesc) {
-		this.deviceDesc = deviceDesc;
-	}
+ 
 
 	public int getSeqNo() {
 		return seqNo;

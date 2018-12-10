@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.mm.bbs.dao.BaseDao;
+import com.mm.bbs.pojo.Admin;
  
  
 @SuppressWarnings("unchecked")
@@ -467,7 +468,17 @@ public abstract class BaseDaoImpl<T, PK extends Serializable>  implements BaseDa
 		return stringValue;
 	}
  
- 
+	public List<T> findPage(final Class<T> clasz,int page, int rows,String orderParam,String orderDirection)
+	  {
+		StringBuilder hql=new StringBuilder();
+		hql.append("from ").append(clasz.getName()).append(" ");
+		if(orderParam !=null) {
+			hql.append(orderParam).append(" ").append(orderDirection);
+		}
+//	    String hql = "from "+;
+	    Query query = getCurrentSession().createQuery(hql.toString());
+	    return query.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
+	  }
 	/**
 	 * 分页条件查询 
 	 *  @param DetachedCriteria  dc   条件

@@ -1,6 +1,7 @@
 package com.mm.bbs.controller;
 
 import java.io.IOException;
+import java.io.OutputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -11,7 +12,9 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -60,14 +63,14 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/pagemanager.do", method = RequestMethod.GET)
-	public String pagemanagerPage() {
+	public String managerPage() {
 
 		return "/view/pages/pagemanager";
 	}
 	
 	 
 
-	@RequestMapping({"/finduser.do"})
+	@RequestMapping({"/findpage.do"})
 	@ResponseBody
 	public Map<String, Object> findUser(int page, int rows)
 	{
@@ -162,6 +165,26 @@ public class IndexController {
 	    return "fail";
 	}
 	
+	@RequestMapping(value = "/export.do",method = RequestMethod.GET)
+    public void exportSortingOrder(HttpServletRequest request,HttpServletResponse response) throws IOException{
+//    	String parttern = DateUtil.DATETIME_FORMAT;
+//    	Date startDate = DateUtil.StringToDate(request.getParameter("startDate"), parttern);
+//    	Date endDate = DateUtil.StringToDate(request.getParameter("endDate"), parttern);
+    	XSSFWorkbook wb = userService.export(null, null);        
+//        String[] sds = request.getParameter("startDate").split("\\s");
+//        String[] eds = request.getParameter("endDate").split("\\s");
+        StringBuffer fileName=new StringBuffer("attachment;filename=");
+        fileName.append(new Date().getTime()).append(".xlsx");  
+//        fileName.append(sds[0]).append("_").append(eds[0]).append("_").append(new Date().getTime()).append(".xlsx");        
+        response.setContentType("application/ms-excel");
+        response.setHeader("Content-disposition",fileName.toString());
+        OutputStream outputStream = response.getOutputStream();
+        wb.write(outputStream);
+        outputStream.flush();
+        outputStream.close();   	
+    	
+    }
+
 	@RequestMapping(value = "/test.do", method = RequestMethod.GET)
 	public String testdata() {
 

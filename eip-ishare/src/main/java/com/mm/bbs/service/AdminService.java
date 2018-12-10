@@ -1,6 +1,9 @@
 package com.mm.bbs.service;
 
+import java.util.Date;
 import java.util.List;
+
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.mm.bbs.pojo.Admin; 
 
@@ -15,4 +18,6 @@ public abstract interface AdminService
   public abstract Admin getById(int paramInt);
   
   public abstract List<Admin> find(int paramInt1, int paramInt2);
+  
+  public XSSFWorkbook export(Date startDate, Date endDate);
 }
