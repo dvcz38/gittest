@@ -35,40 +35,55 @@
 				<span style="padding-left:10px; font-size: 20px; text-align: inherit;">Iot Management System<strong style="font-size: 24px;"></strong></span>
 				<div style="float: right;">
 				 <span style="margin-left: 55%; color: #B83400; padding-bottom 0px; position: absolute;">0人在线----当前登录用户:admin--【欢迎登录】!</span>
+						welcome ${sessionScope.userInfo }
 						<a href="javascript:void(0);" class="easyui-menubutton" data-options="menu:'#layout_north_pfMenu',iconCls:'icon-theme'"><strong>Theme</strong></a>
+						<!--  
 						<a href="javascript:void(0)" id="menus" class="easyui-menubutton" data-options="iconCls:'icon-user'"><strong>Control Panel</strong></a>	
-						<a href="javascript:void(0)" id="exitMenus" class="easyui-menubutton" data-options="iconCls:'icon-2012080412263'"><strong>Login out</strong></a>
 						<a href="javascript:void(0)" id="helpMenus" class="easyui-menubutton" data-options="iconCls:'icon-help'"><strong>Help</strong></a>
+						<img src="${ctx}/images/user.png" alt="User Photo" />
+						-->
+						<a href="${ctx}/logout.jsp" id="exitMenus" class="easyui-menubutton" data-options="iconCls:'icon-2012080412263'"><strong> Log out </strong></a>
+						 
+	                	
+						
 				</div>
 		</div>
 	</div>
 	<div data-options="region:'west'" title="Menu" split="false" style="width: 200px; overflow: hidden;">
        
-            <div id="aa" class="easyui-accordion" fit="true">
-             <c:if test="${sessionScope.access.authorityId eq '1' }">
+        <div id="aa" class="easyui-accordion" fit="true">
+            <c:if test="${sessionScope.access.authorityId eq '1' }">
             <div title="User" iconCls="icon-pencil" style="overflow:auto;padding:10px;">
-                <a href="javascript:void(0)" onclick="tab('USER','${ctx}/index/userlist.do')">USER LIST</a>
+                <a href="javascript:void(0)" onclick="addTab('user','${ctx}/index/userlist.do')">USER</a>
                 <br>
-                <a href="javascript:void(0)" onclick="tab('ROLE','${ctx}/role/rolelistdo')">ROLE</a>
+                <a href="javascript:void(0)" onclick="addTab('role','${ctx}/role/rolelist.do')">ROLE</a>
             </div>
             </c:if>
             <div title="DEVICE" iconCls="icon-pencil" selected="true" collapsed="true">
-                <a href="javascript:void(0)" onclick="tab('device management','${ctx}/device/getalldevice.do')">DOORSENSOR MANAGEMENT</a>
+                <a href="javascript:void(0)" onclick="addTab('device','${ctx}/device/list.do')">DEVICE</a>
                 <br>
-                <a href="javascript:void(0)" onclick="tab('doorsensor detail','${ctx}/device/getalldtl.do')">DOORSENSOR DETAIL</a>
+                <a href="javascript:void(0)" onclick="addTab('doorsensor record','${ctx}/device/dtl/list.do')">DATA DETAIL</a>
           
             </div>
-            <div title="OTHER" iconCls="icon-pencil" style="padding:10px;">
-                 <a href="javascript:void(0)" onclick="tab('manu','${ctx}/menu/find.do')">menu1</a>
-          
-            </div>
-   <!-- </div>-->
+             
+   		</div>
+   <!-- -->
 	</div>
+	<div data-options="region:'center'" >
+        <div id="tt" class="easyui-tabs" tools="#tab-tools" fit="true">
+            <div title="Main" tools="#p-tools" style="padding:20px;" >
+                <h2><font color="gray">Welcome to Iot Backend</font></h2>
+                 
+            </div>
+        </div>
+    </div>
+    <!--  
 	<div id="centerDiv" data-options="region:'center'" split="false" style="overflow: hidden;">
 		<div title="Home Main">
 			<span style=" font-size: 24px; font-family: 'Arial'; font-style: inherit;">Welcome Home</span>
 		</div>
 	</div>
+	-->
 	<div data-options="region:'south'" style="height: 30px;" split="false">
 		
 	</div>
@@ -86,7 +101,7 @@
 		<div onclick="changeTheme('ui-cupertino');">LightBlue</div>
 		<div onclick="changeTheme('ui-sunny');">Yellow</div>
 	</div>
-	
+	<!--  
 	<div id="menu_dialog_updatePwd" style="display: block;">
 		
 	</div>
@@ -94,6 +109,6 @@
 	<div id="update_Menu">
 		
 	</div>
-	
+	-->
 </body>
 </html>

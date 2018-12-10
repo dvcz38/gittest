@@ -87,4 +87,11 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
       <url-pattern>/druid/*</url-pattern>
   	</servlet-mapping>
 
+
+
+	<!-- 监听servletContext，启动udp Server  --> 
+    <listener>  
+        <listener-class>com.mm.bbs.task.UDPServer</listener-class>  
+    </listener>
+   
 </web-app>

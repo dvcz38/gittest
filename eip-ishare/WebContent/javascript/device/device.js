@@ -8,7 +8,7 @@ $(function(){
 	
 	 
 	userInfoManage_datagrid = $("#userInfoManage_datagrid").datagrid({
-		  url:ctx+"/device/getalldtl.do",
+		  url:ctx+"/device/getall.do",
  
 		  striped: true,
 		  fit: true,          
@@ -19,19 +19,16 @@ $(function(){
 			  [[
                 {field : 'ck',checkbox : true},
 //                {width: '70',title: 'ID',field: 'id'},
-                {width: '70',title: 'Device ID',field: 'id',function(val,row,index){if(row.device!=undefined) return row.device.id;}},    
-                { width: '100',title: 'Device Name',field: 'device',formatter:formatName}
+                {width: '70',title: 'Device ID',field: 'id'},    
+                { width: '100',title: 'Device Name',field: 'deviceDesc'}
     
 		      ]],
 		  columns:[[
-				{width: '100',title: 'Date Time',field: 'inputDt',sortable: true},     
-				{width: '100',title: 'Channel Number',field: 'channelNo',formatter:function(val,row,index){if(row.device!=undefined) return row.device.channelNo;}}, 
-	          	{width: '100',title: 'Floor',field: 'floorNo', formatter:function(val,row,index){if(row.device!=undefined) return row.device.floorNo;}},    
-	          	{width: '100',title: 'Signal Power',field: 'nbSignalPwr'},  
-	          	{width: '100',title: 'Battery Vol',field: 'battVol'}, 
-	          	{width: '100',title: 'Door Distance',field: 'doorDistance'}, 
-	          	{width: '100',title: 'Door Status',field: 'doorStatus'},
-	          	{width: '120',title: 'Staff Number',field: 'staffno'}
+//				{width: '100',title: 'Date Time',field: 'inputDt',sortable: true},     
+				{width: '100',title: 'Channel Number',field: 'channelNo'}, 
+	          	{width: '100',title: 'Floor',field: 'floorNo'},    
+	          	{width: '100',title: 'State',field: 'state'},  
+	          	{width: '100',title: 'Install Date',field: 'instalDt'} 
 	      ]],toolbar:
 
 	    	  [{ iconCls: 'icon-add',
@@ -70,7 +67,7 @@ $(function(){
                     var ss=$("#userInfoManage_datagrid").datagrid('getSelections'); 
                    
                     if(ss.length==0){ 
-                        $.messager.alert('Warning��?','At least select one item!');
+                        $.messager.alert('Warning','At least select one item!');
                     }else{
                      
 	                    $.messager.confirm('Information', 'Are you Sure to Delete?', function(r) {
@@ -79,7 +76,7 @@ $(function(){
 	                    });
                         $.ajax({
                             type:'post',
-                            url:ctx+'/index/deletelist.do',
+                            url:ctx+'/device/deletelist.do',
                             data:{'ids':ids},
                             dataType:"json",
                             success:function(data){
@@ -96,13 +93,13 @@ $(function(){
                 }
                }
 	    	  }
-//	    	  ,'-',{
-//	                iconCls: 'icon-export',
-//	                text:'Export All',
-//	                handler: function(){
-//	                	
-//	                }
-//	    	  }
+	    	  ,'-',{
+	                iconCls: 'icon-export',
+	                text:'Export All',
+	                handler: function(){
+	                	window.location.href=ctx+"/device/export.do";
+	                }
+	    	  }
             ]
 	});
 	
@@ -202,10 +199,10 @@ function changeDateFormat(val, row) {
     }
 } 
  
-function excel(){
+//function excel(){
 	
-	$("a[id='test1Manage_toolbar_export']").attr("href","/S2SH-Manager/testServlet");
-}
+//	$("a[id='test1Manage_toolbar_export']").attr("href","/S2SH-Manager/testServlet");
+//}
 
  
 function msgInfo(msg){

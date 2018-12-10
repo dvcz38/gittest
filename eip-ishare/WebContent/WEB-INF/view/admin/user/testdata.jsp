@@ -18,11 +18,65 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="${ctx}/easyui/jquery.min.js" ></script>
     <script type="text/javascript" src="${ctx}/easyui/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="${ctx}/easyui/locale/easyui-lang-zh_CN.js"></script>
-    <script type="text/javascript">
+    <script type="text/javascript" src="${ctx}/easyui/locale/easyui-lang-zh_CN.js"></script>
     
+    <script src="http://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
+   
+    <script type="text/javascript">
+    var ctx="${ctx}";
+    var ws = null ;
+    //var target="ws://localhost:8080/${ctx}/sockjs/vwebSocketServer.do/info?type=mall";
+    <!--
+     
+    -->
+    if ('WebSocket' in window) {
+      //ws = new WebSocket("ws://127.0.0.1:8080/"+ctx+"/websocket.do?type=mall");
+    	 ws = new WebSocket("ws://127.0.0.1:8080/"+ctx+"/ws.do");
+    } else if ('MozWebSocket' in window) {
+        websocket = new MozWebSocket("ws://127.0.0.1:8080/"+ctx+"/websocket.do");
+    } else {
+        ws = new SockJS("ws://127.0.0.1:8080/"+ctx+"/sockjs/websocket.do/info?type=mall");
+    }
+    /* if ('WebSocket' in window) {
+        ws = new WebSocket(target);
+    } else if ('MozWebSocket' in window) {
+        ws = new MozWebSocket(target);
+    } else {
+        alert('WebSocket is not supported by this browser.');
+    } */
+ 
+    ws.onopen = function(){
+        console.info('open') ;
+       
+    } ;
+    
+    ws.onclose = function ( ) {
+        console.info('close') ;
+        
+    } ;
+    ws.onmessage = function(event){
+        console.info("onmessage") ;
+         
+        view(event.data)
+    } ;
+    function q(){
+    	ws.send(document.getElementById('msg').value);
+    }
+    
+    function view(data){
+    	
+    	var a = data;
 
+        var divNode = document.getElementById("view");
 
-    $(function(){
+        var liNode = document.createElement("li");
+        
+        liNode.innerHTML = a;
+
+        divNode.appendChild(liNode);
+    }
+ 
+   /*  $(function(){
         //按钮单击时执行
         $("#testAjax").click(function(){
            
@@ -39,7 +93,7 @@ pageEncoding="UTF-8"%>
                        {field:'deviceDesc',title:'Device Name',width:100}    
                    ]],
                }); 
-         });
+         }); 
         
         
         $("#testAjax1").click(function(){
@@ -50,12 +104,18 @@ pageEncoding="UTF-8"%>
              //显示Ajax返回结果
              $("#myDiv").html(htmlobj.responseText);
         }); 
-    });
+    });*/
 	</script>
 </head>
 <body class="easyui-layout">
 
-1
+服务器返回的信息：
+<input type="text" id="show"/>
+ 
+浏览器发送的信息：
+<input type="text" id="msg"/>
+<input type="button" value="send" id="send" onclick="q()"/>
+<div id="view"></div>
 <div >
      <table id="dg"></table>
  	<table id="dg1" ></table>

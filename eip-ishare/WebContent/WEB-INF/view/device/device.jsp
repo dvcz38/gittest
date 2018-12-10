@@ -55,35 +55,30 @@
             </div>
             <table class="main">
             <tr >
-            <td><span>Role</span></td>
+            <td><span>Device Name</span></td>
             <td>
-            	<input class="easyui-textbox" name="name" style="width: 200px">
+            	<input class="easyui-textbox" name="deviceDesc" style="width: 200px">
             </td>
             </tr>
             <tr>
-             <td><span>Email</span></td>
+             <td><span>channel Number</span></td>
              <td>
-            	 <input class="easyui-textbox" name="email" style="width: 200px">
+            	 <input class="easyui-textbox" name="channelNo" style="width: 200px">
              </td>
             </tr>
              
             <tr>
-            	<td><span>Phone Number</span></td>
+            	<td><span>Floor No</span></td>
              	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
+            		<input class="easyui-textbox" name="floorNo" style="width: 200px">
              	</td>
             </tr>
+             
             <tr>
-            <td><span>Role</span></td>
-             <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
-             </td>
-            </tr>
-            <tr>
-            <td><span>Join Date</span></td>
+            <td><span>Intall Date</span></td>
              <td>
               
-               <input name="joindate" type="text" class="easyui-datebox"  >  
+               <input name="instalDt" type="text" class="easyui-datebox"  >  
              </td>
             </tr>
             <tr>
@@ -111,41 +106,31 @@
            
                 </br>
            <table class="main">
-            <tr>
-	            <td><span>User Name</span></td>
-	            <td>
-	            	<input class="easyui-textbox" name="name" style="width: 200px" required="required"> 
-	            </td>
-            </tr>
-            
             <tr >
-	            <td><span>password</span></td>
-	            <td>
-	            	  <input class="easyui-textbox" name="password" style="width: 200px" required="required">
-	            </td>
+            <td><span>Device Name</span></td>
+            <td>
+            	<input class="easyui-textbox" name="deviceDesc" style="width: 200px">
+            </td>
             </tr>
             <tr>
-	             <td><span>Email</span></td>
-	             <td>
-	            	 <input class="easyui-textbox" name="email" style="width: 200px">
-	             </td>
-            </tr> 
-            <tr>
-            	<td><span>Phone Number</span></td>
-             	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
-             	</td>
-            </tr>
-            <tr>
-            <td><span>Role</span></td>
-             <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
+             <td><span>channel Number</span></td>
+             <td>
+            	 <input class="easyui-textbox" name="channelNo" style="width: 200px">
              </td>
             </tr>
+             
             <tr>
-            <td><span>Join Date</span></td>
-             <td> 
-               <input name="joindate" type="text" class="easyui-datebox"  >  
+            	<td><span>Floor No</span></td>
+             	<td>
+            		<input class="easyui-textbox" name="floorNo" style="width: 200px">
+             	</td>
+            </tr>
+             
+            <tr>
+            <td><span>Intall Date</span></td>
+             <td>
+              
+               <input name="instalDt" type="text" class="easyui-datebox"  >  
              </td>
             </tr>
             <tr>
@@ -157,7 +142,7 @@
 				</select> 
              </td>
             </tr>
-            </table>    
+            </table>   
         </form>
         
         <div style="text-align: center; padding: 5px 0;">
