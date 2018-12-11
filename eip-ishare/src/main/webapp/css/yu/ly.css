@@ -17,4 +17,21 @@
 	background-position:left center;
 	margin-right: 15px;
 	background: url("icons/32/bullet_star.png") no-repeat;
+	font-size: 18px;
+}
+
+/*12018 12-9日 增加 table样式与时间选择器样式*/
+table{
+	color:white !important;
+}
+.ly-select-time{
+	display:inline-block;
+	margin-left: 30px;
+}
+.ly-select-time span{
+	color:white;
+	margin-left: 10px;
+}
+.ly-select-time select{
+	margin-left: 10px;
 }
