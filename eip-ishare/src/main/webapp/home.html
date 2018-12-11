@@ -80,7 +80,7 @@
 <script type="text/javascript" src="./js/yu/highcharts.js"></script>
 <!--2018 12-9日去掉第一个图表-->
 <!-- <script type="text/javascript" src="./js/yu/ly-charts.js"></script> -->
-<!-- <script type="text/javascript" src="./js/yu/ly-charts2.js"></script> -->
+<script type="text/javascript" src="./js/yu/ly-charts2.js"></script>
 <script type="text/javascript" src="./js/yu/ly.js"></script>
  
 <title>MWS Admin - Dashboard</title>
@@ -190,77 +190,70 @@
                     </div> -->
                     <!--2018 12增加table表格-->
                     <div class="mws-panel-header">
-                        <span class="mws-i-24 i-table-1">Loss Record</span>
+                        <span class="mws-i-24 i-table-1">Real Time Record</span>
                     </div>
                     <div class="mws-panel-body">
-                        <table class="mws-table" style="background:#383838">
+                        <table class="mws-table ly-real" style="background:#383838">
                             <thead>
+                            
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>time</th>
+                                    <th>devicename</th>
+                                    <th>doorstatus</th>
+                                    <th>signalpower</th>
+                                    <th>BatVol</th>
                                 </tr>
                             </thead>
                             <tbody>
+                               <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
+                                </tr>
                                 <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeC">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 5.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5</td>
-                                    <td class="center">C</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 5.5</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5.5</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
-                                </tr>
-                               
                             </tbody>
                         </table>
                     </div>
@@ -347,60 +340,61 @@
                             </thead>
                             <tbody>
                                 <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
-                                <tr class="gradeC">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 5.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5</td>
-                                    <td class="center">C</td>
+                    
+                                <tr class="gradeX">
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 5.5</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5.5</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
-                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
-                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
-                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                 <tr class="gradeX">
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                 </tr>
                                
                             </tbody>
@@ -427,59 +421,60 @@
                             </thead>
                             <tbody>
                                 <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
+                    
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                 <tr class="gradeC">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5</td>
-                                    <td class="center">C</td>
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5.5</td>
-                                    <td class="center">A</td>
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                 <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                  <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                  <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                  <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                    <td>15:45</td>
+                                    <td>1</td>
+                                    <td>Device 1</td>
+                                    <td>4%</td>
+                                    <td>open</td>
                                     <td>tom</td>
                                 </tr>
                                
@@ -490,93 +485,69 @@
                 <!--2018 12 9 新增表格-->
                 <div class="mws-panel grid_8 mws-collapsible ly-shadow">
                     <div class="mws-panel-header">
-                        <span class="mws-i-24 i-table-1">Loss Record</span>
+                        <span class="mws-i-24 i-table-1">Loss Device Record</span>
                     </div>
                     <div class="mws-panel-body">
                         <table class="mws-table" style="background:#383838">
-                            <thead>
+                             <thead>
+                            
                                 <tr>
-                                    <th>Rendering engine</th>
-                                    <th>Browser</th>
-                                    <th>Platform(s)</th>
-                                    <th>Engine version</th>
-                                    <th>CSS grade</th>
+                                    <th>time</th>
+                                    <th>devicename</th>
+                                    <th>doorstatus</th>
+                                    <th>signalpower</th>
+                                    <th>BatVol</th>
                                 </tr>
                             </thead>
                             <tbody>
+                               <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
+                                </tr>
                                 <tr class="gradeX">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 4.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">4</td>
-                                    <td class="center">X</td>
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeC">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 5.0</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5</td>
-                                    <td class="center">C</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 5.5</td>
-                                    <td>Win 95+</td>
-                                    <td class="center">5.5</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet
-                                         Explorer 6</td>
-                                    <td>Win 98+</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>Internet Explorer 7</td>
-                                    <td>Win XP SP2+</td>
-                                    <td class="center">7</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
-                                <tr class="gradeA">
-                                    <td>Trident</td>
-                                    <td>AOL browser (AOL desktop)</td>
-                                    <td>Win XP</td>
-                                    <td class="center">6</td>
-                                    <td class="center">A</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td>Gecko</td>
-                                    <td>Firefox 1.0</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td class="center">1.7</td>
-                                    <td class="center">A</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td>Gecko</td>
-                                    <td>Firefox 1.5</td>
-                                    <td>Win 98+ / OSX.2+</td>
-                                    <td class="center">1.8</td>
-                                    <td class="center">A</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td>Gecko</td>
-                                    <td>Camino 1.5</td>
-                                    <td>OSX.3+</td>
-                                    <td class="center">1.8</td>
-                                    <td class="center">A</td>
-                                </tr>
-                                <tr class="gradeA">
-                                    <td>Gecko</td>
-                                    <td>Netscape 7.2</td>
-                                    <td>Win 95+ / Mac OS 8.6-9.2</td>
-                                    <td class="center">1.7</td>
-                                    <td class="center">A</td>
+                                <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
                                 </tr>
                             </tbody>
                         </table>
