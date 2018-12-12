@@ -74,19 +74,20 @@ $(function(){
 							console.log(chart)
 						activeLastPointToolip(chart);
 						setInterval(function () {
-							$.ajax({
-							 	url:"/eip-ishare/device/getdevice.do",
-							 	type:'post',
-							 	data:{'deviceId':deviceId},
-							 	success:function(data){
-							 		console.log(data)
-							 		if(data.rows.length!=0){
-							 			getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,data.rows[0].doorDistance)
-							 		}else{
-							 			getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,0)
-							 		}
-							 	}
-							 })
+							// $.ajax({
+							//  	url:"/eip-ishare/device/getdevice.do",
+							//  	type:'post',
+							//  	data:{'deviceId':deviceId},
+							//  	success:function(data){
+							//  		console.log(data)
+							//  		if(data.rows.length!=0){
+							//  			getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,data.rows[0].doorDistance)
+							//  		}else{
+							//  			getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,0)
+							//  		}
+							//  	}
+							//  })
+							getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,Math.random()*50+10)
 							
 						},1000);
 					}
