@@ -75,7 +75,7 @@ $(function(){
 						activeLastPointToolip(chart);
 						setInterval(function () {
 							$.ajax({
-							 	url:"/eip-ishare/device/getdevice.do",
+							 	url:"/eip-ishare/device/dtl/getdevice.do",
 							 	type:'post',
 							 	data:{'deviceId':deviceId},
 							 	success:function(data){
