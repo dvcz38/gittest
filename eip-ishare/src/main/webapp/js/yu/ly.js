@@ -225,7 +225,7 @@ $(function(){
 
 				// data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
 				if(parent==".ly-real"){
-					var list="<tr class='gradeX'><td>1</td><td>1</td><td>1</td><td>"+data[i].channelNo+"</td><td>"+data[i].floorNo+"</td></tr>"
+					var list="<tr class='gradeX'><td>"+data+"</td><td>1</td><td>1</td><td>"+data[i].channelNo+"</td><td>"+data[i].floorNo+"</td></tr>"
 				}else if(parent==".ly-human"){
 					var list='<li>'+
                                  '<span style="width:20px;height:20px;background-size:100% 100%;" class="mws-report-icon mws-ic '+iconclass+'"></span><span>'+data[i].inputDt+'</span>  [Channel '+ data[i].device.channelNo+']-[Floor '+data[i].device.floorNo+']-['+data[i].device.deviceDesc+']-[Battery Vol:'+(Number(data[i].battVol).toFixed(2))+"%"+']-[Door '+data[i].doorStatus+']-['+data[i].staffno+']'+
@@ -307,39 +307,118 @@ $(function(){
 		}
 	}
 
+	// window.setInterval(function(){
+	// 	var data={"battVol":3.9397,
+	// 	"device":
+	// 		{"channelNo":1,
+	// 		 "deviceDesc":"Device1",
+	// 		 "floorNo":0,"id":1},
+	// 	"doorDistance":24,
+	// 	"doorStatus":"Open",
+	// 	"id":760,
+	// 	"inputDt":1544457600000,
+	// 	"isStaffCheck":"T",
+	// 	"nbSignalPwr":-98.8,
+	// 	"staffno":"",
+	// 	"updateDt":1544510909031
+	// }
+	  
+	//   var lyrealtrlength=$(".ly-real tbody tr").length;
+	//   var lymantrlength=$(".ly-man tbody tr").length;
+	//   var date=new Date(1544457600000);
+	  
+	//   date=date.toLocaleString().substring(date.toLocaleString().length-8);
+	//   var list="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td><td>"+data.nbSignalPwr+"</td><td>"+Number(data.battVol).toFixed(3)+"%</td></tr>"
+	//   if(lyrealtrlength<7){
+	//   	if(lyrealtrlength==0){
+	//   		$(".ly-real tbody").append(list);
+	//   	}else{
+	//   		$(".ly-real tbody tr:eq(0)").before(list);
+	//   	}
+	//   }else{
+	//   	$(".ly-real tbody tr:eq(6)").remove();
+	//   	$(".ly-real tbody tr:eq(0)").before(list);
+	//   }
+	//   if(data.isStaffCheck=='T'){
+	//   	data.device.floorNo=data.device.floorNo+Math.random();
+	//   	var listlyman="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.floorNo+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorDistance+"</td><td>"+data.doorStatus+"</td><td>"+data.staffno+"</td></tr>"
+	 	
+	//  	if(lymantrlength<7){
+	// 	  	if(lymantrlength==0){
+	// 	  		$(".ly-man tbody").append(listlyman);
+	// 	  	}else{
+	// 	  		$(".ly-man tbody tr:eq(0)").before(listlyman);
+	// 	  	}
+	// 	  }else{
+	// 	  	$(".ly-man tbody tr:eq(6)").remove();
+	// 	  	$(".ly-man tbody tr:eq(0)").before(listlyman);
+	// 	  }
+	//   }
+	// },4000)
 	//websocket test
-	// var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
+	var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
 
-	// ws.onopen = function()
+	ws.onopen = function()
 
-	// {  console.log("open");
+	{  console.log("open");
 
-	//   // ws.send();
+	  // ws.send();
 
-	// };
+	};
 
-	// ws.onmessage = function(evt)
+	ws.onmessage = function(evt)
 
-	// {
+	{
 
-	//   console.log(evt.data)
-	//   addDatatable(evt.data,".ly-real")
+	  console.log(evt.data)
+	  var data=JSON.parse(evt.data);
+	  var lyrealtrlength=$(".ly-real tbody tr").length;
+	  var lymantrlength=$(".ly-man tbody tr").length;
+	  var date=new Date(1544457600000);
+	  date=date.toLocaleString().substring(date.toLocaleString().length-8);
+	  var list="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td><td>"+data.nbSignalPwr+"</td><td>"+Number(data.battVol).toFixed(3)+"%</td></tr>"
+	  if(lyrealtrlength<7){
+	  	if(lyrealtrlength==0){
+	  		$(".ly-real tbody").append(list);
+	  	}else{
+	  		$(".ly-real tbody tr:eq(0)").before(list);
+	  	}
+	  }else{
+	  	$(".ly-real tbody tr:eq(6)").remove();
+	  	$(".ly-real tbody tr:eq(0)").before(list);
+	  }
+	  if(data.isStaffCheck=='T'){
+	  	var listlyman="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.floorNo+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorDistance+"</td><td>"+data.doorStatus+"</td><td>"+data.staffno+"</td></tr>"
+	 	
+	 	if(lymantrlength<7){
+		  	if(lymantrlength==0){
+		  		$(".ly-man tbody").append(listlyman);
+		  	}else{
+		  		$(".ly-man tbody tr:eq(0)").before(listlyman);
+		  	}
+		  }else{
+		  	$(".ly-man tbody tr:eq(6)").remove();
+		  	$(".ly-man tbody tr:eq(0)").before(listlyman);
+		  }
+	  }
+	  
+	  //addDatatable(evt.data,".ly-real")
 
-	// };
+	};
 
-	// ws.onclose = function(evt)
+	ws.onclose = function(evt)
 
-	// {
+	{
 
-	//   console.log("WebSocketClosed!");
+	  console.log("WebSocketClosed!");
 
-	// };
+	};
 
-	// ws.onerror = function(evt)
+	ws.onerror = function(evt)
 
-	// {
+	{
 
-	//   console.log("WebSocketError!");
+	  console.log("WebSocketError!");
 
-	// };
+	};
 })
