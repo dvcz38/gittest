@@ -47,6 +47,14 @@ $(function(){
 			chart.tooltip.refresh(points[points.length -1]);
 
 		}
+		Highcharts.setOptions({
+			global: {
+				useUTC: false
+			},
+			credits: {
+			     enabled: false
+			}
+		});
 		var chart1 = Highcharts.chart('ly-chart1', {
 			chart: {
 				type: 'areaspline',
