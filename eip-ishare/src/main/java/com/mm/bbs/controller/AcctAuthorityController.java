@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mm.bbs.pojo.AcctAuthority;
+import com.mm.bbs.pojo.Admin;
 import com.mm.bbs.pojo.DoorSensorDtl;
 import com.mm.bbs.service.AcctAuthorityService;
 import com.mm.bbs.service.DoorSensorDtlService;
@@ -29,14 +30,14 @@ public class AcctAuthorityController {
 	
 	
 	@RequestMapping(value = "/rolelist.do", method = RequestMethod.GET)
-	public String userPage() {
+	public String roleListPage() {
 
 		return "/view/admin/user/rolelist";
 	}
 	
 	@RequestMapping(value = "/getall.do")
 	@ResponseBody
-	public Map<String,Object> findAll(){
+	public Map<String,Object> getAll(){
 		//
 		List<AcctAuthority> lst = acctAuthorityService.getAll();
  
@@ -68,11 +69,11 @@ public class AcctAuthorityController {
 	
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String update(AcctAuthority user) throws IOException{
+	public String update(AcctAuthority role) throws IOException{
 
 	    /* 逻辑代码 */
 //		doorSensorDtlService
-		acctAuthorityService.update(user);
+		acctAuthorityService.update(role);
 	    return "success";
 	}
 	
@@ -86,4 +87,15 @@ public class AcctAuthorityController {
 	    return "success";
 	}
 	
+	@RequestMapping({"/findpage.do"})
+	@ResponseBody
+	public Map<String, Object> findPage(int page, int rows)
+	{
+	    List<AcctAuthority> lst = this.acctAuthorityService.findPage(page, rows);
+	    
+	    Map<String, Object> map = new LinkedHashMap();
+	    map.put("total", Integer.valueOf(lst.size()));
+	    map.put("rows", lst);
+	    return map;
+	}
 }

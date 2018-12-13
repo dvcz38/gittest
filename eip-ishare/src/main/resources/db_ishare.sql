@@ -37,17 +37,36 @@ CREATE TABLE `dbs_admin_info` (
 INSERT INTO `dbs_admin_info` VALUES ('1', 'admin', '48a3a35b46696f9a99d835267e6ae0af', 'admin@qq.com', '8550296011', '2017-10-02', '管理员', '1');
 
 -- ----------------------------
--- Table structure for db_level_menu
+-- Table structure for doorsensor
 -- ----------------------------
-DROP TABLE IF EXISTS `db_level_menu`;
-CREATE TABLE `db_level_menu` (
-  `menu_id` int(11) NOT NULL AUTO_INCREMENT,
-  `menu_code` varchar(255) DEFAULT NULL,
-  `icon_class` varchar(255) DEFAULT NULL,
-  `menu_state` int(255) DEFAULT NULL,
-  PRIMARY KEY (`menu_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+drop table IF EXISTS `doorsensor`;
+CREATE TABLE `doorsensor` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `deviceId` varchar(10) NOT NULL,
+  `inputDt` datetime NOT NULL, 
+  `doorDistance` int(10) DEFAULT '0',
+  `doorStatus` varchar(10) DEFAULT NULL,
+  `isStaffCheck` varchar(1) DEFAULT 'F',
+  `nbSignalPwr` float DEFAULT '0',
+  `battVol` float DEFAULT '0', 
+  `staffno` varchar(10) DEFAULT NULL,
+  `updateDt` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=79 DEFAULT CHARSET=utf8mb4;
 
+drop table IF EXISTS `acctAuthority`;
+CREATE TABLE `acctAuthority` (
+  `authorityId` int(11) NOT NULL,
+  `authorityDesc` varchar(255) DEFAULT NULL,
+  `isAdd` varchar(2) DEFAULT NULL,
+  `isDelete` varchar(2) DEFAULT NULL,
+  `isDownload` varchar(2) DEFAULT NULL,
+  `isEdit` varchar(2) DEFAULT NULL,
+  `isRead` varchar(2) DEFAULT NULL,
+  `updateDt` timestamp DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`authorityId`),
+  UNIQUE KEY `authorityId` (`authorityId`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 -- ----------------------------
 -- Records of db_level_menu
 -- ----------------------------

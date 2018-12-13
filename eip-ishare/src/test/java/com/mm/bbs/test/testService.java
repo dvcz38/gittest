@@ -17,6 +17,7 @@ import com.mm.bbs.pojo.AcctAuthority;
 import com.mm.bbs.service.AcctAuthorityService;
 import com.mm.bbs.service.AdminService;
 import com.mm.bbs.service.DoorSensorDtlService;
+import com.mm.bbs.util.PropertiesReader;
 
 @Transactional  
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -39,11 +40,13 @@ public class testService {
 		System.out.println("=========START=============");
 		String id="1";
 //		AcctAuthority role=roleService.findById(id);
-		List lst=doorSensorDtlService.findDeviceOnCurrentDay(0, "1", null, null);
-		for(int i=0;i<lst.size();i++) {
-			System.out.println("=========>"+lst.get(i));
-		}
-		
+//		List lst=doorSensorDtlService.findDeviceOnCurrentDay(0, "1", null, null);
+//		for(int i=0;i<lst.size();i++) {
+//			System.out.println("=========>"+lst.get(i));
+//		}
+		PropertiesReader prop=new PropertiesReader();
+		String val=prop.getValue("url");
+		System.out.println("=========url>"+val);
 		System.out.println("=========END=============");
 	}
 }

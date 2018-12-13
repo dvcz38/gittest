@@ -5,16 +5,22 @@
     xmlns:aop="http://www.springframework.org/schema/aop"   
     xmlns:context="http://www.springframework.org/schema/context"  
     xmlns:jee="http://www.springframework.org/schema/jee"  
+    xmlns:websocket="http://www.springframework.org/schema/websocket"
     xmlns:tx="http://www.springframework.org/schema/tx"  
     xsi:schemaLocation="    
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd  
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd  
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd  
         http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee-4.0.xsd  
-        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+        http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd
+        ">
         
          <!-- 开启注解扫描功能 springMvc--> 
         <context:component-scan base-package="com.mm.bbs.controller" />
+         <!-- 开启注解扫描功能 websocket--> 
+        <context:component-scan base-package="com.mm.bbs.websocket" />
+        
   
         
         <!-- 视图解析器 (对应DispatcherServlet跳转(逻辑视图名))-->

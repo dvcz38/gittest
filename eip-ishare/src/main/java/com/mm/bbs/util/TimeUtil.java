@@ -49,7 +49,36 @@ public class TimeUtil {
 		}
 		return lst;
 	}
-	
+	/**
+	取得当前日期时间
+	*/
+	public static String getCurrentHour()
+	{
+		Calendar c=new GregorianCalendar();
+		StringBuffer buffer=new StringBuffer();
+			buffer.append(c.get(Calendar.YEAR)).append("-");
+		buffer.append(addZero(c.get(Calendar.MONTH)+1)).append("-");
+		buffer.append(addZero(c.get(Calendar.DATE))).append(" ");
+		buffer.append(addZero(c.get(Calendar.HOUR))).append(":");
+		buffer.append(addZero(0)).append(":");
+		buffer.append(addZero(0));
+		return buffer.toString();
+	}
+	/**
+	取得当前日期时间
+	*/
+	public static String getCurrentMinutes()
+	{
+		Calendar c=new GregorianCalendar();
+		StringBuffer buffer=new StringBuffer();
+			buffer.append(c.get(Calendar.YEAR)).append("-");
+		buffer.append(addZero(c.get(Calendar.MONTH)+1)).append("-");
+		buffer.append(addZero(c.get(Calendar.DATE))).append(" ");
+		buffer.append(addZero(c.get(Calendar.HOUR))).append(":");
+		buffer.append(addZero(c.get(Calendar.MINUTE))).append(":");
+		buffer.append(addZero(0));
+		return buffer.toString();
+	}
 	/**
 		取得当前日期时间
 	*/

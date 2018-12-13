@@ -74,6 +74,7 @@ $(function(){
 							console.log(chart)
 						activeLastPointToolip(chart);
 						setInterval(function () {
+
 							// $.ajax({
 							//  	url:"/eip-ishare/device/getdevice.do",
 							//  	type:'post',
@@ -88,7 +89,7 @@ $(function(){
 							//  	}
 							//  })
 							getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,Math.random()*50+10)
-							
+
 						},1000);
 					}
 				}

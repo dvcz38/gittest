@@ -19,7 +19,10 @@ xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns
     <listener>  
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>  
     </listener>
-	
+	 <!-- 监听servletContext，启动udp Server-->  
+    <listener>  
+        <listener-class>com.mm.bbs.task.UDPServer</listener-class>  
+    </listener>
     
 	<!-- spring 配置   加载配置文件 -->
 	<context-param>

@@ -317,6 +317,7 @@ public interface BaseDao<T, PK extends Serializable>  {
 	public String findString(String hql, Map<String, Object> params);
  
  
+	public List<T> findPage(final Class<T> clasz,int page, int rows,String orderParam,String orderDirection);
 	/**
 	 * 分页条件查询 
 	 *  @param DetachedCriteria  dc   条件

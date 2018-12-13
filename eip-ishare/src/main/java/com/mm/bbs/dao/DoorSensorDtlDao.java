@@ -17,7 +17,7 @@ public interface DoorSensorDtlDao extends BaseDao<DoorSensorDtl, String> {
 	public List<DoorSensorDtl> findDeviceByInd(Integer i);
 	public List<DoorSensorDtl> findDeviceByChnlNo(Integer i,Integer channelNo);
 //	public List<DoorSensorDtl> findDeviceByStaffCheckOnDate(CheckState checkState,String fdate);
-	public List<DoorSensorDtl> findDeviceBtwDatetime(CheckState checkState,String fdate,String todate);
+	public List<DoorSensorDtl> findDeviceBtwDatetime(String deviceId,String checkState,String doorState,String fdate,String todate);
 
 //	public List<DoorSensorDtl> findAutoCheckDeviceInTime(String channelNo,String fdate);
 	/**
@@ -28,7 +28,7 @@ public interface DoorSensorDtlDao extends BaseDao<DoorSensorDtl, String> {
 	 * @param doorState 门关闭状态 Close Open
 	 * @return
 	 */
-	public List<DoorSensorDtl> findDeviceByParams(String inputDt,String staffCheckInd,Integer channelNo,String doorState);
+	public List<DoorSensorDtl> findDeviceByParams(String inputDt,String deviceId,String staffCheckInd,Integer channelNo,String doorState);
 	/**
 	 * 查询当天或昨天的记录
 	 * @param i=0 查询当天记录,i=1 查询昨天记录
@@ -56,6 +56,7 @@ public interface DoorSensorDtlDao extends BaseDao<DoorSensorDtl, String> {
 	 * @return
 	 */
 	public List<DoorSensorDtl> findDeviceByParamsOnHour(String staffCheckInd,Integer channelNo,String doorState);
+	public List getCount(String inputDt) ;
 //	public Long getDoorSensorCountAll();
 //	public Long getDoorSensorCountByState(String ind,String inputDt);
 //	public Long getDoorSensorCountByState(String ind,Date inputDt);

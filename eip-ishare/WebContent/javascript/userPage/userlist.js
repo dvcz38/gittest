@@ -113,7 +113,7 @@ $(function(){
 	                iconCls: 'icon-export',
 	                text:'Export All',
 	                handler: function(){
-	                	
+	                	window.location.href=ctx+"/index/export.do";
 	                }
 	    	  }
             ]

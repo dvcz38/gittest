@@ -134,21 +134,24 @@
             <!-- User Functions -->
             <div id="mws-user-info" class="mws-inset">
             	<div id="mws-user-photo">
-            	<!--  
-                	<img src="example/profile.jpg" alt="User Photo" />
-                	-->
+                	<img src="images/user.png" alt="User Photo" />
                 </div>
                 <div id="mws-user-functions">
                     <div id="mws-username">
-                        Hello, Admin
-                    </div>
-                    <ul>
-                    	<!-- 
-                    	<li><a href="#">Profile</a></li>
-                        <li><a href="#">Change Password</a></li>
-                         -->
-                        <li><a href="logout.jsp">Logout</a></li>
+                    <c:if test="${sessionScope.userInfo != null }">
+	                 ${sessionScope.userInfo }
+	                 <ul> 
+                        <li><a href="${ctx}/logout.jsp">Logout</a></li>
                     </ul>
+	                </c:if>
+                         <c:if test="${sessionScope.userInfo == null }">
+	                 
+	                 <ul> 
+                        <li><a href="${ctx}/login.jsp">Log In</a></li>
+                    </ul>
+	                </c:if>
+              		</div>
+                    
                 </div>
             </div>
             <!-- End User Functions -->
@@ -200,35 +203,45 @@
                     <a class="mws-report ly-shadow" href="#">
                         <span class="mws-report-icon mws-ic ic-monitor"></span>
                         <span class="mws-report-content">
-                            <span class="mws-report-title">Equipment Number</span>
-                            <span class="mws-report-value">324</span>
-                        </span>
-                    </a>
-
-                    <a class="mws-report ly-shadow" href="#">
-                        <span class="mws-report-icon mws-ic ic-light-circle-green"></span>
-                        <span class="mws-report-content">
-                            <span class="mws-report-title">Equipment without occlusion</span>
-                            <span class="mws-report-value">74</span>
+                            <span class="mws-report-title">Total Device Number</span>
+                            <span class="mws-report-value ly-all">0</span>
                         </span>
                     </a>
 
                     <a class="mws-report ly-shadow" href="#">
                         <span class="mws-report-icon mws-ic ic-layer-remove"></span>
                         <span class="mws-report-content">
-                            <span class="mws-report-title">Equipment occlusion</span>
-                            <span class="mws-report-value">14</span>
+                            <span class="mws-report-title">door open count</span>
+                            <span class="mws-report-value ly-open">0</span>
+                        </span>
+                    </a>
+
+                    <a class="mws-report ly-shadow" href="#">
+                        <span class="mws-report-icon mws-ic ic-light-circle-green"></span>
+                        <span class="mws-report-content">
+                            <span class="mws-report-title">door close count</span>
+                            <span class="mws-report-value ly-close">0</span>
                         </span>
                     </a>
                     
                     <a class="mws-report ly-shadow" href="#">
                         <span class="mws-report-icon mws-ic ic-delete"></span>
                         <span class="mws-report-content">
-                            <span class="mws-report-title">Equipment loss</span>
-                            <span class="mws-report-value">22</span>
+                            <span class="mws-report-title">door loss count</span>
+                            <span class="mws-report-value ly-lose">0</span>
                         </span>
                     </a>
                     
+                </div>
+                 <div class="mws-panel grid_8">
+                    <div class="mws-panel-header ly-channel">
+                      <!--  <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span>
+                       <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span> -->
+                    </div>
                 </div>
 
 
@@ -266,7 +279,7 @@
                     </div>
                 </div>
                 
-                
+               
                 
             <!-- End Main Container -->
             

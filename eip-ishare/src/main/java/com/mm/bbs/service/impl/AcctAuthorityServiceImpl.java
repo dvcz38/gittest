@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mm.bbs.dao.AcctAuthorityDao;
 import com.mm.bbs.pojo.AcctAuthority;
+import com.mm.bbs.pojo.DoorSensorDtl;
 import com.mm.bbs.service.AcctAuthorityService;
 
 @Service("acctAuthorityService")
@@ -58,7 +59,9 @@ public class AcctAuthorityServiceImpl implements AcctAuthorityService {
 		// TODO Auto-generated method stub
 		
 	}
-	
+    public List<AcctAuthority> findPage(int page,int rows){
+    	return this.acctAuthorityDao.findPage(AcctAuthority.class, page, rows, "id", "desc");
+    }
 }
  
 	
