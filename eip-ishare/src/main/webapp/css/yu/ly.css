@@ -1,12 +1,17 @@
 .ly-time i{
-	font-size: 12px;
+	font-size: 14px;
 	padding-left: 20px;
+	font-weight: normal;
 }
 .ly-time a{
 	float: right;
 	padding-right: 20px;
+	font-weight: normal;
 }
-
+.ly-time{
+	font-weight: bold;
+	font-size: 16px;
+}
 .ly-shadow{
    box-shadow: 0px 0px 2px 1px #464646;
 }
@@ -20,9 +25,16 @@
 	font-size: 18px;
 }
 
+.ly-clear{
+	clear: both;
+}
 /*12018 12-9日 增加 table样式与时间选择器样式*/
 table{
 	color:white !important;
+	font-size: 16px;
+}
+table th{
+	font-weight: bold;
 }
 .ly-select-time{
 	display:inline-block;
