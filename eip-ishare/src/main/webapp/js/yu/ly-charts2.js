@@ -27,10 +27,10 @@ $(function(){
 			}
 		});
 		var COLORS=["#4d886d","#4d886d","green","gray","blue"]
-		//var deviceDesc=$(".doorDistance").find("option:selected").text();
-		// var deviceId=$(".doorDistance").val();
-		var deviceDesc=device[0].deviceDesc;
-		var deviceId=device[0].deviceId;
+		var deviceDesc=$(".doorDistance").find("option:selected").text();
+		var deviceId=$(".doorDistance").val();
+		// var deviceDesc=device[0].deviceDesc;
+		// var deviceId=device[0].deviceId;
 		$(".doorDistance").change(function(){
 			deviceDesc=$(".doorDistance").find("option:selected").text();
 			deviceId=$(".doorDistance").val();
@@ -39,6 +39,7 @@ $(function(){
 		console.log(deviceId)
 		
 		function getAjaxPoint(series,color,name,chart,y){
+			console.log("point")
 			var x = (new Date()).getTime(), // 当前时间
 				y = y;          // 随机值
 				series.addPoint({x:x, y:y}, true, true);
@@ -64,7 +65,7 @@ $(function(){
 		});
 		var chart1 = Highcharts.chart('ly-chart2', {
 			chart: {
-				type: 'column',
+				type: 'areaspline',
 				marginRight: 10,
 				backgroundColor:"#353535",
 				events: {
@@ -73,24 +74,28 @@ $(function(){
 							chart = this;
 							console.log(chart)
 						activeLastPointToolip(chart);
-						setInterval(function () {
+						
+						var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
 
-							// $.ajax({
-							//  	url:"/eip-ishare/device/getdevice.do",
-							//  	type:'post',
-							//  	data:{'deviceId':deviceId},
-							//  	success:function(data){
-							//  		console.log(data)
-							//  		if(data.rows.length!=0){
-							//  			getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,data.rows[0].doorDistance)
-							//  		}else{
-							//  			getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,0)
-							//  		}
-							//  	}
-							//  })
-							getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,Math.random()*50+10)
+						ws.onopen = function()
 
-						},1000);
+						{  console.log("open");
+
+						  // ws.send();
+
+						};
+
+						ws.onmessage = function(evt){
+							var data=JSON.parse(evt.data);
+							console.log(data)
+							if(deviceId==data.device.id){
+								getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,data.nbSignalPwr)
+							}else{
+								getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,0)
+							}
+							
+						}
+							
 					}
 				}
 			},

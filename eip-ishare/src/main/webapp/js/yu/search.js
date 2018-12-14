@@ -44,17 +44,72 @@ $(function(){
 			alert("请选择正确的时间")
 			return;
 		}
-		var starttime=day+"-"+$(".start-hour").val()+":"+$(".start-min").val()+":00";
-		var endtime=day+"-"+$(".end-hour").val()+":"+$(".end-min").val()+":00";
+		var starttime=day+" "+$(".start-hour").val()+":"+$(".start-min").val()+":00";
+		var endtime=day+" "+$(".end-hour").val()+":"+$(".end-min").val()+":00";
 
-		var data={"id":"1","fdate":starttime,"todate":endtime};
-		// $.ajax({
-		// 	url:'/eip-ishare/device/search.do',
-		// 	data:data,
-		// 	type:'post',
-		// 	success:function(data){
+		var data={"deviceId":$(".ly-select-device select").val(),"fdate":starttime,"todate":endtime};
+		console.log(data);
+		$.ajax({
+			url:'/eip-ishare/device/dtl/search.do',
+			data:data,
+			type:'post',
+			success:function(data){
+				var data=JSON.parse(data);
+				// var test={"total":1,
+				// 	"rows":
+				// 		[
+				// 			{"id":2,"
+				// 			 device":{
+				// 			 	"id":2,
+				// 			 	"deviceDesc":"Device2",
+				// 			 	"floorNo":2,
+				// 			 	"channelNo":1,
+				// 			 	"state":"1",
+				// 			 	"instalDt":null},
+				// 			"nbSignalPwr":-98.3,
+				// 			"doorDistance":0,
+				// 			"doorStatus":"Close",
+				// 			"isStaffCheck":"F",
+				// 			"staffno":"staff002",
+				// 			"battVol":4.03315,
+				// 			"inputDt":"2018-11-27 01:00:00",
+				// 			"updateDt":"2018-11-14 04:23:00"}
+				// 		]
+				// }
+				$("table tbody tr").remove();
+				for(var i=0;i<data.rows.length;i++){
+					var list="<tr class='gradeX'><td>"+data.rows[i].inputDt.substring(data.rows[i].inputDt.length-8)+"</td><td>"+data.rows[i].device.deviceDesc+"</td><td>"+data.rows[i].doorStatus+"</td><td>"+data.rows[i].nbSignalPwr+"</td><td>"+Number(data.rows[i].battVol).toFixed(2)+"%</td></tr>"
+					$("table tbody tr").append(list)
+				}
+			}
+		})
+	})
 
-		// 	}
-		// })
+	var device=[];
+
+	$.ajax({
+		url:'/eip-ishare/device/getall.do',
+		success:function(data){
+			console.log(data)
+			for(var i=0;i<data.rows.length;i++){
+				device.push({"deviceId":data.rows[i].id,"deviceDesc":data.rows[i].deviceDesc})
+			}
+			console.log(device)
+			
+			addDeviceSelect(device,".ly-select-device select");
+		}
+	})
+
+
+	function addDeviceSelect(data,parent){
+		for(var i=0;i<data.length;i++){
+			var option='<option value='+data[i].deviceId+'>'+data[i].deviceDesc+'</option>'
+			$(parent).append(option);
+		}
+	}
+	$(".ly-select-device select").change(function(){
+		deviceDesc=$(".ly-select-device select").find("option:selected").text();
+		deviceId=$(".ly-select-device select").val();
+			
 	})
 })

@@ -47,3 +47,13 @@ table th{
 .ly-select-time select{
 	margin-left: 10px;
 }
+.ly-select-device{
+	display:inline-block;
+}
+.ly-select-device span{
+	color:white;
+	margin-left: 10px;
+}
+.ly-select-device select{
+	margin-left: 10px;
+}

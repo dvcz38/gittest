@@ -131,26 +131,26 @@ $(function(){
 
 	
 	
-	// window.setInterval(function(){
-	// 	//获得通道
-	// 	$.ajax({
-	// 		url:'/eip-ishare/device/getchanel.do',
-	// 		success:function(data){
-	// 			if(data.rows.length!=0){
-	// 				if($(".ly-channel").find("span").length!=0){
-	// 					$(".ly-channel").find("span").remove();
-	// 				}
-	// 				for(var i=0;i<data.rows.length;i++){
-	// 					var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i].channelNo+'</span>'
-	// 					$(".ly-channel").append(span)
-	// 				}
-	// 			}
-	// 		}
-	// 	})
-	// },1000)
+	window.setInterval(function(){
+		//获得通道
+		$.ajax({
+			url:'/eip-ishare/device/getchanel.do',
+			success:function(data){
+				if(data.rows.length!=0){
+					if($(".ly-channel").find("span").length!=0){
+						$(".ly-channel").find("span").remove();
+					}
+					for(var i=0;i<data.rows.length;i++){
+						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i].channelNo+'</span>'
+						$(".ly-channel").append(span)
+					}
+				}
+			}
+		})
+	},1000)
 	
 	var maxtableLength=7;
-	function addDatatable(data,parent){
+	function addDatatable(data,parent,time){
 		// var data=data.rows;
 		var data=data;
 		
@@ -173,7 +173,7 @@ $(function(){
 
 				// data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
 				if(parent==".ly-loss"){
-					var list="<tr class='gradeX'><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
+					var list="<tr class='gradeX'><td>"+time+"</td><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
 				}else if(parent==".ly-human"){
 					var list='<li>'+
                                  '<span style="width:20px;height:20px;background-size:100% 100%;" class="mws-report-icon mws-ic '+iconclass+'"></span><span>'+data[i].inputDt+'</span>  [Channel '+ data[i].device.channelNo+']-[Floor '+data[i].device.floorNo+']-['+data[i].device.deviceDesc+']-[Battery Vol:'+(Number(data[i].battVol).toFixed(2))+"%"+']-[Door '+data[i].doorStatus+']-['+data[i].staffno+']'+
@@ -194,7 +194,7 @@ $(function(){
 				// }
 				// data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
 				if(parent==".ly-loss"){
-					var list="<tr class='gradeX'><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
+					var list="<tr class='gradeX'><td>"+time+"</td><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
 				}else{
 					var list='<li>'+
                                  '<span style="width:20px;height:20px;background-size:100% 100%;" class="mws-report-icon mws-ic '+iconclass+'"></span><span>'+data[i].inputDt+'</span>  [Channel '+ data[i].device.channelNo+']-[Floor '+data[i].device.floorNo+']-['+data[i].device.deviceDesc+']-[Battery Vol:'+(Number(data[i].battVol).toFixed(2))+"%"+']-[Door '+data[i].doorStatus+']-['+data[i].staffno+']'+
@@ -207,7 +207,7 @@ $(function(){
 			var delLength=(dataLength+divLength)-maxtableLength;
 			for(var z=0;z<delLength;z++){
 				var temp=divLength-1-z;
-				console.log($(".ly-auto li:eq("+z+")"))
+				//console.log($(".ly-auto li:eq("+z+")"))
 				
 				$(parent+" tbody tr:eq("+temp+")").remove()
 
@@ -221,7 +221,7 @@ $(function(){
 				// }
 				// data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
 				if(parent==".ly-loss"){
-					var list="<tr class='gradeX'><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
+					var list="<tr class='gradeX'><td>"+time+"</td><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
 				}else{
 					var list='<li>'+
                                  '<span style="width:20px;height:20px;background-size:100% 100%;" class="mws-report-icon mws-ic '+iconclass+'"></span><span>'+data[i].inputDt+'</span>  [Channel '+ data[i].device.channelNo+']-[Floor '+data[i].device.floorNo+']-['+data[i].device.deviceDesc+']-[Battery Vol:'+(Number(data[i].battVol).toFixed(2))+"%"+']-[Door '+data[i].doorStatus+']-['+data[i].staffno+']'+
@@ -243,7 +243,7 @@ $(function(){
 				// data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
 				console.log(data[i].doorStatus=="Close")
 				if(parent==".ly-loss"){
-					var list="<tr class='gradeX'><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
+					var list="<tr class='gradeX'><td>"+time+"</td><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
 				}else{
 					var list='<li>'+
                                  '<span style="width:20px;height:20px;background-size:100% 100%;" class="mws-report-icon mws-ic '+iconclass+'"></span><span>'+data[i].inputDt+'</span>  [Channel '+ data[i].device.channelNo+']-[Floor '+data[i].device.floorNo+']-['+data[i].device.deviceDesc+']-[Battery Vol:'+(Number(data[i].battVol).toFixed(2))+"%"+']-[Door '+data[i].doorStatus+']-['+data[i].staffno+']'+
@@ -318,12 +318,13 @@ $(function(){
 
 	{
 
-	  console.log(evt.data)
+	  // console.log(evt.data)
 	  var data=JSON.parse(evt.data);
 	  var lyrealtrlength=$(".ly-real tbody tr").length;
 	  var lymantrlength=$(".ly-man tbody tr").length;
+	  var lyautotrlength=$(".ly-auto tbody tr").length;
 	  var date=new Date(Number(data.inputDt));
-	  date=date.toLocaleString().substring(date.toLocaleString().length-8);
+	  date=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 	  var list="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td><td>"+data.nbSignalPwr+"</td><td>"+Number(data.battVol).toFixed(3)+"%</td></tr>"
 	  if(lyrealtrlength<7){
 	  	if(lyrealtrlength==0){
@@ -347,6 +348,19 @@ $(function(){
 		  }else{
 		  	$(".ly-man tbody tr:eq(6)").remove();
 		  	$(".ly-man tbody tr:eq(0)").before(listlyman);
+		  }
+	  }else{
+	  	var listlyauto="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.channelNo+"</td><td>"+data.device.floorNo+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td></tr>"
+	 	
+	 	if(lyautotrlength<7){
+		  	if(lyautotrlength==0){
+		  		$(".ly-auto tbody").append(listlyauto);
+		  	}else{
+		  		$(".ly-auto tbody tr:eq(0)").before(listlyauto);
+		  	}
+		  }else{
+		  	$(".ly-auto tbody tr:eq(6)").remove();
+		  	$(".ly-auto tbody tr:eq(0)").before(listlyauto);
 		  }
 	  }
 	  
@@ -380,11 +394,7 @@ $(function(){
 	  // ws.send();
 
 	};
-
-	ws1.onmessage = function(evt)
-
-	{
-	 // {"loss":
+	// {"loss":
 	 // 	[{
 	 // 		"channelNo":1,
 	 // 		"deviceDesc":"Device1",
@@ -418,21 +428,30 @@ $(function(){
 	 // 	   "id":6,
 	 // 	   "state":"1"
 	 // 	}],"doorstatuscount":[]}
+	ws1.onmessage = function(evt)
 
-	  console.log(evt.data)
+	{
+	  // console.log(evt.data)
 	  var data=JSON.parse(evt.data);
 	  if(data.doorstatuscount.length!=0){
-	  	close=data.doorstatuscount[0].close;
-		open=data.doorstatuscount[0].open;
-		$(".ly-open").text(open);
-		$(".ly-close").text(close);
-		$(".ly-loss").text(all-open-close);
+	  	close=Number(data.doorstatuscount[0].Close);
+		open=Number(data.doorstatuscount[1].Open);
+	  }else{
+	  	open=0;
+	  	close=0;
 	  }
+	  $(".ly-open").text(open);
+	  $(".ly-close").text(close);
+	  $(".ly-lose").text(all-open-close);
+	  var time=data.inputDt.substring(data.inputDt.length-8)
 	  data=data.loss;
-	  
-	  
-
-	  addDatatable(data,".ly-loss")
+	  $(".ly-loss tbody tr").remove();
+	  for(var i=0;i<data.length;i++){
+	  	  var list="<tr class='gradeX'><td>"+time+"</td><td>"+data[i].channelNo+"</td><td>"+data[i].floorNo+"</td><td>"+data[i].deviceDesc+"</td></tr>"
+		  $(".ly-loss tbody").append(list);
+	  }
+	
+	  //addDatatable(data,".ly-loss",time)
 	 }
 
 	ws1.onclose = function(evt)
@@ -456,7 +475,7 @@ $(function(){
 	$.ajax({
 		url:'/eip-ishare/device/getall.do',
 		success:function(data){
-			all=data.total;
+			all=Number(data.total);
 			$(".ly-all").text(data.total);
 
 		}
