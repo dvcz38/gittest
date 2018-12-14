@@ -131,23 +131,23 @@ $(function(){
 
 	
 	
-	// window.setInterval(function(){
-	// 	//获得通道
-	// 	$.ajax({
-	// 		url:'/eip-ishare/device/getchanel.do',
-	// 		success:function(data){
-	// 			if(data.rows.length!=0){
-	// 				if($(".ly-channel").find("span").length!=0){
-	// 					$(".ly-channel").find("span").remove();
-	// 				}
-	// 				for(var i=0;i<data.rows.length;i++){
-	// 					var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i].channelNo+'</span>'
-	// 					$(".ly-channel").append(span)
-	// 				}
-	// 			}
-	// 		}
-	// 	})
-	// },1000)
+	window.setInterval(function(){
+		//获得通道
+		$.ajax({
+			url:'/eip-ishare/device/getchanel.do',
+			success:function(data){
+				if(data.rows.length!=0){
+					if($(".ly-channel").find("span").length!=0){
+						$(".ly-channel").find("span").remove();
+					}
+					for(var i=0;i<data.rows.length;i++){
+						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i].channelNo+'</span>'
+						$(".ly-channel").append(span)
+					}
+				}
+			}
+		})
+	},1000)
 	
 	var maxtableLength=7;
 	function addDatatable(data,parent,time){
