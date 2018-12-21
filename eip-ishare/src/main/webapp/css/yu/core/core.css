@@ -437,6 +437,7 @@ div#mws-navigation ul
 {
 	border-top:1px solid #18191d;
 	border-bottom:1px solid #535755;
+	border-right:1px solid white;
 }
 
 div#mws-navigation ul li
@@ -529,7 +530,7 @@ div#mws-navigation ul li ul li:hover
 
 div#mws-container
 {
-	/* margin-left:206px; */
+	 margin-left:206px; 
 	padding-top:100px;
 	min-height:100%;
 }
