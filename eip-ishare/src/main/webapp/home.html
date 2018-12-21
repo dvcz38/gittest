@@ -78,9 +78,15 @@
 
 <!-- <script type="text/javascript" src="./js/yu/demo.dashboard.js"></script> -->
 <script type="text/javascript" src="./js/yu/highcharts.js"></script>
+<script type="text/javascript" src="./js/yu/highcharts-more.js"></script>
+<!-- <script type="text/javascript" src="./js/yu/exporting.js"></script> -->
+
+<script type="text/javascript" src="./js/yu/solid-gauge.js"></script>
 <!--2018 12-9日去掉第一个图表-->
 <!-- <script type="text/javascript" src="./js/yu/ly-charts.js"></script> -->
 <script type="text/javascript" src="./js/yu/ly-charts2.js"></script>
+<script type="text/javascript" src="./js/yu/ly-simcharts.js"></script>
+
 <script type="text/javascript" src="./js/yu/ly.js"></script>
  
 <title>MWS Admin - Dashboard</title>
@@ -173,10 +179,32 @@
         	<!-- Main Container -->
             <div class="container">
                 
-            	<div class="mws-panel grid_4 ly-shadow mws-collapsible">
+            	<!--2018 12 9 新增表格-->
+                <div class="mws-panel grid_4 mws-collapsible ly-shadow ly-clear">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-books-2 ly-time">Loss Device Record  <i>1030</i> <a>more</a></span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-table ly-loss" style="background:#383838">
+                             <thead>
+                            
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Channel</th>
+                                   
+                                    <th>Floor</th>
+                                    <th>Device Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mws-panel grid_4 ly-shadow mws-collapsible">
                     <!--2018 12-9日去掉第一个图表-->
-                	<!-- <div class="mws-panel-header">
-                    	<span class="mws-i-24 i-graph">Charts
+                    <!-- <div class="mws-panel-header">
+                        <span class="mws-i-24 i-graph">Charts
                            <select class="nbSignalPwr">
                                 
                            </select>
@@ -184,8 +212,8 @@
 
                     </div>
                     <div class="mws-panel-body">
-                    	<div class="mws-panel-content">
-	                    	<div id="ly-chart1" style="width:100%; height:215px;"></div>
+                        <div class="mws-panel-content">
+                            <div id="ly-chart1" style="width:100%; height:215px;"></div>
                         </div>
                     </div> -->
                     <!--2018 12增加table表格-->
@@ -210,21 +238,7 @@
                         </table>
                     </div>
                 </div>
-                <div class="mws-panel grid_4 ly-shadow">
-                    <div class="mws-panel-header">
-                        <span class="mws-i-24 i-graph">Charts
-                           <select class="doorDistance">
-                                
-                           </select>
-                        </span>
-                    </div>
-                    <div class="mws-panel-body">
-                        <div class="mws-panel-content">
-                            <div id="ly-chart2" style="width:100%; height:276px;"></div>
-                         
-                        </div>
-                    </div>
-                </div>
+                
                 
                 <div class="mws-report-container grid_8">
                     <a class="mws-report ly-shadow" href="#">
@@ -318,26 +332,39 @@
                         </table>
                     </div>
                 </div>
-                <!--2018 12 9 新增表格-->
-                <div class="mws-panel grid_4 mws-collapsible ly-shadow ly-clear">
+                <div class="mws-panel grid_6 ly-shadow">
                     <div class="mws-panel-header">
-                        <span class="mws-i-24 i-books-2 ly-time">Loss Device Record  <i>1030</i> <a>more</a></span>
+                        <span class="mws-i-24 i-graph">Door Distance
+                           <select class="doorDistance">
+                                
+                           </select>
+                           
+                           <!-- <i class="simdata">1</i> -->
+
+                        </span>
+                        
                     </div>
                     <div class="mws-panel-body">
-                        <table class="mws-table ly-loss" style="background:#383838">
-                             <thead>
-                            
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Channel</th>
-                                   
-                                    <th>Floor</th>
-                                    <th>Device Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            </tbody>
-                        </table>
+                        <div class="mws-panel-content">
+                            <div id="ly-chart2" style="width:100%; height:276px;"></div>
+                         
+                        </div>
+                    </div>
+                </div>
+                <div class="mws-panel grid_2 ly-shadow">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-graph">Sim Card
+                          
+                           <!-- <i class="simdata">1</i> -->
+
+                        </span>
+                        
+                    </div>
+                    <div class="mws-panel-body">
+                        <div class="mws-panel-content">
+                            <div id="ly-simcharts" style="width:100%; height:276px;"></div>
+                         
+                        </div>
                     </div>
                 </div>
                

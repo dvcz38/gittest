@@ -57,3 +57,18 @@ table th{
 .ly-select-device select{
 	margin-left: 10px;
 }
+.sim{
+	width: 32px;
+	height: 32px;
+	background: url("../../images/sim.png") center center no-repeat;
+
+}
+
+.simdata{
+	color: white;
+    background: url(../../images/sim.png) left center no-repeat;
+    padding-left: 50px;
+    background-size: 50px 50px;
+    float:right;
+	margin-right: 10px;
+}
