@@ -17,7 +17,7 @@
 <script src="${ctx}/bootstrap3/js/jquery-1.11.2.min.js"></script>
 <script src="${ctx}/bootstrap3/js/bootstrap.min.js"></script>
 
-<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/black/easyui.css">	
+<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/default/easyui.css">	
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/IconExtension.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/demo/demo.css">
@@ -124,63 +124,12 @@
            
             </div>
             <table class="main">
-            <tr >
-            <td><span>User Name</span></td>
-            <td>
-            	<input class="easyui-textbox" name="name"   style="color:blue;font-weight:bold;width: 200px">
-            </td>
-            </tr>
-            <tr>
-             <td><span>Email</span></td>
-             <td>
-            	 <input class="easyui-textbox" name="email" style="width: 200px">
-             </td>
-            </tr>
-             
-            <tr>
-            	<td><span>Phone Number</span></td>
-             	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
-             	</td>
-            </tr>
-            <tr>
-            <td><span>Role</span></td>
-             <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
-             </td>
-            </tr>
-            <tr>
+         	<tr>
             <td><span>Join Date</span></td>
-             <td>
-              
-               <input name="joindate" type="text" class="easyui-datebox"  >  
+             <td> 
+               <input name="joindate" type="text" class="easyui-datetimebox"  >  
              </td>
             </tr>
-            <tr>
-            <td><span>State</span></td>
-             <td>  
-                <select id="state" class="easyui-combobox" name="state" style="width:200px;">
-				    <option value="1">STATE1</option>
-				    <option value="0">STATE2</option> 
-				</select> 
-             </td>
-            </tr>
-            </table>             
-            
-        </form>
-        <div style="text-align: center; padding: 5px 0;">
-            <a href="javascript:void(0)" class="easyui-linkbutton"
-                onclick="updataForm()" style="width: 80px" id="tt">Submit</a> 
-        </div>
-    </div>
-          <!-- 配置增加框 -->
-    <div id="addUser" class="easyui-dialog" title="Add User Information"
-        style="width: 400px; height: 450px;" data-options="modal:true">
-        
-        <form id="addUserForm" method="post">
-           
-                </br>
-           <table class="main">
             <tr>
 	            <td><span>User Name</span></td>
 	            <td>
@@ -209,25 +158,90 @@
             <tr>
             <td><span>Role</span></td>
              <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
+               <select id="role" class="easyui-combobox" name="role" style="width:200px;">
+				    <option value="3">COMMON</option>
+				    <option value="2">ADMIN</option> 
+				    <option value="1">SUPER ADMIN</option> 
+				</select> 
              </td>
             </tr>
-            <tr>
-            <td><span>Join Date</span></td>
-             <td> 
-               <input name="joindate" type="text" class="easyui-datebox"  >  
-             </td>
-            </tr>
+            
             <tr>
             <td><span>State</span></td>
              <td>  
                 <select id="state" class="easyui-combobox" name="state" style="width:200px;">
-				    <option value="1">STATE1</option>
-				    <option value="0">STATE2</option> 
+				    <option value="1">WORK</option>
+				    <option value="0">QUIT</option> 
 				</select> 
              </td>
             </tr>
-            </table>    
+        </table>   
+        </form>
+        <div style="text-align: center; padding: 5px 0;">
+            <a href="javascript:void(0)" class="easyui-linkbutton"
+                onclick="updateForm()" style="width: 80px" id="tt">Submit</a> 
+        </div>
+    </div>
+          <!-- 配置增加框 -->
+    <div id="addUser" class="easyui-dialog" title="Add User Information"
+        style="width: 400px; height: 450px;" data-options="modal:true">
+        
+        <form id="addUserForm" method="post">
+           
+                </br>
+           <table class="main">
+            
+            <tr>
+            <td><span>Join Date</span></td>
+             <td> 
+               <input name="joindate" type="text" class="easyui-datetimebox"  >  
+             </td>
+            </tr>
+             <tr>
+	            <td><span>User Name</span></td>
+	            <td>
+	            	<input class="easyui-textbox" name="name" style="width: 200px" required="required"> 
+	            </td>
+            </tr>
+             <tr >
+	            <td><span>password</span></td>
+	            <td>
+	            	  <input class="easyui-textbox" name="password" style="width: 200px" required="required">
+	            </td>
+            </tr>
+            <tr>
+	             <td><span>Email</span></td>
+	             <td>
+	            	 <input class="easyui-textbox" name="email" style="width: 200px">
+	             </td>
+            </tr> 
+            <tr>
+            	<td><span>Phone Number</span></td>
+             	<td>
+            		<input class="easyui-textbox" name="phone" style="width: 200px">
+             	</td>
+            </tr>
+             <tr>
+            <td><span>Role</span></td>
+             <td> 
+               <select id="role" class="easyui-combobox" name="role" style="width:200px;">
+				    <option value="3">COMMON</option>
+				    <option value="2">ADMIN</option> 
+				    <option value="1">SUPER ADMIN</option> 
+				</select> 
+             </td>
+            </tr>
+            
+            <tr>
+            <td><span>State</span></td>
+             <td>  
+                <select id="state" class="easyui-combobox" name="state" style="width:200px;">
+				    <option value="1">WORK</option>
+				    <option value="0">QUIT</option> 
+				</select> 
+             </td>
+            </tr>
+        </table>   
         </form>
         
         <div style="text-align: center; padding: 5px 0;">

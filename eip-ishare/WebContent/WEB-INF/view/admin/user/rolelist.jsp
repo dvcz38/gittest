@@ -11,12 +11,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ROLE MANAGEMENT</title>
+<title>Role List</title>
 <link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap.min.css">
 <link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap-theme.min.css">
 <script src="${ctx}/bootstrap3/js/jquery-1.11.2.min.js"></script>
 <script src="${ctx}/bootstrap3/js/bootstrap.min.js"></script>
-<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/black/easyui.css">	
+<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/default/easyui.css">	
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/IconExtension.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/demo/demo.css">
@@ -70,6 +70,75 @@
             </tr>
             <tr>
              <td><span>Read</span></td>
+             <td> 
+            	   <select id="isRead" class="easyui-combobox" name="isRead" style="width:200px;">
+				    <option value="Y">READ</option>
+				    <option value="N">CANT READ</option> 
+				</select> 
+             </td>
+            </tr>
+              <tr>
+             <td><span>Add</span></td>
+             <td> 
+            	   <select id="isAdd" class="easyui-combobox" name="isAdd" style="width:200px;">
+				    <option value="Y">ADD</option>
+				    <option value="N">CANT ADD</option> 
+				</select> 
+             </td>
+            </tr>
+            <tr>
+            	<td><span>Delete</span></td>
+             	<td> 
+            		<select id="isDelete" class="easyui-combobox" name="isDelete" style="width:200px;">
+				    <option value="Y">DELETE</option>
+				    <option value="N">CANT DELETE</option> 
+				    </select> 
+             	</td>
+            </tr>
+            <tr>
+            <td><span>Edit</span></td>
+             <td>  
+                <select id="isEdit" class="easyui-combobox" name="isEdit" style="width:200px;">
+				    <option value="Y">EDIT</option>
+				    <option value="N">CANT EDIT</option> 
+				</select> 
+             </td>
+            </tr>
+            <tr>
+            <td><span>Export</span></td>
+             <td> 
+               <select id="isDownload" class="easyui-combobox" name="isDownload" style="width:200px;">
+				    <option value="Y">DOWNLOAD</option>
+				    <option value="N">CANT DOWNLOAD</option> 
+				</select>
+             </td>
+            </tr> 
+            </table>             
+            
+        </form>
+        <div style="text-align: center; padding: 5px 0;">
+            <a href="javascript:void(0)" class="easyui-linkbutton"
+                onclick="updateForm()" style="width: 80px" id="tt">Submit</a> 
+        </div>
+    </div>
+          <!-- 配置增加框 -->
+          <!--  
+    <div id="addUser" class="easyui-dialog" title="Add User Information"
+        style="width: 400px; height: 450px;" data-options="modal:true">
+        
+        <form id="addUserForm" method="post">
+           
+              </div>
+            <table class="main">
+            <tr >
+            <td><span color="red">Role</span></td>
+            <td>
+            	<input class="easyui-textbox"  name="authorityDesc"  style="color:blue;font-weight:bold;">
+            	 
+            </td>
+            </tr>
+            <tr>
+             <td><span>Read</span></td>
              <td>
             	 <input type="checkbox" name="isRead" style="width: 200px">
              </td>
@@ -94,70 +163,7 @@
              </td>
             </tr>
             
-            </table>             
-            
-        </form>
-        <div style="text-align: center; padding: 5px 0;">
-            <a href="javascript:void(0)" class="easyui-linkbutton"
-                onclick="updataForm()" style="width: 80px" id="tt">Submit</a> 
-        </div>
-    </div>
-          <!-- 配置增加框 -->
-          <!--  
-    <div id="addUser" class="easyui-dialog" title="Add User Information"
-        style="width: 400px; height: 450px;" data-options="modal:true">
-        
-        <form id="addUserForm" method="post">
-           
-                </br>
-           <table class="main">
-            <tr>
-	            <td><span>User Name</span></td>
-	            <td>
-	            	<input class="easyui-textbox" name="name" style="width: 200px" required="required"> 
-	            </td>
-            </tr>
-            
-            <tr >
-	            <td><span>password</span></td>
-	            <td>
-	            	  <input class="easyui-textbox" name="password" style="width: 200px" required="required">
-	            </td>
-            </tr>
-            <tr>
-	             <td><span>Email</span></td>
-	             <td>
-	            	 <input class="easyui-textbox" name="email" style="width: 200px">
-	             </td>
-            </tr> 
-            <tr>
-            	<td><span>Phone Number</span></td>
-             	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
-             	</td>
-            </tr>
-            <tr>
-            <td><span>Role</span></td>
-             <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
-             </td>
-            </tr>
-            <tr>
-            <td><span>Join Date</span></td>
-             <td> 
-               <input name="joindate" type="text" class="easyui-datebox"  >  
-             </td>
-            </tr>
-            <tr>
-            <td><span>State</span></td>
-             <td>  
-                <select id="state" class="easyui-combobox" name="state" style="width:200px;">
-				    <option value="1">STATE1</option>
-				    <option value="0">STATE2</option> 
-				</select> 
-             </td>
-            </tr>
-            </table>    
+            </table>        
         </form>
         
         <div style="text-align: center; padding: 5px 0;">

@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap-theme.min.css">
 <script src="${ctx}/bootstrap3/js/jquery-1.11.2.min.js"></script>
 <script src="${ctx}/bootstrap3/js/bootstrap.min.js"></script>
-<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/black/easyui.css">	
+<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/default/easyui.css">	
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/icon.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/IconExtension.css">
 <link rel="stylesheet" type="text/css" href="${ctx}/easyui/demo/demo.css">
@@ -48,59 +48,81 @@
        
         <!--id默认隐藏,这样就不允许修改 -->
         <div style="margin-bottom: 20px;"> 
-             
+             <!--
+          
+               <tr>
+	            <td><span>Device ID</span></td>
+	            <td>
+	            	<input class="easyui-textbox" name="deviceId" style="width: 200px" readonly="true"> 
+	            </td>
+            </tr>
+           -->
            <input type="hidden" id="id"  name="id" >
-              
-           
+            <input type="hidden" id="deviceId"  name="deviceId" >
             </div>
             <table class="main">
-            <tr >
-            <td><span>Role</span></td>
-            <td>
-            	<input class="easyui-textbox" name="name" style="width: 200px">
-            </td>
+           
+            <tr>
+	            <td><span>Device</span></td>
+	            <td>
+	            	<input class="easyui-textbox" name="deviceDesc" style="width: 200px" readonly="true"> 
+	            </td>
             </tr>
             <tr>
-             <td><span>Email</span></td>
-             <td>
-            	 <input class="easyui-textbox" name="email" style="width: 200px">
+            <td><span>Input Date</span></td>
+             <td> 
+               <input name="inputDt" type="text" class="easyui-datetimebox"  >  
              </td>
             </tr>
-             
+            <tr >
+	            <td><span>Door Distance</span></td>
+	            <td>
+	            	  <input class="easyui-textbox" name="doorDistance" style="width: 200px" required="required">
+	            </td>
+            </tr>
             <tr>
-            	<td><span>Phone Number</span></td>
+	             <td><span>Door Status</span></td>
+	             <td>
+	            	<select id="doorStatus" class="easyui-combobox" name="doorStatus" style="width:200px;">
+				    <option value="Close">Close</option>
+				    <option value=Open">Open</option> 
+					</select> 
+	             </td>
+            </tr> 
+            <tr>
+            	<td><span>Signal Power</span></td>
              	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
+            		<input class="easyui-textbox" name="nbSignalPwr" style="width: 200px">
              	</td>
             </tr>
             <tr>
-            <td><span>Role</span></td>
+            <td><span>Battary Vol</span></td>
              <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
+                <input class="easyui-textbox" name="battVol" style="width: 200px"> 
              </td>
             </tr>
+            
             <tr>
-            <td><span>Join Date</span></td>
-             <td>
-              
-               <input name="joindate" type="text" class="easyui-datebox"  >  
-             </td>
-            </tr>
-            <tr>
-            <td><span>State</span></td>
+            <td><span>Check Status  </span></td>
              <td>  
-                <select id="state" class="easyui-combobox" name="state" style="width:200px;">
-				    <option value="1">STATE1</option>
-				    <option value="0">STATE2</option> 
+                <select id="isStaffCheck" class="easyui-combobox" name="isStaffCheck" style="width:200px;">
+				    <option value="T">T</option>
+				    <option value="F">F</option> 
 				</select> 
              </td>
             </tr>
-            </table>             
+            <tr>
+            <td><span>Staff</span></td>
+             <td> 
+               <input name="staffno" type="text" class="easyui-textbox"  >  
+             </td>
+            </tr>
+            </table>    
             
         </form>
         <div style="text-align: center; padding: 5px 0;">
             <a href="javascript:void(0)" class="easyui-linkbutton"
-                onclick="updataForm()" style="width: 80px" id="tt">Submit</a> 
+                onclick="updateForm()" style="width: 80px" id="tt">Submit</a> 
         </div>
     </div>
           <!-- 配置增加框 -->
@@ -110,54 +132,66 @@
         <form id="addUserForm" method="post">
            
                 </br>
-           <table class="main">
+          <table class="main">
+           
             <tr>
-	            <td><span>User Name</span></td>
+	            <td><span>Device ID</span></td>
 	            <td>
-	            	<input class="easyui-textbox" name="name" style="width: 200px" required="required"> 
+	            	<input class="easyui-textbox" name="deviceId" style="width: 200px" > 
 	            </td>
             </tr>
-            
+            <tr>
+            <td><span>Input Date</span></td>
+             <td> 
+               <input name="inputDt" type="text" class="easyui-datetimebox"  style="width: 200px">  
+             </td>
+            </tr>
             <tr >
-	            <td><span>password</span></td>
+	            <td><span>Door Distance</span></td>
 	            <td>
-	            	  <input class="easyui-textbox" name="password" style="width: 200px" required="required">
+	            	  <input class="easyui-textbox" name="doorDistance" style="width: 200px" required="required">
 	            </td>
             </tr>
             <tr>
-	             <td><span>Email</span></td>
+	             <td><span>Door Status</span></td>
 	             <td>
-	            	 <input class="easyui-textbox" name="email" style="width: 200px">
+	            	
+	            	 <select id="doorStatus" class="easyui-combobox" name="doorStatus" style="width:200px;">
+					    <option value="Close">Close</option>
+					    <option value="Open">Open</option> 
+					 </select> 
 	             </td>
             </tr> 
             <tr>
-            	<td><span>Phone Number</span></td>
+            	<td><span>Signal Power</span></td>
              	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
+            		<input class="easyui-textbox" name="nbSignalPwr" style="width: 200px">
              	</td>
             </tr>
             <tr>
-            <td><span>Role</span></td>
+            <td><span>Battary Vol</span></td>
              <td> 
-                <input class="easyui-textbox" name="role" style="width: 200px"> 
+                <input class="easyui-textbox" name="battVol" style="width: 200px"> 
              </td>
             </tr>
+            
             <tr>
-            <td><span>Join Date</span></td>
-             <td> 
-               <input name="joindate" type="text" class="easyui-datebox"  >  
-             </td>
-            </tr>
-            <tr>
-            <td><span>State</span></td>
+            <td><span>Check Status</span></td>
              <td>  
-                <select id="state" class="easyui-combobox" name="state" style="width:200px;">
-				    <option value="1">STATE1</option>
-				    <option value="0">STATE2</option> 
+                <select id="isStaffCheck" class="easyui-combobox" name="isStaffCheck" style="width:200px;">
+				    <option value="T">T</option>
+				    <option value="F">F</option> 
 				</select> 
              </td>
             </tr>
+            <tr>
+            <td><span>Staff</span></td>
+             <td> 
+               <input name="staffno" type="text" class="easyui-textbox"  >  
+             </td>
+            </tr>
             </table>    
+          
         </form>
         
         <div style="text-align: center; padding: 5px 0;">
