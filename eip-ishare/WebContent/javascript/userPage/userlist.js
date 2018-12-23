@@ -8,12 +8,23 @@ $(function(){
 	
 	
 	userInfoManage_datagrid = $("#userInfoManage_datagrid").datagrid({
-		  url:ctx+"/index/findall.do",
-		  striped: true,
-		  fit: true,          
-		  singleSelect: false,
-		  pagination: true, 
-		  rownumbers: true,
+		  url:ctx+"/index/getall.do",
+//		  striped: true,
+//		  fit: true,          
+//		  singleSelect: false,
+//		  pagination: true, 
+//		  rownumbers: true,
+		  
+		  loadFilter:pagerFilter,		
+			rownumbers:true,
+			singleSelect:false,
+			pageSize:20,           
+			pagination:true,
+			multiSort:true,
+			fitColumns:true,
+			fit:true,
+		  
+		  
 		  frozenColumns:
 			  [[
                 {field : 'ck',checkbox : true},
@@ -36,8 +47,9 @@ $(function(){
 	          			              }},    
 	          	{width: '100',title: 'Tel NO.',field: 'phone'},  
 	          	{width: '100',title: 'Email',field: 'email'}, 
+	          	
+	          	{width: '120',title: 'State',field: 'state'},
 	          	{width: '100',title: 'Join Date',field: 'joindate',sortable: true,formatter:changeDateFormat},
-	          	{width: '120',title: 'State',field: 'state'}
 	      ]],toolbar:
 	    	 // '#userInfoManage_toolbar'
 //	      onBeforeLoad: function (param) {
@@ -98,8 +110,9 @@ $(function(){
                             dataType:"json",
                             success:function(data){
                                 if(data=="success"){
-                                    $.messager.alert('Information','Success');
-                                   $("#userInfoManage_datagrid").datagrid('reload'); 
+                                	$.messager.alert('Information','Successfully','info',function(){
+                    	                $('#userInfoManage_datagrid').datagrid('reload');
+                    	            });
                                    
                                }else{
                                    $.messager.confirm('Information',"Failure");
@@ -164,7 +177,7 @@ $(function(){
 	    }
 	});
 	
-    var $userInfoManage_pagination = $('#userInfoManage_pagination');
+    /*var $userInfoManage_pagination = $('#userInfoManage_pagination');
     userInfoManage_pagination = $userInfoManage_pagination.pagination(
             {
                 pageList: [ 10, 50, 100, 300, 500 ],
@@ -184,12 +197,12 @@ $(function(){
 	        beforePageText: 'page',
 	        afterPageText: ' of   toal {pages} ', 
 	        displayMsg: 'current {from} - {to} records   total {total}', 
-	        /*onBeforeRefresh:function(){
+	        onBeforeRefresh:function(){
 	            $(this).pagination('loading');
 	            alert('before refresh');
 	            $(this).pagination('loaded');
-	        }*/ 
-	    });
+	        } 
+	    });*/
 	
 	/*
 	 $("#userManage_toolbar_search").bind('click',function(){
@@ -232,7 +245,7 @@ function changeDateFormat(val, row) {
 } 
 
 //配置修改学生信息表单提交
-function updataForm() {
+function updateForm() {
     $("#upUserForm").form('submit');
 }
 
@@ -240,7 +253,7 @@ function addForm() {
     $("#addUserForm").form('submit');
     
 }
-
+/*
 function find(pageNumber, pageSize)
 {
     if(true)
@@ -276,7 +289,33 @@ function pageData(list,total){
     obj.rows=list; 
     return obj; 
 } 
-
+*/
+function pagerFilter(data){            
+	if (typeof data.length == 'number' && typeof data.splice == 'function'){// is array                
+		data = {                   
+			total: data.length,                   
+			rows: data               
+		}            
+	}        
+	var dg = $(this);         
+	var opts = dg.datagrid('options');          
+	var pager = dg.datagrid('getPager');          
+	pager.pagination({                
+		onSelectPage:function(pageNum, pageSize){                 
+			opts.pageNumber = pageNum;                   
+			opts.pageSize = pageSize;                
+			pager.pagination('refresh',{pageNumber:pageNum,pageSize:pageSize});                  
+			dg.datagrid('loadData',data);                
+		}          
+	});           
+	if (!data.originalRows){               
+		data.originalRows = (data.rows);       
+	}         
+	var start = (opts.pageNumber-1)*parseInt(opts.pageSize);          
+	var end = start + parseInt(opts.pageSize);        
+	data.rows = (data.originalRows.slice(start, end));         
+	return data;       
+}
 
 /**
  *   

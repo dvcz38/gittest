@@ -9,12 +9,14 @@ $(function(){
 	//创建表格
 	userInfoManage_datagrid = $("#userInfoManage_datagrid").datagrid({
 		  url:ctx+"/role/getall.do",
-//		  url:ctx+"/index/finduser.do",
-		  striped: true,
-		  fit: true,          //自动大小
-		  singleSelect: false,//是否单选
-		  pagination: true, //设置是否有分页功能
-		  rownumbers: true,//行号
+		  loadFilter:pagerFilter,		
+			rownumbers:true,
+			singleSelect:false,
+			pageSize:20,           
+			pagination:true,
+			multiSort:true,
+			fitColumns:true,
+			fit:true,
 		  frozenColumns:
 			  [[
                 {field : 'ck',checkbox : true},
@@ -41,16 +43,19 @@ $(function(){
 //	      onLoadSuccess: function (data) {
 //	            parent.$.messager.progress('close'); 
 //		     }
-	    	  [{ iconCls: 'icon-add',
-                  text:'Add',
-                  handler: function(){
-                    	$('#addUser').dialog('open');
-                    } 
-               
-	    	  },'-',{
-                iconCls: 'icon-edit',
-                text:'Edit',
-                handler: function(){
+	    	  [
+//	    		  { 
+//	    			  iconCls: 'icon-add',
+//	                  text:'Add',
+//	                  handler: function(){
+//	                    	$('#addUser').dialog('open');
+//	                  }  
+//		    	  }
+//		    		,'-',
+		    	  {
+	                iconCls: 'icon-edit',
+	                text:'Edit',
+	                handler: function(){
                     var stus = $("#userInfoManage_datagrid").datagrid('getSelections');
                     
                     if (stus.length != 1) {
@@ -75,27 +80,27 @@ $(function(){
 	});
 	
 	/* 配置添加框 */
-	$("#addUserForm").form({
-	    type:'post',
-	    url:ctx+'/role/add.do',
-	    dataType:"json",
-	    success : function(data) {
-	        if(data=="success"){
-	            
-	            $('#addUser').dialog('close');
-	            $('#addUserForm').form('clear');
-	            $.messager.alert('Information','Successfully','info',function(){
-	                $('#userInfoManage_datagrid').datagrid('reload');
-	            });
-	        }else{
-	            $.messager.alert('Information','Failure','info'
-//	            		,function(){
-//	                        $("#addStuf").form('clear');
-//	                    }
-	            );
-	        }
-	    }
-	});
+//	$("#addUserForm").form({
+//	    type:'post',
+//	    url:ctx+'/role/add.do',
+//	    dataType:"json",
+//	    success : function(data) {
+//	        if(data=="success"){
+//	            
+//	            $('#addUser').dialog('close');
+//	            $('#addUserForm').form('clear');
+//	            $.messager.alert('Information','Successfully','info',function(){
+//	                $('#userInfoManage_datagrid').datagrid('reload');
+//	            });
+//	        }else{
+//	            $.messager.alert('Information','Failure','info'
+////	            		,function(){
+////	                        $("#addStuf").form('clear');
+////	                    }
+//	            );
+//	        }
+//	    }
+//	});
 
 	/* 配置修改框 */
 	$("#upUserForm").form({
@@ -119,49 +124,35 @@ $(function(){
 	    }
 	});
 	
-    var $userInfoManage_pagination = $('#userInfoManage_pagination');
-    userInfoManage_pagination = $userInfoManage_pagination.pagination(
-            {
-                pageList: [ 10, 50, 100, 300, 500 ],
-                onSelectPage: function (pageNumber, pageSize) {
-                    fSearch();
-                }
-            }).pagination('refresh', {
-                total: 0,
-                pageNumber: 1
-            });
-
-	
-	var p=$("#userInfoManage_datagrid").datagrid('getPager');
-	 $(p).pagination({ 
-	     
-	        pageList: [6,10,15],
-	        beforePageText: 'page',
-	        afterPageText: ' of   toal {pages} ', 
-	        displayMsg: 'current {from} - {to} records   total {total}', 
-	        /*onBeforeRefresh:function(){
-	            $(this).pagination('loading');
-	            alert('before refresh');
-	            $(this).pagination('loaded');
-	        }*/ 
-	    });
-	
-	/*
-	 $("#userManage_toolbar_search").bind('click',function(){
-		  
-		 $('#userInfoManage_datagrid').datagrid('reload',{
-				name: $('#name').val() 
-			});
-	 }); 
-	 $("#userManage_toolbar_cleanSearch").bind('click',function(){
-		 $('#name').val('');
-		 $('#email').val('');
-		 
-	 });
-	 */
+    
 });
 
-
+function pagerFilter(data){            
+	if (typeof data.length == 'number' && typeof data.splice == 'function'){// is array                
+		data = {                   
+			total: data.length,                   
+			rows: data               
+		}            
+	}        
+	var dg = $(this);         
+	var opts = dg.datagrid('options');          
+	var pager = dg.datagrid('getPager');          
+	pager.pagination({                
+		onSelectPage:function(pageNum, pageSize){                 
+			opts.pageNumber = pageNum;                   
+			opts.pageSize = pageSize;                
+			pager.pagination('refresh',{pageNumber:pageNum,pageSize:pageSize});                  
+			dg.datagrid('loadData',data);                
+		}          
+	});           
+	if (!data.originalRows){               
+		data.originalRows = (data.rows);       
+	}         
+	var start = (opts.pageNumber-1)*parseInt(opts.pageSize);          
+	var end = start + parseInt(opts.pageSize);        
+	data.rows = (data.originalRows.slice(start, end));         
+	return data;       
+}
 
 function changeDateFormat(val, row) {
     if (val != null) {
@@ -173,7 +164,7 @@ function changeDateFormat(val, row) {
 } 
 
 //配置修改学生信息表单提交
-function updataForm() {
+function updateForm() {
     $("#upUserForm").form('submit');
 }
 

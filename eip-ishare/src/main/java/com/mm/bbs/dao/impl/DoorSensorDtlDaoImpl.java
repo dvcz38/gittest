@@ -200,9 +200,7 @@ public class DoorSensorDtlDaoImpl extends BaseDaoImpl<DoorSensorDtl,String> impl
 		StringBuilder hql=new StringBuilder();
 		hql.append("from DoorSensorDtl a where 1=1 ");
 		hql.append("and a.inputDt>=? ");
-		hql.append("and a.inputDt<=? ");
-		hql.append("order by a.inputDt desc, a.device.channelNo ");
-		
+		hql.append("and a.inputDt<=? ");  
 		
 		if(deviceId!=null) {
 			hql.append("and a.device.id=? ");
