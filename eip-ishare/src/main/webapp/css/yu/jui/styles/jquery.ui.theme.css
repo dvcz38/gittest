@@ -50,7 +50,7 @@
 ----------------------------------*/
 
 /* states and images */
-.ui-icon { width: 16px; height: 16px; background-image:url(../../../images/jui/ui-icons.png); }
+.ui-icon { width: 16px; height: 16px; background-image:url(../../../../images/jui/ui-icons.png); }
 .ui-icon
 {
 	padding:0;
