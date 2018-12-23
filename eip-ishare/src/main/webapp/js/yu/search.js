@@ -36,12 +36,12 @@ $(function(){
 			if(parseInt($(".start-min").val())<parseInt($(".end-min").val())){
 
 			}else{
-				alert("请选择正确的时间")
+				alert("the end time must be greater than start time")
 				return;
 			}
 			
 		}else{
-			alert("请选择正确的时间")
+			alert("the end time must be greater than start time")
 			return;
 		}
 		var starttime=day+" "+$(".start-hour").val()+":"+$(".start-min").val()+":00";
@@ -54,12 +54,12 @@ $(function(){
 			data:data,
 			type:'post',
 			success:function(data){
-				var data=JSON.parse(data);
-				// var test={"total":1,
+				
+				// var data={"total":1,
 				// 	"rows":
 				// 		[
-				// 			{"id":2,"
-				// 			 device":{
+				// 			{"id":2,
+				// 			 "device":{
 				// 			 	"id":2,
 				// 			 	"deviceDesc":"Device2",
 				// 			 	"floorNo":2,
@@ -78,8 +78,10 @@ $(function(){
 				// }
 				$("table tbody tr").remove();
 				for(var i=0;i<data.rows.length;i++){
+
 					var list="<tr class='gradeX'><td>"+data.rows[i].inputDt.substring(data.rows[i].inputDt.length-8)+"</td><td>"+data.rows[i].device.deviceDesc+"</td><td>"+data.rows[i].doorStatus+"</td><td>"+data.rows[i].nbSignalPwr+"</td><td>"+Number(data.rows[i].battVol).toFixed(2)+"%</td></tr>"
-					$("table tbody tr").append(list)
+					
+					$("table tbody").append(list)
 				}
 			}
 		})
