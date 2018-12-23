@@ -13,7 +13,7 @@ body
 
 .mws-inset
 {
-	background-image:url(../../images/core/mws-inset.png);
+	background-image:url(../../../images/core/mws-inset.png);
 	
 	/* CSS 3 */
 	
@@ -34,7 +34,7 @@ body
 
 div#mws-header
 {
-	background:url(../../images/core/mws-header-bg.png) repeat-x;
+	background:url(../../../images/core/mws-header-bg.png) repeat-x;
 	height:58px;
 	border-bottom:4px solid;
 	z-index:1;
@@ -108,7 +108,7 @@ div#mws-user-tools #mws-user-info #mws-user-photo
 	height:28px;
 	padding:2px;
 	float:left;
-	background:url(../../images/core/mws-user-pic-bg.png) repeat-x;
+	background:url(../../../images/core/mws-user-pic-bg.png) repeat-x;
 	position:relative;
 	
 	/* CSS 3 */
@@ -374,7 +374,7 @@ div#mws-sidebar-stitch
 	left:189px;
 	width:17px;
 	z-index:2;
-	background:url(../../images/core/mws-sidebar-stitch.png) repeat-y;
+	background:url(../../../images/core/mws-sidebar-stitch.png) repeat-y;
 }
 
 div#mws-sidebar-bg
@@ -382,7 +382,7 @@ div#mws-sidebar-bg
 	left:0;
 	z-index:0;
 	width:200px;
-	background:url(../../images/core/mws-sidebar-bg.png);
+	background:url(../../../images/core/mws-sidebar-bg.png);
 }
 
 /* Search Box */
@@ -413,7 +413,7 @@ div#mws-searchbox .mws-search-submit
 	margin-left:144px;
 	border:none;
 	cursor:pointer;
-	background:url(../../images/core/mws-search-icon.png) no-repeat center center;
+	background:url(../../../images/core/mws-search-icon.png) no-repeat center center;
 	
 	/* CSS 3 */
 	
@@ -487,7 +487,7 @@ div#mws-navigation ul li span.mws-nav-tooltip
 
 div#mws-navigation ul li ul
 {	
-	background:url(../../images/core/mws-inset.png);
+	background:url(../../../images/core/mws-inset.png);
 	border:0;
 	
 	/* CSS 3 */
@@ -523,7 +523,7 @@ div#mws-navigation ul li ul li span
 
 div#mws-navigation ul li ul li:hover
 {
-	background:url(../../images/core/mws-sub-nav-bg.png);
+	background:url(../../../images/core/mws-sub-nav-bg.png);
 }
 
 /* Container */
