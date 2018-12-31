@@ -39,9 +39,9 @@ public class IndexController {
  
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String indexPage() {
-
-		return "/view/assetsPage/index";
-//		return "/view/assetsPage/update_psw";
+//		return "/view/admin/user/test";
+//		return "/view/assetsPage/index";
+		return "/view/assetsPage/update_psw";
 	}
 	
 	@RequestMapping(value = "/userlist.do", method = RequestMethod.GET)
@@ -82,9 +82,9 @@ public class IndexController {
 	    return map;
 	}
 	  
-	@RequestMapping({"/findall.do"})
+	@RequestMapping({"/getall.do"})
 	@ResponseBody
-	public Map<String, Object> findAll()
+	public Map<String, Object> getAll()
 	{
 	    List<Admin> lst = this.userService.getAll();
 	    
@@ -118,8 +118,9 @@ public class IndexController {
 		        String id = arrayOfString1[i];
 		        this.userService.deleteById(Integer.valueOf(Integer.parseInt(id)));
 		      }
+		      return "success";
 		    }
-		    return "success";
+		    return "fail";
 	}
 	
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)

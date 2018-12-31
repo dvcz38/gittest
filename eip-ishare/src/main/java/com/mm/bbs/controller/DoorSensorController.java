@@ -29,7 +29,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mm.bbs.modelVo.MenuCodeVo;
+import com.mm.bbs.common.DoorStatus; 
 import com.mm.bbs.pojo.Admin;
 import com.mm.bbs.pojo.DoorSensor;
 import com.mm.bbs.pojo.DoorSensorDtl;
@@ -39,8 +39,8 @@ import com.mm.bbs.service.DoorSensorDtlService;
 import com.mm.bbs.service.DoorSensorService;
 import com.mm.bbs.service.MenuService;
 import com.mm.bbs.util.CryptographyUtil;
-import com.mm.bbs.util.DoorStatus;
-import com.mm.bbs.util.TimeUtil; 
+import com.mm.bbs.util.TimeUtil;
+import com.mm.bbs.vo.DoorSensorVo;
 import com.mm.bbs.vo.Pagination;
 import com.mm.bbs.vo.TreeDataVo;
 import com.mm.bbs.vo.UserVo;
@@ -61,6 +61,12 @@ public class DoorSensorController {
 	public String listPage() {
 
 		return "/view/device/device";
+	}
+	
+	@RequestMapping(value = "/list1.do", method = RequestMethod.GET)
+	public String listPage1() {
+
+		return "/view/device/device1";
 	}
 	
 	@RequestMapping(value = "delete.do", method = RequestMethod.POST)
@@ -93,34 +99,46 @@ public class DoorSensorController {
 	
 	@RequestMapping(value = "update.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String update(DoorSensor doorSensor) 
+	public String update(DoorSensorVo entity) 
 	{
-//		    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-		    //		      Date joindate = (Date)formatter.parseObject(user.getJoindate());
-					      DoorSensor ds = (DoorSensor)this.doorSensorService.findById(Integer.valueOf(doorSensor.getId()));
-			//		      ds.setChannelNo(channelNo);
-			//		      ds.setDeviceDesc(deviceDesc);
-			//		      ds.setFloorNo(floorNo);
-			//		      ds.setInstalDt(instalDt);
-			//		      ds.setState(state); 
-					      this.doorSensorService.update(doorSensor);
-					      return "success";
-//		    return null;
+		DoorSensor ds = (DoorSensor)this.doorSensorService.findById(Integer.valueOf(entity.getId()));
+		ds.setChannelNo(Integer.parseInt(entity.getChannelNo()));
+		ds.setDeviceDesc(entity.getDeviceDesc());
+		ds.setFloorNo(Integer.parseInt(entity.getFloorNo())); 
+		try {
+			ds.setInstalDt(TimeUtil.convertDate(entity.getInstalDt()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ds.setState(entity.getState()); 
+		this.doorSensorService.update(ds);
+		return "success"; 
 	}
 	
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	@ResponseBody
-	public String add(DoorSensor doorSensor)
+	public String add(DoorSensorVo entity)
 		    throws IOException
 	{
-//		Admin usr=user.getPojo();
-//		if ((user != null) && (usr != null))
-//	    {
-//	    	String pws=CryptographyUtil.md5(user.getPassword(), "ADMIN-10001");
-//	    	usr.setPassword(pws);
-//		    this.userService.save(usr);
-//		    return "success";
-//	    }
+		
+				//entity.getPojo();
+		if ( entity != null )
+	    { 
+			DoorSensor ds=new DoorSensor();
+			ds.setDeviceDesc(entity.getDeviceDesc());
+			ds.setChannelNo(Integer.parseInt(entity.getChannelNo()));
+			ds.setFloorNo(Integer.parseInt(entity.getFloorNo()));
+			try {
+				ds.setInstalDt(TimeUtil.convertDate(entity.getInstalDt()));
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			ds.setState(entity.getState());
+		    this.doorSensorService.save(ds);
+		    return "success";
+	    } 
 	    return "fail";
 	}
 	/*
@@ -150,18 +168,27 @@ public class DoorSensorController {
 		return map;
 	}
 	
-	@RequestMapping(value = "/getall.do",method = RequestMethod.GET)
-	@ResponseBody
-	public Map<String,Object> getDeviceAll(){
-		 
-		List<DoorSensor> lst = doorSensorService.getAll();
-		Map<String,Object> map=new LinkedHashMap<String,Object>();
-		map.put("total", lst.size());
-		map.put("rows", lst); 
-		return map;
-	}
-	
-	
+	  
+	@RequestMapping(value = "/export.do",method = RequestMethod.GET)
+    public void exportSortingOrder(HttpServletRequest request,HttpServletResponse response) throws IOException{
+//    	String parttern = DateUtil.DATETIME_FORMAT;
+//    	Date startDate = DateUtil.StringToDate(request.getParameter("startDate"), parttern);
+//    	Date endDate = DateUtil.StringToDate(request.getParameter("endDate"), parttern);
+    	XSSFWorkbook wb = doorSensorService.export(null, null);        
+//        String[] sds = request.getParameter("startDate").split("\\s");
+//        String[] eds = request.getParameter("endDate").split("\\s");
+        StringBuffer fileName=new StringBuffer("attachment;filename=");
+        fileName.append(new Date().getTime()).append(".xlsx");  
+//        fileName.append(sds[0]).append("_").append(eds[0]).append("_").append(new Date().getTime()).append(".xlsx");        
+        response.setContentType("application/ms-excel");
+        response.setHeader("Content-disposition",fileName.toString());
+        OutputStream outputStream = response.getOutputStream();
+        wb.write(outputStream);
+        outputStream.flush();
+        outputStream.close();   	
+    	
+    }
+    
 	 @CrossOrigin(origins = "*", maxAge = 3600)
 	 @RequestMapping(value="/json.do",produces="application/json;charset=utf-8")
 	 @ResponseBody

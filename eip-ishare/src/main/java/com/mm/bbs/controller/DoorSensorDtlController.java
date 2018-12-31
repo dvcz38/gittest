@@ -2,6 +2,7 @@ package com.mm.bbs.controller;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -19,11 +20,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mm.bbs.common.DoorStatus;
 import com.mm.bbs.pojo.DoorSensor;
 import com.mm.bbs.pojo.DoorSensorDtl;
 import com.mm.bbs.service.DoorSensorDtlService;
-import com.mm.bbs.util.DoorStatus;
 import com.mm.bbs.util.TimeUtil;
+import com.mm.bbs.vo.DoorSensorDtlVo;
 
 @Controller
 @RequestMapping("/device/dtl")
@@ -37,6 +39,121 @@ public class DoorSensorDtlController {
 	public String doorsensorlistPage() {
 
 		return "/view/device/doorsensordtl";
+	}
+	
+	@RequestMapping(value = "/dtllist.do", method = RequestMethod.GET)
+	public String devicedtllistPage() {
+
+		return "/view/device/devicedtl";
+	}
+	 
+	 
+	@RequestMapping(value = "/add.do",method = RequestMethod.POST)
+	@ResponseBody
+	public void save(DoorSensorDtlVo entity){
+		
+		entity=new DoorSensorDtlVo();
+		entity.setBattVol((float) -9.99);
+		entity.setDeviceId("1");
+		entity.setDoorStatus("Close");
+		entity.setDoorDistance(10);
+		entity.setInputDt("2018-12-15 11:18:00");
+		entity.setNbSignalPwr((float) -98.2);
+		
+		//
+		DoorSensor ds=new DoorSensor();
+		ds.setId(Integer.parseInt(entity.getDeviceId()));
+//		ds.setDeviceDesc(entity.getDeviceDesc());
+//		ds.setChannelNo(Integer.parseInt(entity.getChannelNo()));
+//		ds.setFloorNo(Integer.parseInt(entity.getFloorNo()));
+		
+		DoorSensorDtl dtl=new DoorSensorDtl();
+		dtl.setBattVol(entity.getBattVol());
+		dtl.setDoorStatus(entity.getDoorStatus());
+		dtl.setDevice(ds);
+		dtl.setDoorDistance(entity.getDoorDistance());
+		try {
+			dtl.setInputDt(TimeUtil.convertDateTime(entity.getInputDt()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dtl.setNbSignalPwr(entity.getNbSignalPwr());
+		doorSensorDtlService.save(dtl); 
+		
+		
+//		DoorSensorDtl entity=new DoorSensorDtl();
+//		DoorSensor ds=new DoorSensor();
+//		ds.setId(1);
+//		entity.setBattVol((float) 4.32);
+//		entity.setDoorStatus("Open");
+//		entity.setDevice(ds);
+//		entity.setDoorDistance(24);
+//		entity.setInputDt(new Date());
+//		entity.setNbSignalPwr(-98);
+//		doorSensorDtlService.save(dtl);
+		
+ 
+	}
+ 
+	@RequestMapping(value = "update.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String update(DoorSensorDtlVo entity) throws IOException{
+
+	    /* 逻辑代码 */
+		
+		DoorSensorDtl dtl = doorSensorDtlService.findById(entity.getId());
+				//.findById(Integer.valueOf(entity.getId()));
+ 
+//		DoorSensor ds=new DoorSensor();
+//		ds.setId(Integer.parseInt(entity.getDeviceId()));
+//		ds.setDeviceDesc(entity.getDeviceDesc());
+//		ds.setChannelNo(Integer.parseInt(entity.getChannelNo()));
+//		ds.setFloorNo(Integer.parseInt(entity.getFloorNo()));
+		
+		dtl.setBattVol(entity.getBattVol());
+		dtl.setDoorStatus(entity.getDoorStatus());
+//		dtl.setDevice(ds);
+		dtl.setDoorDistance(entity.getDoorDistance());
+		try {
+			dtl.setInputDt(TimeUtil.convertDateTime(entity.getInputDt()));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		dtl.setIsStaffCheck(entity.getIsStaffCheck());
+		dtl.setStaffno(entity.getStaffno());
+		dtl.setNbSignalPwr(entity.getNbSignalPwr());
+		doorSensorDtlService.update(dtl);
+		
+		return "success";  
+	}
+	
+	@RequestMapping(value = "delete.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String delete(String id) throws IOException{
+ 
+		this.doorSensorDtlService.deleteById(Integer.valueOf(Integer.parseInt(id)));
+	    return "success";
+	}
+	
+	@RequestMapping(value = "deletelist.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String deleteList(String ids)
+		    throws IOException
+	{
+		    if ((ids != null) && (ids.length() > 0))
+		    {
+		      String[] lst = ids.split("\\,");
+		      String[] arrayOfString1;
+		      int j = (arrayOfString1 = lst).length;
+		      for (int i = 0; i < j; i++)
+		      {
+		        String id = arrayOfString1[i];
+		        this.doorSensorDtlService.deleteById(Integer.valueOf(Integer.parseInt(id)));
+		      }
+		    }
+		    return "success";
 	}
 	
 	/*
@@ -54,29 +171,6 @@ public class DoorSensorDtlController {
 		map.put("total", lst.size());
 		map.put("rows", lst); 
 		return map;
-	}
-	
-	
-	
-
-	 
-	@RequestMapping(value = "/save.do",method = RequestMethod.GET)
-	@ResponseBody
-	public void save(DoorSensorDtl entity1){
-		//
-		 
-		DoorSensorDtl entity=new DoorSensorDtl();
-		DoorSensor ds=new DoorSensor();
-		ds.setId(1);
-		entity.setBattVol((float) 4.32);
-		entity.setDoorStatus("Open");
-		entity.setDevice(ds);
-		entity.setDoorDistance(24);
-		entity.setInputDt(new Date());
-		entity.setNbSignalPwr(-98);
-		doorSensorDtlService.save(entity);
-		
- 
 	}
 	 
 	@RequestMapping(value = "/getclose.do",method = RequestMethod.GET)
@@ -124,8 +218,10 @@ public class DoorSensorDtlController {
 	@RequestMapping(value = "/search.do")
 	@ResponseBody
 	public Map<String,Object> search(String deviceId,String fdate, String todate){
-		 String inputDt=TimeUtil.getDateTime();
-		 
+//		 String inputDt=TimeUtil.getDateTime();
+//		 deviceId="4";
+//		 fdate="2018-12-13 04:00:00";
+//		 todate="2018-12-13 12:00:00";
 		 List<DoorSensorDtl> lst=doorSensorDtlService.findDeviceBtwDatetime(deviceId, null, null, fdate, todate);
 		 //.findDeviceOnDatetime(inputDt,deviceId, null, 0, DoorStatus.DOOR_OPEN.getValue());
  
@@ -159,23 +255,6 @@ public class DoorSensorDtlController {
 //		return null;
 	}
 	
-	@CrossOrigin(origins = "*", maxAge = 3600)
-	@RequestMapping(value = "update.do", method = RequestMethod.GET)
-	@ResponseBody
-	public String update(@RequestBody String id) throws IOException{
-
-	    /* 逻辑代码 */
-		doorSensorDtlService.update(null); 
-	    return "success";
-	}
-	@RequestMapping(value = "delete.do", method = RequestMethod.DELETE)
-	@ResponseBody
-	public String delete(@RequestBody String id) throws IOException{
-
-	    /* 逻辑代码 */
-		doorSensorDtlService.delete(null);
-	    return "success";
-	}
 	
 	@RequestMapping({"/findpage.do"})
 	@ResponseBody
@@ -188,6 +267,7 @@ public class DoorSensorDtlController {
 	    map.put("rows", lst);
 	    return map;
 	}
+	
 	@RequestMapping(value = "/export.do",method = RequestMethod.GET)
     public void exportSortingOrder(HttpServletRequest request,HttpServletResponse response) throws IOException{
 //    	String parttern = DateUtil.DATETIME_FORMAT;

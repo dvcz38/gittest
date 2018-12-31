@@ -1,6 +1,7 @@
 package com.mm.bbs.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -33,6 +34,12 @@ public class AcctAuthorityController {
 	public String roleListPage() {
 
 		return "/view/admin/user/rolelist";
+	}
+	
+	@RequestMapping(value = "/list.do", method = RequestMethod.GET)
+	public String rolePage() {
+
+		return "/view/admin/user/role";
 	}
 	
 	@RequestMapping(value = "/getall.do")
@@ -71,8 +78,9 @@ public class AcctAuthorityController {
 	@ResponseBody
 	public String update(AcctAuthority role) throws IOException{
 
-	    /* 逻辑代码 */
-//		doorSensorDtlService
+	    /* 逻辑代码 */ 
+		if(role!=null)
+			role.setUpdateDt(new Date());
 		acctAuthorityService.update(role);
 	    return "success";
 	}
@@ -80,9 +88,8 @@ public class AcctAuthorityController {
 	@RequestMapping(value = "add.do", method = RequestMethod.POST)
 	@ResponseBody
 	public String add(AcctAuthority user) throws IOException{
-//		log.log(priority, message);
-	    /* 逻辑代码 */
-//		doorSensorDtlService
+ 
+	    /* 逻辑代码 */ 
 		acctAuthorityService.save(user);
 	    return "success";
 	}
