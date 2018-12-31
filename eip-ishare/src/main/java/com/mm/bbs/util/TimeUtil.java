@@ -1,5 +1,6 @@
 package com.mm.bbs.util;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,7 +60,7 @@ public class TimeUtil {
 			buffer.append(c.get(Calendar.YEAR)).append("-");
 		buffer.append(addZero(c.get(Calendar.MONTH)+1)).append("-");
 		buffer.append(addZero(c.get(Calendar.DATE))).append(" ");
-		buffer.append(addZero(c.get(Calendar.HOUR))).append(":");
+		buffer.append(addZero(c.get(Calendar.HOUR_OF_DAY))).append(":");
 		buffer.append(addZero(0)).append(":");
 		buffer.append(addZero(0));
 		return buffer.toString();
@@ -74,7 +75,7 @@ public class TimeUtil {
 			buffer.append(c.get(Calendar.YEAR)).append("-");
 		buffer.append(addZero(c.get(Calendar.MONTH)+1)).append("-");
 		buffer.append(addZero(c.get(Calendar.DATE))).append(" ");
-		buffer.append(addZero(c.get(Calendar.HOUR))).append(":");
+		buffer.append(addZero(c.get(Calendar.HOUR_OF_DAY))).append(":");
 		buffer.append(addZero(c.get(Calendar.MINUTE))).append(":");
 		buffer.append(addZero(0));
 		return buffer.toString();
@@ -89,7 +90,7 @@ public class TimeUtil {
 			buffer.append(c.get(Calendar.YEAR)).append("-");
 		buffer.append(addZero(c.get(Calendar.MONTH)+1)).append("-");
 		buffer.append(addZero(c.get(Calendar.DATE))).append(" ");
-		buffer.append(addZero(c.get(Calendar.HOUR))).append(":");
+		buffer.append(addZero(c.get(Calendar.HOUR_OF_DAY))).append(":");
 		buffer.append(addZero(c.get(Calendar.MINUTE))).append(":");
 		buffer.append(addZero(c.get(Calendar.SECOND)));
 		return buffer.toString();
@@ -114,4 +115,22 @@ public class TimeUtil {
 		return str;
 	}
  
+	
+	public static Date convertDateTime(String value) throws ParseException
+	{
+		
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date date=sdf.parse(value);
+		 
+		return date;
+	}
+	
+	public static Date convertDate(String value) throws ParseException
+	{
+		
+		DateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		Date date=sdf.parse(value);
+		 
+		return date;
+	}
 }
