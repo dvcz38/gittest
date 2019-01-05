@@ -134,14 +134,14 @@ $(function(){
 	window.setInterval(function(){
 		//获得通道
 		$.ajax({
-			url:'/eip-ishare/device/getchanel.do',
+			url:'/eip-ishare/device/getchannel.do',
 			success:function(data){
 				if(data.rows.length!=0){
 					if($(".ly-channel").find("span").length!=0){
 						$(".ly-channel").find("span").remove();
 					}
 					for(var i=0;i<data.rows.length;i++){
-						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i].channelNo+'</span>'
+						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i]+'</span>'
 						$(".ly-channel").append(span)
 					}
 				}
@@ -304,8 +304,8 @@ $(function(){
 	//   }
 	// },4000)
 	//websocket test
-	var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
-
+	//var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
+	var ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/ws.do");
 	ws.onopen = function()
 
 	{  console.log("open");
@@ -385,7 +385,8 @@ $(function(){
 	};
 
 
-	var ws1 = new WebSocket("ws://3.16.108.250:8080/eip-ishare/deviceinfows.do");
+//	var ws1 = new WebSocket("ws://3.16.108.250:8080/eip-ishare/deviceinfows.do");
+	var ws1 = new WebSocket("ws://18.191.197.106:8080/eip-ishare/deviceinfows.do");
 
 	ws1.onopen = function()
 

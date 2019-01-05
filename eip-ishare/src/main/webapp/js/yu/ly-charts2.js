@@ -74,8 +74,9 @@ $(function(){
 							chart = this;
 							console.log(chart)
 						activeLastPointToolip(chart);
-						
-						var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
+							
+						var ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/ws.do");
+//						var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
 
 						ws.onopen = function()
 
