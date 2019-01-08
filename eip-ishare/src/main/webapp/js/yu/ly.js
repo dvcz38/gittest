@@ -14,7 +14,7 @@ $(function(){
 	var maxLength=6;
 	function addDataList(data,parent){
 		var data=data.rows;
-		//console.log(data[0].inputDt)
+		console.log(data[0].inputDt)
 		if($(parent+" li")){
 			var divLength=$(parent+" li").length;
 		}else{
@@ -74,7 +74,7 @@ $(function(){
 			var delLength=(dataLength+divLength)-maxLength;
 			for(var z=0;z<delLength;z++){
 				var temp=divLength-1-z;
-				//console.log($(".ly-auto li:eq("+z+")"))
+				console.log($(".ly-auto li:eq("+z+")"))
 				
 				$(parent+" li:eq("+temp+")").remove()
 
@@ -111,7 +111,7 @@ $(function(){
 					iconclass="ic-bullet-red"
 				}
 				data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
-				//console.log(data[i].doorStatus=="Close")
+				console.log(data[i].doorStatus=="Close")
 				if(parent==".ly-auto"){
 					var list='<li>'+
                                 '<span style="width:20px;height:20px;background-size:100% 100%;" class="mws-report-icon mws-ic '+iconclass+'"></span><span>'+data[i].inputDt+'</span>  [Channel '+ data[i].device.channelNo+']-[Floor '+data[i].device.floorNo+']-['+data[i].device.deviceDesc+']-[Battery Vol:'+(Number(data[i].battVol).toFixed(2))+"%"+']-[Door '+data[i].doorStatus+']'+
@@ -141,7 +141,7 @@ $(function(){
 						$(".ly-channel").find("span").remove();
 					}
 					for(var i=0;i<data.rows.length;i++){
-						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i].channelNo+'</span>'
+						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i]+'</span>'
 						$(".ly-channel").append(span)
 					}
 				}
@@ -241,7 +241,7 @@ $(function(){
 				// 	iconclass="ic-bullet-red"
 				// }
 				// data[i].inputDt=data[i].inputDt.substring(data[i].inputDt.length-8);
-				//console.log(data[i].doorStatus=="Close")
+				console.log(data[i].doorStatus=="Close")
 				if(parent==".ly-loss"){
 					var list="<tr class='gradeX'><td>"+time+"</td><td>"+data[i].channelNo+"</td><td>"+data[i].deviceDesc+"</td><td>"+data[i].floorNo+"</td></tr>"
 				}else{
@@ -304,26 +304,26 @@ $(function(){
 	//   }
 	// },4000)
 	//websocket test
+	//var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
 	var ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/ws.do");
-
 	ws.onopen = function()
 
 	{  console.log("open");
 
-	  // ws.send("1");
+	  // ws.send();
 
 	};
 
 	ws.onmessage = function(evt)
 
 	{
-		
+
 	  // console.log(evt.data)
 	  var data=JSON.parse(evt.data);
 	  var lyrealtrlength=$(".ly-real tbody tr").length;
 	  var lymantrlength=$(".ly-man tbody tr").length;
 	  var lyautotrlength=$(".ly-auto tbody tr").length;
-	  var date=new Date(data.inputDt);
+	  var date=new Date(Number(data.inputDt));
 	  date=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
 	  var list="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td><td>"+data.nbSignalPwr+"</td><td>"+Number(data.battVol).toFixed(3)+"%</td></tr>"
 	  if(lyrealtrlength<7){
@@ -385,6 +385,7 @@ $(function(){
 	};
 
 
+//	var ws1 = new WebSocket("ws://3.16.108.250:8080/eip-ishare/deviceinfows.do");
 	var ws1 = new WebSocket("ws://18.191.197.106:8080/eip-ishare/deviceinfows.do");
 
 	ws1.onopen = function()
@@ -480,6 +481,5 @@ $(function(){
 
 		}
 	})
-	
 		
 })
