@@ -26,26 +26,26 @@ $(function(){
 				useUTC: false
 			}
 		});
-		var COLORS=["#4d886d","#4d886d","green","gray","blue"]
+		var COLORS=["#7cb5ec","#4d886d","green","gray","blue"]
 		var deviceDesc=$(".doorDistance").find("option:selected").text();
-		var deviceId=$(".doorDistance").val();
+		var deviceId=$(".doorDistance").find("option:selected").val();
 		// var deviceDesc=device[0].deviceDesc;
 		// var deviceId=device[0].deviceId;
 		$(".doorDistance").change(function(){
 			deviceDesc=$(".doorDistance").find("option:selected").text();
-			deviceId=$(".doorDistance").val();
+			deviceId=$(".doorDistance").find("option:selected").val();
 			
 		})
 		console.log(deviceId)
 		
-		function getAjaxPoint(series,color,name,chart,y){
-			console.log("point")
-			var x = (new Date()).getTime(), // 当前时间
+		function getAjaxPoint(series,color,name,chart,y,time){
+			//console.log(time)
+			var x = time, // 当前时间
 				y = y;          // 随机值
 				series.addPoint({x:x, y:y}, true, true);
 				// series.name=name;
 				var options = chart.series[0].options;
-				series.update({color:color,name:name})
+				series.update({name:name,color:color})//color
 				options.animation=true;
 				activeLastPointToolip(chart);
 		}
@@ -75,7 +75,7 @@ $(function(){
 							console.log(chart)
 						activeLastPointToolip(chart);
 						
-						var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
+						var ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/ws.do");
 
 						ws.onopen = function()
 
@@ -87,11 +87,19 @@ $(function(){
 
 						ws.onmessage = function(evt){
 							var data=JSON.parse(evt.data);
-							console.log(data)
-							if(deviceId==data.device.id){
-								getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,data.nbSignalPwr)
+							//console.log(data)
+							var time=new Date(data.inputDt);
+							time=time.getHours()+":"+time.getMinutes()+":"+time.getSeconds()
+
+							if(Number(deviceId)==Number(data.device.id)){
+								// console.log(deviceId)
+								// console.log(data.device.id)
+								console.log(data.doorDistance)
+								getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,data.doorDistance,time)
+								//getAjaxPoint(series,deviceDesc,chart,data.doorDistance,time)
 							}else{
-								getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,0)
+								getAjaxPoint(series,COLORS[deviceId],deviceDesc,chart,0,time)
+								//getAjaxPoint(series,deviceDesc,chart,0,time)
 							}
 							
 						}
@@ -106,6 +114,12 @@ $(function(){
 			xAxis: {
 				type: 'datetime',
 				tickPixelInterval: 150
+
+				// tickInterval: 3600 * 1000,
+    //                 //格式化时间，day,week....
+    //              dateTimeLabelFormats: {
+    //                    day: '%Y-%m-%d'
+    //              }
 			},
 			yAxis: {
 				title: {
@@ -115,7 +129,8 @@ $(function(){
 			tooltip: {
 				formatter: function () {
 					return '<b>' + this.series.name + '</b><br/>' +
-						Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+					//%Y-%m-%d
+						Highcharts.dateFormat('%H:%M:%S', this.x) + '<br/>' +
 						Highcharts.numberFormat(this.y, 2);
 				}
 			},
@@ -128,12 +143,12 @@ $(function(){
 				data: (function () {
 					// 生成随机值
 					var data = [],
-						time = (new Date()).getTime(),
+						time =0,
 						i;
 					for (i = -19; i <= 0; i += 1) {
 						data.push({
 							x: time + i * 1000,
-							y:0
+							y:i
 						});
 					}
 
