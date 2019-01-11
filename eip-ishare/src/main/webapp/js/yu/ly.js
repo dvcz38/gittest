@@ -129,9 +129,7 @@ $(function(){
 	}
 
 
-	
-	
-	window.setInterval(function(){
+//	function(){
 		//获得通道
 		$.ajax({
 			url:'/eip-ishare/device/getchannel.do',
@@ -147,7 +145,9 @@ $(function(){
 				}
 			}
 		})
-	},1000)
+//	}
+	
+//	window.setInterval(,1000)
 	
 	var maxtableLength=7;
 	function addDatatable(data,parent,time){
@@ -306,6 +306,7 @@ $(function(){
 	//websocket test
 	//var ws = new WebSocket("ws://3.16.108.250:8080/eip-ishare/ws.do");
 	var ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/ws.do");
+//	var ws = new WebSocket("ws://127.0.0.1:8080/eip-ishare/ws.do");
 	ws.onopen = function()
 
 	{  console.log("open");
@@ -387,6 +388,7 @@ $(function(){
 
 //	var ws1 = new WebSocket("ws://3.16.108.250:8080/eip-ishare/deviceinfows.do");
 	var ws1 = new WebSocket("ws://18.191.197.106:8080/eip-ishare/deviceinfows.do");
+//	var ws1 = new WebSocket("ws://127.0.0.1:8080/eip-ishare/deviceinfows.do");
 
 	ws1.onopen = function()
 
