@@ -20,8 +20,8 @@ pageEncoding="UTF-8"%>
     <script type="text/javascript" src="${ctx}/easyui/locale/easyui-lang-zh_CN.js"></script>
     <script type="text/javascript" src="${ctx}/easyui/locale/easyui-lang-zh_CN.js"></script>
     
-    <script src="http://cdn.jsdelivr.net/sockjs/1/sockjs.min.js"></script>
-   
+    
+
     <script type="text/javascript">
     var ctx="${ctx}";
     var ws = null ;
@@ -30,8 +30,15 @@ pageEncoding="UTF-8"%>
      
     -->
     if ('WebSocket' in window) {
-      //ws = new WebSocket("ws://127.0.0.1:8080/"+ctx+"/websocket.do?type=mall");
-    	 ws = new WebSocket("ws://127.0.0.1:8080/"+ctx+"/ws.do");
+    	 //ws = new WebSocket("ws://127.0.0.1:8080/eip-ishare/deviceinfows.do");
+         ws = new WebSocket("ws://127.0.0.1:8080/eip-ishare/websocket.do");
+    	 //ws = new WebSocket("ws://127.0.0.1:8080/eip-ishare/ws.do");
+    	 //ws = new WebSocket("ws://127.0.0.1:8080/eip-ishare/carsensordtlws.do");
+    	 
+    	 // ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/ws.do");
+    	 //ws = new WebSocket("ws://18.191.197.106:8080/eip-ishare/carsensordtlws.do"); 
+    	 
+    	
     } else if ('MozWebSocket' in window) {
         websocket = new MozWebSocket("ws://127.0.0.1:8080/"+ctx+"/websocket.do");
     } else {
@@ -56,7 +63,7 @@ pageEncoding="UTF-8"%>
     } ;
     ws.onmessage = function(event){
         console.info("onmessage") ;
-         
+      //  location.reload();
         view(event.data)
     } ;
     function q(){
@@ -66,14 +73,10 @@ pageEncoding="UTF-8"%>
     function view(data){
     	
     	var a = data;
-
-        var divNode = document.getElementById("view");
-
-        var liNode = document.createElement("li");
-        
-        liNode.innerHTML = a;
-
-        divNode.appendChild(liNode);
+    	var obj=JSON.parse(data);
+		//console.log(obj.loss[0].deviceDesc);
+		$("#view").add("p").append(obj.battVol);
+    	 
     }
  
    /*  $(function(){

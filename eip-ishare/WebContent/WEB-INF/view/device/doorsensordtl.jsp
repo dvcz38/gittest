@@ -11,21 +11,16 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>ROLE MANAGEMENT</title>
-<link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap.min.css">
-<link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap-theme.min.css">
-<script src="${ctx}/bootstrap3/js/jquery-1.11.2.min.js"></script>
-<script src="${ctx}/bootstrap3/js/bootstrap.min.js"></script>
-<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/default/easyui.css">	
-<link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/IconExtension.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/easyui/demo/demo.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/css/user/user.css">
-<script type="text/javascript" src="${ctx}/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="${ctx}/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${ctx}/easyui/locale/easyui-lang-zh_CN.js"></script>
+<title>door sensor record</title>
 
-<script type="text/javascript" src="${ctx}/easyui/jquery.cookie.js"></script>
+<link rel="stylesheet" type="text/css" href="${ctx}/easyui/1.3.4/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/css/wu.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/css/icon.css" />
+
+<script type="text/javascript" src="${ctx}/easyui/1.3.4/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/easyui/1.3.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${ctx}/easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
+
 <script type="text/javascript" src="${ctx}/javascript/device/doorsensordtl.js"></script> 
 <script type="text/javascript">var ctx = "${ctx}"</script>	
 </head>

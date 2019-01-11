@@ -12,27 +12,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Role List</title>
-<link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap.min.css">
-<link rel="stylesheet" href="${ctx}/bootstrap3/css/bootstrap-theme.min.css">
-<script src="${ctx}/bootstrap3/js/jquery-1.11.2.min.js"></script>
-<script src="${ctx}/bootstrap3/js/bootstrap.min.js"></script>
-<link id="easyuiTheme" rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/default/easyui.css">	
-<link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/icon.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/easyui/themes/IconExtension.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/easyui/demo/demo.css">
-<link rel="stylesheet" type="text/css" href="${ctx}/css/user/user.css">
-<script type="text/javascript" src="${ctx}/easyui/jquery.min.js"></script>
-<script type="text/javascript" src="${ctx}/easyui/jquery.easyui.min.js"></script>
-<script type="text/javascript" src="${ctx}/easyui/locale/easyui-lang-zh_CN.js"></script>
 
-<script type="text/javascript" src="${ctx}/easyui/jquery.cookie.js"></script>
-	<!-- <script type="text/javascript" src="${ctx}/javascript/indexPage/index.js"></script>
-	<script type="text/javascript" src="${ctx}/javascript/userPage/user.js"></script>
-	<script type="text/javascript" src="${ctx}/javascript/userPage/editor.js"></script>
-	
-	 
-	 -->
-	 <script type="text/javascript" src="${ctx}/javascript/userPage/rolelist.js"></script> 
+<link rel="stylesheet" type="text/css" href="${ctx}/easyui/1.3.4/themes/default/easyui.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/css/wu.css" />
+<link rel="stylesheet" type="text/css" href="${ctx}/css/icon.css" />
+
+<script type="text/javascript" src="${ctx}/easyui/1.3.4/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/easyui/1.3.4/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="${ctx}/easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
+
+	<script type="text/javascript" src="${ctx}/javascript/userPage/rolelist.js"></script> 
 	<script type="text/javascript">var ctx = "${ctx}"</script>	
 </head>
 
@@ -48,6 +37,9 @@
 
  
 <!-- 配置修改框面板 -->
+<!-- 
+<div id="wu-dialog" class="easyui-dialog" data-options="closed:true,iconCls:'icon-save'" style="width:400px; padding:10px;">
+ -->
     <div id="updateUser" class="easyui-dialog" title="Edit User Information"
         style="width: 400px; height: 450px;" data-options="modal:true">
         
@@ -121,56 +113,6 @@
                 onclick="updateForm()" style="width: 80px" id="tt">Submit</a> 
         </div>
     </div>
-          <!-- 配置增加框 -->
-          <!--  
-    <div id="addUser" class="easyui-dialog" title="Add User Information"
-        style="width: 400px; height: 450px;" data-options="modal:true">
-        
-        <form id="addUserForm" method="post">
-           
-              </div>
-            <table class="main">
-            <tr >
-            <td><span color="red">Role</span></td>
-            <td>
-            	<input class="easyui-textbox"  name="authorityDesc"  style="color:blue;font-weight:bold;">
-            	 
-            </td>
-            </tr>
-            <tr>
-             <td><span>Read</span></td>
-             <td>
-            	 <input type="checkbox" name="isRead" style="width: 200px">
-             </td>
-            </tr>
-             
-            <tr>
-            	<td><span>Delete</span></td>
-             	<td>
-            		<input type="checkbox" name="isDelete"  >
-             	</td>
-            </tr>
-            <tr>
-            <td><span>Edit</span></td>
-             <td> 
-                <input type="checkbox" name="isEdit"  > 
-             </td>
-            </tr>
-            <tr>
-            <td><span>Export</span></td>
-             <td>
-               <input name="isDownload" type="checkbox" >  
-             </td>
-            </tr>
-            
-            </table>        
-        </form>
-        
-        <div style="text-align: center; padding: 5px 0;">
-            <a href="javascript:void(0)" class="easyui-linkbutton"
-                onclick="addForm()" style="width: 80px" id="tt">submit</a> 
-        </div>
-    </div>
-	-->
+         
 </body>
 </html>
