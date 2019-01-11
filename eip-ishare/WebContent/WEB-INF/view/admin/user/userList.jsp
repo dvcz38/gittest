@@ -21,8 +21,8 @@
 <script type="text/javascript" src="${ctx}/easyui/1.3.4/jquery.easyui.min.js"></script>
 <script type="text/javascript" src="${ctx}/easyui/1.3.4/locale/easyui-lang-zh_CN.js"></script>
  
-	 <script type="text/javascript" src="${ctx}/javascript/userPage/userlist.js"></script> 
-	<script type="text/javascript">var ctx = "${ctx}"</script>	
+<script type="text/javascript" src="${ctx}/javascript/userPage/userlist.js"></script> 
+<script type="text/javascript">var ctx = "${ctx}"</script>	
 	 	
 </head>
 
@@ -31,71 +31,13 @@
 <body class="easyui-layout">
 
 
-<!-- 
-<div id="userInfoManage_toolbar" style="display: none;">
-	<table>
-		<tr>
-			<td>
-				<form action="${ctx}/user/findall.do" method="post">
-					<table>
-						<tr>
-                            <td>User Name：</td>
-                            <td><input id="name" type="text" class="col-sm-2"></td>
-                            <td><div class="datagrid-btn-separator"></div></td>
-                           
-                            <td>Email：</td>
-                            <td><input id="email" class="col-sm-2"/></td>
-                            <td>
-                          
-                                <a id="userManage_toolbar_search" href="javascript:void(0);"
-                                   class="easyui-linkbutton" data-options="iconCls:'icon-search',plain:true">Enquire</a>
-                                <div class="datagrid-btn-separator"></div>
-                                <a id="userManage_toolbar_cleanSearch" href="javascript:void(0);"
-                                   class="easyui-linkbutton" data-options="iconCls:'icon-reload',plain:true">Reset</a>
-                            </td>
-                        </tr>
-					</table>
-				</form>
-			</td>
-		</tr>
-		<tr height="10"><td></td></tr>
-		<tr>
-            <td>
-                <table>
-                    <tr>
-                        <td><a id="test1Manage_toolbar_add" href="javascript:void(0);" class="easyui-linkbutton"
-                               data-options="iconCls:'icon-add',plain:true">Add</a></td>
-                        <td>
-                            <div class="datagrid-btn-separator"></div>
-                        </td>
-                        <td><a id="test1Manage_toolbar_edit" href="javascript:void(0);" class="easyui-linkbutton"
-                               data-options="iconCls:'icon-edit',plain:true">Edit</a></td>
-                         <td>
-                            <div class="datagrid-btn-separator"></div>
-                        </td>
-                           <td><a id="test1Manage_toolbar_export" href="javascript:void(0);" class="easyui-linkbutton"
-                               data-options="iconCls:'icon-edit',plain:true" onClick="excel()">Export</a></td>    
-                             
-                        <td>
-                            <div class="datagrid-btn-separator"></div>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-        </tr>
-	</table>
-</div>
- -->
+
 
 <div id="userInfoManage_layout_center" data-options="region:'center',border:false" style="overflow: hidden;">
     <table id="userInfoManage_datagrid"><tr></tr></table>
 </div>
 
-<!--  
-<div id="userInfoManage_layout_south" data-options="region:'south',border:false" style="overflow: hidden; height: 30px">
-    <div id="userInfoManage_pagination" style="background: #efefef; border: 1px solid #ccc;"></div>
-</div>
--->
+
  
 <!-- 配置修改框面板 -->
     <div id="updateUser" class="easyui-dialog" title="Edit User Information"
