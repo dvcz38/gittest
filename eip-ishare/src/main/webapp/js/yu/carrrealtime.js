@@ -53,7 +53,7 @@ $(function(){
 		   h = date.getHours() + ':';
 		   m = date.getMinutes() + ':';
 		   s = date.getSeconds();
-		   return Y+M+D;
+		   return Y+M+D+h+m+s;
 	}
 
 })
