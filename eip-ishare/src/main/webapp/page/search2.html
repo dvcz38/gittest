@@ -1,0 +1,105 @@
+ 
+
+<!-- Required Stylesheets -->
+
+<link rel="stylesheet" type="text/css" href="../css/yu/reset.css" media="screen" />
+<!-- <link rel="stylesheet" type="text/css" href="./css/yu/text.css" media="screen" /> -->
+<link rel="stylesheet" type="text/css" href="../css/yu/fonts/ptsans/stylesheet.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../css/yu/fluid.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../css/yu/mws.style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../css/yu/icons/icons.css" media="screen" />
+
+<!-- Demo and Plugin Stylesheets -->
+<link rel="stylesheet" type="text/css" href="../css/yu/demo.css" media="screen" />
+
+<!-- Theme Stylesheet -->
+<link rel="stylesheet" type="text/css" href="../css/yu/mws.theme.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="../css/yu/ly.css" media="screen">
+<link rel="stylesheet" type="text/css" href="../css/laydate.css" media="screen">
+
+
+
+
+        	<!-- Main Container -->
+            <div class="container">
+            	<div class="mws-panel grid_8 mws-collapsible ly-shadow">
+	                <div class="laydate-box" style="display:inline-block">
+						<input type="text" id="laydateInput" placeholder="xxxxÄêxxÔÂxxÈÕ" />
+						<img src="images/calendar.png" alt="" class="icon data-icon"/>
+						<div class="select-date" style="background:white;z-index:999">
+							<div class="select-date-header">
+								<ul class="heade-ul">
+									<li class="header-item header-item-one">
+										<select name="" id="yearList"></select>
+									</li>
+									<li class="header-item header-item-two" onselectstart="return false">
+										<select name="" id="monthList"></select>
+									</li>
+									<li class="header-item header-item-three" onselectstart="return false" >
+										<span class="reback">Today</span>
+									</li>
+								</ul>
+							</div>
+							<div class="select-date-body">
+								<ul class="week-list">
+									<li>Sun</li><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li>
+								</ul>
+								<ul class="day-tabel"></ul>
+							</div>
+						</div>
+					</div>
+                    <div class="ly-select-device">
+                        <span>Device:</span>
+                        <select></select>
+                    </div>
+					<div class="ly-select-time">
+						<span>Time start:</span>
+						<select class="start-hour"></select>
+						<select class="start-min"></select>
+					
+						<span>Time end:</span>
+						<select class="end-hour"></select>
+						<select class="end-min"></select>
+						
+						
+						<span class="mws-button red ly-search">Search</span>
+						
+					</div>
+				</div>
+                <div class="mws-panel grid_8 mws-collapsible ly-shadow">
+                    <div class="mws-panel-header">
+                        <span class="mws-i-24 i-books-2 ly-time">Search Result</span>
+                    </div>
+                    <div class="mws-panel-body">
+                        <table class="mws-table" style="background:#383838">
+                            <thead>
+                                <tr>
+                                    <th>Time</th>
+                                    <th>Device</th>
+                                    <th>State</th>
+                                    <th>DoorDistance</th>
+                                    <th>Signal</th>
+                                    <th>BatVol</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <!-- <tr class="gradeX">
+                                    <td>15:45</td>
+                                    <td>Device 1</td>
+                                    <td>open</td>
+                                    <td>-72.5</td>
+                                    <td>4%</td>
+                                </tr> -->
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                
+                
+ <!-- JavaScript Plugins -->  
+<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="../js/yu/mws.js"></script> 
+<script src="../js/yu/laydate.js"></script> 
+<script type="text/javascript" src="../js/yu/search.js"></script>     
