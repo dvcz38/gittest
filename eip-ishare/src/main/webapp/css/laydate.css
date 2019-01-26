@@ -7,7 +7,7 @@ li{
 }
 .icon{
 	position: absolute;
-	top: 5px;
+	top: 3px;
 	right: 5px;
 	height: 25px;
 	width: 25px;
@@ -146,7 +146,7 @@ li{
 }
 .tabel-li{
 	height: 31px;
-	width: 31px;
+	width: 34px;
 	text-align: center;
 	line-height: 31px;
 	float: left;

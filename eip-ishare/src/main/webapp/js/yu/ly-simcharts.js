@@ -1,7 +1,7 @@
 $(function(){
 		Highcharts.setOptions({
 		chart: {
-			backgroundColor: '#353535'
+			backgroundColor: 'white'
 		},
 		global: {
 			useUTC: false
@@ -15,7 +15,7 @@ var sim=Highcharts.chart('ly-simcharts', {
 	chart: {
 		type: 'solidgauge',
 		marginTop: 50,
-		backgroundColor:"#353535"
+		backgroundColor:"white"
 	},
 	title: {
 		text: 'Sim Card:679M',
@@ -30,7 +30,7 @@ var sim=Highcharts.chart('ly-simcharts', {
 		shadow: false,
 		style: {
 			fontSize: '16px',
-			color:"white"
+			color:"black"
 		}
 		// ,
 		// pointFormat: '{series.name}<br><span style="font-size:2em; color: {point.color}; font-weight: bold;margin-left:60px;">{point.y}%</span>',

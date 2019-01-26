@@ -1,110 +1,105 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Required Stylesheets -->
-<link rel="stylesheet" type="text/css" href="./css/yu/reset.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/yu/text.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/yu/fonts/ptsans/stylesheet.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/yu/fluid.css" media="screen" />
+    <title>Gentelella Alela! | </title>
 
-<link rel="stylesheet" type="text/css" href="./css/yu/mws.style.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/yu/icons/icons.css" media="screen" />
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+   <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
-<!-- Demo and Plugin Stylesheets -->
-<link rel="stylesheet" type="text/css" href="./css/yu/demo.css" media="screen" />
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+  </head>
 
-<link rel="stylesheet" type="text/css" href="./plugins/colorpicker/colorpicker.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./plugins/fullcalendar/fullcalendar.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./plugins/fullcalendar/fullcalendar.print.css" media="print" />
-<link rel="stylesheet" type="text/css" href="./plugins/tipsy/tipsy.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./plugins/jgrowl/jquery.jgrowl.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./plugins/spinner/spinner.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/yu/jui/jquery.ui.css" media="screen" />
-<!--  
-<link rel="stylesheet" type="text/css" href="plugins/colorpicker/colorpicker.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/fullcalendar/fullcalendar.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/fullcalendar/fullcalendar.print.css" media="print" />
-<link rel="stylesheet" type="text/css" href="plugins/tipsy/tipsy.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/jgrowl/jquery.jgrowl.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="plugins/spinner/spinner.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="css/jui/jquery.ui.css" media="screen" />
--->
+  <body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+           
 
-<!-- Theme Stylesheet -->
-<link rel="stylesheet" type="text/css" href="./css/yu/mws.theme.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="./css/yu/ly.css" media="screen">
+            <!-- top navigation -->
+           
+            <!-- /top navigation -->
 
-<!-- JavaScript Plugins --> 
+            <!-- page content -->
+            <div class="right_col" role="main" style="margin-left:0px;">
+                <!--REAL TIME-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Car Sensor RealTime Record</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                             <!--  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li> -->
+                              
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
 
-<!-- JavaScript Plugins -->
+                          <div class="x_content">
+                            <div class="table-responsive">
+                              <table class="table table-striped jambo_table bulk_action ly-car">
+                                <thead>
+                                  <tr class="headings">
+                                    
+                                    <th class="column-title">Time </th>
+                                    <th class="column-title">Device</th>
+                                    <th class="column-title">Car Status</th>
+                                    <th class="column-title">Signal</th>
+                                    <th class="column-title">BatVol</th>
+                                    <th class="column-title">DataType</th>  
+                                    <th class="column-title">DataLength</th>    
+                                  </tr>
+                                </thead>
 
-<script type="text/javascript" src="./js/jquery-1.7.1.min.js"></script>
-
-<script type="text/javascript" src="./plugins/jimgareaselect/jquery.imgareaselect.min.js"></script>
-<script type="text/javascript" src="./plugins/jquery.dualListBox-1.3.min.js"></script>
-<script type="text/javascript" src="./plugins/jgrowl/jquery.jgrowl.js"></script>
-<script type="text/javascript" src="./plugins/jquery.filestyle.js"></script>
-<script type="text/javascript" src="./plugins/fullcalendar/fullcalendar.min.js"></script>
-<script type="text/javascript" src="./plugins/jquery.dataTables.js"></script>
-
- <script type="text/javascript" src="./plugins/colorpicker/colorpicker.js"></script>
-<script type="text/javascript" src="./plugins/tipsy/jquery.tipsy.js"></script>
-<script type="text/javascript" src="./plugins/sourcerer/Sourcerer-1.2.js"></script>
-<script type="text/javascript" src="./plugins/jquery.placeholder.js"></script>
-<script type="text/javascript" src="./plugins/jquery.validate.js"></script>
-<script type="text/javascript" src="./plugins/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="./plugins/spinner/ui.spinner.js"></script>
-<script type="text/javascript" src="./js/yu/jquery-ui.js"></script>
- 
- 
-<script type="text/javascript" src="./js/yu/mws.js"></script>
-<script type="text/javascript" src="./js/yu/demo.js"></script>
-<script type="text/javascript" src="./js/yu/themer.js"></script>
-
-<script type="text/javascript" src="./js/yu/carrrealtime.js"></script>
- 
-<title>MWS Admin - Dashboard</title>
-
-</head>
-
-<body>
-
-	     	<!-- Main Container -->
-            <div class="container">
-                <!--2018 12修改为table表格-->
-                <div class="mws-panel grid_8 ly-shadow">
-                    <div class="mws-panel-header">
-                        <span class="mws-i-24 i-books-2 ly-time">Car Sensor RealTime Record</span>
+                                <tbody>
+                                  
+                                  
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-                    <div class="mws-panel-body">
-                        <!-- <ul class="mws-summary ly-human"></ul> -->
-                        <table class="mws-table ly-car" style="background:#383838">
-                            <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Device</th>
-                                    <th>Car Status</th>
-                                    <th>Signal</th>
-                                    <th>BatVol</th>
-                                    <th>DataType</th>
-                                    <th>DataLength</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                               
-                            </tbody>
-                        </table>
-                    </div>
-                </div> 
-            <!-- End Main Container -->
+                </div>
              
-</body>
+            </div>
+            
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+       
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="../vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
+    
+    <!-- Custom Theme Scripts -->
+    <script src="../build/js/custom.min.js"></script>
+    <!--ly-->
+    <script src="../js/yu/carrrealtime.js"></script>
+
+  </body>
 </html>

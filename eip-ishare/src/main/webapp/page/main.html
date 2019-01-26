@@ -1,10 +1,229 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
- 
-<!-- JavaScript Plugins -->
- <!-- jQuery -->
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentelella Alela! | </title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+   <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+           
+
+            <!-- top navigation -->
+           
+            <!-- /top navigation -->
+
+            <!-- page content -->
+            <div class="right_col" role="main" style="margin-left:0px;">
+                <!--REAL TIME-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Real Time Record <small class="ly-time">Jan 26th 2019</small></h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                             <!--  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li> -->
+                              
+                            </ul>
+                            <div class="clearfix"></div>
+                          </div>
+
+                          <div class="x_content">
+                            <div class="table-responsive">
+                              <table class="table table-striped jambo_table bulk_action ly-real">
+                                <thead>
+                                  <tr class="headings">
+                                    
+                                    <th class="column-title">Time </th>
+                                    <th class="column-title">Device</th>
+                                    <th class="column-title">DoorStatus</th>
+                                    <th class="column-title">Signal</th>
+                                    <th class="column-title">BatVol</th>
+                                    <th class="column-title">DoorDistance</th>    
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+                                  
+                                  
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+                <!--4个 图标与数据-->
+                
+                <div class="row top_tiles">
+                      <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-desktop"></i></div>
+                            <div class="count ly-all">7</div>
+                            <h3>Total Device </br>Number</h3>
+                            
+                          </div>
+                        </div>
+                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                          <div class="tile-stats">
+                            <div class="icon"><i class="fa fa-unlock"></i></div>
+                            <div class="count ly-open">0</div>
+                            <h3>Door Open </br>Count</h3>
+                            
+                            </div>
+                        </div>
+                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="tile-stats">
+                              <div class="icon"><i class="fa fa-lock"></i></div>
+                              <div class="count ly-close">0</div>
+                              <h3>Door Close </br>Count</h3>
+                            </div>
+                        </div>
+                        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                            <div class="tile-stats">
+                              <div class="icon"><i class="fa fa-power-off"></i></div>
+                              <div class="count ly-lose">1</div>
+                              <h3>Door Loss </br>Count</h3>
+                            </div>
+                        </div>
+                </div>
+                <!--channel-->
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="table-responsive">
+                                  <table class="table table-striped jambo_table bulk_action ly-channel">
+                                    <thead>
+                                      <tr class="headings">
+                                       <!--<th class="column-title">Channel 1</th> -->
+                                      </tr>
+                                    </thead>
+
+                                    
+                                  </table>
+                            </div>
+                    </div>
+                </div>
+                <!--两个table表格-->
+                <div class="row">
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                              <div class="x_title">
+                                <h2>Automatic inspection <small class="ly-time">Jan 26th 2019</small></h2>
+                                <div class="clearfix"></div>
+                            
+                              </div>
+                              <div class="x_content">
+
+                                <table class="table table-bordered ly-auto">
+                                  <thead>
+                                    <tr>
+                                      <th>Time</th>
+                                      <th>Channel</th>
+                                      <th>Floor</th>
+                                      <th>Device</th>
+                                      <th>State</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                  </tbody>
+                                </table>
+
+                              </div>
+                            </div>
+                          </div>
+
+
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div class="x_panel">
+                              <div class="x_title">
+                                <h2>Manual inspection <small class="ly-time">Jan 26th 2019</small></h2>
+                                <div class="clearfix"></div>
+                            
+                              </div>
+                              <div class="x_content">
+
+                                <table class="table table-bordered ly-man">
+                                  <thead>
+                                    <tr>
+                                      <th>Time</th>
+                                      <th>Floor</th>
+                                      <th>Device</th>
+                                      <th>Door Distance</th>
+                                      <th>State</th>
+                                      <th>Name</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody>
+                                    
+                                  </tbody>
+                                </table>
+
+                              </div>
+                            </div>
+                          </div>
+                </div>
+
+                <!--图表-->
+                <div class="row">
+                    <div class="col-md-8 col-sm-8 col-xs-12">
+                            <div class="x_panel">
+                              <div class="x_title">
+                                <h2>Door Distance</h2>
+                                 <select class="doorDistance" style="margin-left:10px;margin-top:4px">
+                                
+                                 </select>
+                                <div class="clearfix"></div>
+                              </div>
+                              <div class="x_content2">
+                                <div id="ly-chart2" style="width:100%; height:276px;"></div>
+                              </div>
+                            </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <div class="x_panel">
+                          <div class="x_title">
+                            <h2>Sim Card</h2>
+            
+                            <div class="clearfix"></div>
+                          </div>
+                          <div class="x_content2">
+                            <div id="ly-simcharts" style="width:100%; height:276px;"></div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+       
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -12,255 +231,22 @@
     <script src="../vendors/fastclick/lib/fastclick.js"></script>
     <!-- NProgress -->
     <script src="../vendors/nprogress/nprogress.js"></script>
+    <!-- iCheck -->
+    <script src="../vendors/iCheck/icheck.min.js"></script>
     
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
- 
-<!-- Required Stylesheets -->
-<link rel="stylesheet" type="text/css" href="../css/yu/reset.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/yu/text.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/yu/fonts/ptsans/stylesheet.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/yu/fluid.css" media="screen" />
-
-<link rel="stylesheet" type="text/css" href="../css/yu/mws.style.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/yu/icons/icons.css" media="screen" />
-
-<!-- Demo and Plugin Stylesheets -->
-<link rel="stylesheet" type="text/css" href="../css/yu/demo.css" media="screen" />
-
-<link rel="stylesheet" type="text/css" href="../plugins/colorpicker/colorpicker.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../plugins/jimgareaselect/css/imgareaselect-default.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../plugins/fullcalendar/fullcalendar.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../plugins/fullcalendar/fullcalendar.print.css" media="print" />
-<link rel="stylesheet" type="text/css" href="../plugins/tipsy/tipsy.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../plugins/sourcerer/Sourcerer-1.2.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../plugins/jgrowl/jquery.jgrowl.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../plugins/spinner/spinner.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/yu/jui/jquery.ui.css" media="screen" />
-
-
-<!-- Theme Stylesheet -->
-<link rel="stylesheet" type="text/css" href="../css/yu/mws.theme.css" media="screen" />
-<link rel="stylesheet" type="text/css" href="../css/yu/ly.css" media="screen">
-
-<!-- JavaScript Plugins --> 
-
-<!-- JavaScript Plugins -->
-<!-- 
-<script type="text/javascript" src="../js/jquery-1.7.1.min.js"></script>
- -->
-<script type="text/javascript" src="../plugins/jimgareaselect/jquery.imgareaselect.min.js"></script>
-<script type="text/javascript" src="../plugins/jquery.dualListBox-1.3.min.js"></script>
-<script type="text/javascript" src="../plugins/jgrowl/jquery.jgrowl.js"></script>
-<script type="text/javascript" src="../plugins/jquery.filestyle.js"></script>
-<script type="text/javascript" src="../plugins/fullcalendar/fullcalendar.min.js"></script>
-<script type="text/javascript" src="../plugins/jquery.dataTables.js"></script>
-
- <script type="text/javascript" src="../plugins/colorpicker/colorpicker.js"></script>
-<script type="text/javascript" src="../plugins/tipsy/jquery.tipsy.js"></script>
-<script type="text/javascript" src="../plugins/sourcerer/Sourcerer-1.2.js"></script>
-<script type="text/javascript" src="../plugins/jquery.placeholder.js"></script>
-<script type="text/javascript" src="../plugins/jquery.validate.js"></script>
-<script type="text/javascript" src="../plugins/jquery.mousewheel.js"></script>
-<script type="text/javascript" src="../plugins/spinner/ui.spinner.js"></script>
-<script type="text/javascript" src="../js/yu/jquery-ui.js"></script>
- 
- 
-<script type="text/javascript" src="../js/yu/mws.js"></script>
-<script type="text/javascript" src="../js/yu/demo.js"></script>
-<script type="text/javascript" src="../js/yu/themer.js"></script>
-
-<!-- <script type="text/javascript" src="../js/yu/demo.dashboard.js"></script> -->
-<script type="text/javascript" src="../js/yu/highcharts.js"></script>
-<script type="text/javascript" src="../js/yu/highcharts-more.js"></script>
-<!-- <script type="text/javascript" src="../js/yu/exporting.js"></script> -->
-
-<script type="text/javascript" src="../js/yu/solid-gauge.js"></script>
-<!--2018 12-9日去掉第一个图表-->
-<!-- <script type="text/javascript" src="../js/yu/ly-charts.js"></script> -->
-<script type="text/javascript" src="../js/yu/ly-charts2.js"></script>
-<script type="text/javascript" src="../js/yu/ly-simcharts.js"></script>
-
-<script type="text/javascript" src="../js/yu/ly.js"></script>
- 
- 
- 
+    <!--ly-->
+    <script src="../js/yu/ly.js"></script>
     
-<title>MWS Admin - Dashboard</title>
+    <script type="text/javascript" src="../js/yu/highcharts.js"></script>
+    <script type="text/javascript" src="../js/yu/highcharts-more.js"></script>
+   
 
-</head>
+    <script type="text/javascript" src="../js/yu/solid-gauge.js"></script>
+    
+    <script type="text/javascript" src="../js/yu/ly-charts2.js"></script>
+    <script type="text/javascript" src="../js/yu/ly-simcharts.js"></script>
 
-<body>
- 
- 
-  
-	 
-
-	 
-        	<!-- Main Container -->
-            <div border="0">
-                 
-                <div class="mws-panel grid_8 ly-shadow mws-collapsible">
-                    
-                    <!--2018 12增加table表格-->
-                    <div class="mws-panel-header">
-                        <span class="mws-i-24 i-books-2 ly-time">Real Time Record  <i>1030</i> <a>more</a></span>
-                    </div>
-                    <div class="mws-panel-body">
-                        <table class="mws-table ly-real" style="background:#383838">
-                            <thead>
-                            
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Device</th>
-                                    <th>DoorStatus</th>
-                                    <th>Signal</th>
-                                    <th>BatVol</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                              
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                
-                
-                <div class="mws-report-container grid_8">
-                    <a class="mws-report ly-shadow" href="#">
-                        <span class="mws-report-icon mws-ic ic-monitor"></span>
-                        <span class="mws-report-content">
-                            <span class="mws-report-title">Total Device Number</span>
-                            <span class="mws-report-value ly-all">0</span>
-                        </span>
-                    </a>
-
-                    <a class="mws-report ly-shadow" href="#">
-                        <span class="mws-report-icon mws-ic ic-door-open"></span>
-                        <span class="mws-report-content">
-                            <span class="mws-report-title">door open count</span>
-                            <span class="mws-report-value ly-open">0</span>
-                        </span>
-                    </a>
-
-                    <a class="mws-report ly-shadow" href="#">
-                        <!--light-circle-green-->
-                        <span class="mws-report-icon mws-ic ic-door"></span>
-                        <span class="mws-report-content">
-                            <span class="mws-report-title">door close count</span>
-                            <span class="mws-report-value ly-close">0</span>
-                        </span>
-                    </a>
-                    
-                    <a class="mws-report ly-shadow" href="#">
-                        <span class="mws-report-icon mws-ic ic-delete"></span>
-                        <span class="mws-report-content">
-                            <span class="mws-report-title">door loss count</span>
-                            <span class="mws-report-value ly-lose">0</span>
-                        </span>
-                    </a>
-                    
-                </div>
-                 <div class="mws-panel grid_8">
-                    <div class="mws-panel-header ly-channel">
-                      <!--  <span class=" mws-ic ic-bullet_star ly-bullet_star">Channel 1</span> -->
-                       
-                    </div>
-                </div>
-
-
-                <!--2018 12修改为table表格-->
-            	<div class="mws-panel grid_4 ly-shadow">
-                	<div class="mws-panel-header">
-                    	<span class="mws-i-24 i-books-2 ly-time">Automatic inspection<i>1030</i> <a>more</a></span>
-                    </div>
-                    <div class="mws-panel-body">
-                        <!-- <ul class="mws-summary ly-auto"></ul> -->
-                        <table class="mws-table ly-auto" style="background:#383838">
-                            <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Channel</th>
-                                    <th>Floor</th>
-                                    <th>Device</th>
-                                    <th>State</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                               
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!--2018 12修改为table表格-->
-                <div class="mws-panel grid_4 ly-shadow">
-                    <div class="mws-panel-header">
-                        <span class="mws-i-24 i-books-2 ly-time">Manual  inspection  <i>1030</i> <a>more</a></span>
-                    </div>
-                    <div class="mws-panel-body">
-                        <!-- <ul class="mws-summary ly-human"></ul> -->
-                        <table class="mws-table ly-man" style="background:#383838">
-                            <thead>
-                                <tr>
-                                    <th>Time</th>
-                                    <th>Floor</th>
-                                    <th>Device</th>
-                                    <th>Door Distance</th>
-                                    <th>State</th>
-                                    <th>Name</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                               
-                               
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <div class="mws-panel grid_6 ly-shadow">
-                    <div class="mws-panel-header">
-                        <span class="mws-i-24 i-graph">Door Distance
-                           <select class="doorDistance">
-                                
-                           </select>
-                           
-                           <!-- <i class="simdata">1</i> -->
-
-                        </span>
-                        
-                    </div>
-                    <div class="mws-panel-body">
-                        <div class="mws-panel-content">
-                            <div id="ly-chart2" style="width:100%; height:276px;"></div>
-                         
-                        </div>
-                    </div>
-                </div>
-                <div class="mws-panel grid_2 ly-shadow">
-                    <div class="mws-panel-header">
-                        <span class="mws-i-24 i-graph">Sim Card
-                          
-                           <!-- <i class="simdata">1</i> -->
-
-                        </span>
-                        
-                    </div>
-                    <div class="mws-panel-body">
-                        <div class="mws-panel-content">
-                            <div id="ly-simcharts" style="width:100%; height:276px;"></div>
-                         
-                        </div>
-                    </div>
-                </div>
-               
-                
-            <!-- End Main Container -->
-            
-            
-          
- 
- 
-
-</body>
+  </body>
 </html>
