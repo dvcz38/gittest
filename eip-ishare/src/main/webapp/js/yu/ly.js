@@ -5,7 +5,7 @@ $(function(){
 	var month=monthEng[date.getMonth()];
 	var day=date.getDate();
 	var year=date.getFullYear();
-	$(".ly-time i").text(month+" "+day+"th  "+year);
+	$(".ly-time").text(month+" "+day+"th  "+year);
 
 
 
@@ -135,12 +135,12 @@ $(function(){
 			url:'/eip-ishare/device/getchannel.do',
 			success:function(data){
 				if(data.rows.length!=0){
-					if($(".ly-channel").find("span").length!=0){
-						$(".ly-channel").find("span").remove();
+					if($(".ly-channel").find("th").length!=0){
+						$(".ly-channel").find("th").remove();
 					}
 					for(var i=0;i<data.rows.length;i++){
-						var span= '<span class=" mws-ic ic-bullet_star ly-bullet_star">Channel '+data.rows[i]+'</span>'
-						$(".ly-channel").append(span)
+						var span= '<th class="column-title">Channel '+data.rows[i]+'</th>'
+						$(".ly-channel tr").append(span)
 					}
 				}
 			}
@@ -326,7 +326,7 @@ $(function(){
 	  var lyautotrlength=$(".ly-auto tbody tr").length;
 	  var date=new Date(Number(data.inputDt));
 	  date=date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
-	  var list="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td><td>"+data.nbSignalPwr+"</td><td>"+Number(data.battVol).toFixed(3)+"%</td></tr>"
+	  var list="<tr class='gradeX'><td>"+date+"</td><td>"+data.device.deviceDesc+"</td><td>"+data.doorStatus+"</td><td>"+data.nbSignalPwr+"</td><td>"+Number(data.battVol).toFixed(3)+"%</td><td>"+data.doorDistance+"</td></tr>"
 	  if(lyrealtrlength<7){
 	  	if(lyrealtrlength==0){
 	  		$(".ly-real tbody").append(list);

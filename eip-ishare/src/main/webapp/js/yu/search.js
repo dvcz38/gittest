@@ -79,7 +79,7 @@ $(function(){
 				$("table tbody tr").remove();
 				for(var i=0;i<data.rows.length;i++){
 
-					var list="<tr class='gradeX'><td>"+data.rows[i].inputDt.substring(data.rows[i].inputDt.length-8)+"</td><td>"+data.rows[i].device.deviceDesc+"</td><td>"+data.rows[i].doorStatus+"</td><td>"+data.rows[i].nbSignalPwr+"</td><td>"+Number(data.rows[i].battVol).toFixed(2)+"%</td></tr>"
+					var list="<tr class='gradeX'><td>"+data.rows[i].inputDt.substring(data.rows[i].inputDt.length-8)+"</td><td>"+data.rows[i].device.deviceDesc+"</td><td>"+data.rows[i].doorStatus+"</td><td>"+data.rows[i].nbSignalPwr+"</td><td>"+Number(data.rows[i].battVol).toFixed(2)+"%</td><td>"+data.rows[i].doorDistance+"</td></tr>"
 					
 					$("table tbody").append(list)
 				}

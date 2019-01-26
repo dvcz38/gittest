@@ -1,0 +1,11 @@
+.ly-select-time,.ly-select-device{
+	display: inline-block;
+	margin-left: 10px;
+}
+.ly-select-device span,.ly-select-time span{
+	color:#796b6b;
+}
+.ly-search{
+	color:white !important;
+	margin-left: 10px;
+}
