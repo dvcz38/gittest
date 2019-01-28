@@ -29,20 +29,18 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mm.bbs.common.DeviceType;
 import com.mm.bbs.common.DoorStatus; 
 import com.mm.bbs.pojo.Admin;
 import com.mm.bbs.pojo.DoorSensor;
 import com.mm.bbs.pojo.DoorSensorDtl;
-import com.mm.bbs.pojo.MenuCode;
-import com.mm.bbs.pojo.SecCode;
 import com.mm.bbs.service.DoorSensorDtlService;
 import com.mm.bbs.service.DoorSensorService;
-import com.mm.bbs.service.MenuService;
+ 
 import com.mm.bbs.util.CryptographyUtil;
 import com.mm.bbs.util.TimeUtil;
 import com.mm.bbs.vo.DoorSensorVo;
-import com.mm.bbs.vo.Pagination;
-import com.mm.bbs.vo.TreeDataVo;
+import com.mm.bbs.vo.Pagination; 
 import com.mm.bbs.vo.UserVo;
 
 
@@ -147,7 +145,7 @@ public class DoorSensorController {
 	@RequestMapping(value = "/getall.do")
 	@ResponseBody
 	public Map<String,Object> getAll(){
-		//
+		
 		List<DoorSensor> lst = doorSensorService.getAll();
 
 		Map<String,Object> map=new LinkedHashMap<String,Object>();
@@ -156,11 +154,23 @@ public class DoorSensorController {
 		return map;
 	}
 	
-	@RequestMapping(value = "/getchanel.do")
+	@RequestMapping(value = "/getalldoorsensor.do")
+	@ResponseBody
+	public Map<String,Object> getDoorSensor(){
+		
+		List<DoorSensor> lst = doorSensorService.findDoorSensor(null, null, null, null, null, DeviceType.DOOR.getValue());
+
+		Map<String,Object> map=new LinkedHashMap<String,Object>();
+		map.put("total", lst.size());
+		map.put("rows", lst); 
+		return map;
+	}
+	
+	@RequestMapping(value = "/getchannel.do")
 	@ResponseBody
 	public Map<String,Object> getChannel(){
 		//
-		List<DoorSensor> lst = doorSensorService.getChannel();
+		List<String> lst = doorSensorService.getChannel();
 
 		Map<String,Object> map=new LinkedHashMap<String,Object>();
 		map.put("total", lst.size());

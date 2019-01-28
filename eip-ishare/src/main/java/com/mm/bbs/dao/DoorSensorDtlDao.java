@@ -1,8 +1,9 @@
 package com.mm.bbs.dao;
 
 import java.util.List;
+
+import com.mm.bbs.common.CheckState;
 import com.mm.bbs.pojo.DoorSensorDtl;
-import com.mm.bbs.util.CheckState;
  
  
 

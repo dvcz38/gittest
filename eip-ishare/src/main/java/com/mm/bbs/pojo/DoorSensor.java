@@ -14,16 +14,23 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Entity
 @Table(name = "device")
 public class DoorSensor {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Id 
 	@Column(name = "id")
-	private int id; 
+	private String id; 
 	@Column(name = "deviceDesc")
 	private String   deviceDesc ;
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	@Column(name = "floorNo")
 	private int   floorNo;
 	@Column(name = "channelNo")
 	private int   channelNo; 
+	@Column(name = "type")
+	private String   type ;
 	@Column(name = "state")
 	private String   state ;
 	@JsonFormat(pattern="yyy-M-dd HH:mm:ss",timezone = "GMT+8")
@@ -31,10 +38,10 @@ public class DoorSensor {
 	private Date instalDt;
 	 
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 	public String getDeviceDesc() {
@@ -70,7 +77,7 @@ public class DoorSensor {
 	public DoorSensor() {
 		super();
 	}
-	public DoorSensor(int id, String deviceDesc, int floorNo,int channelNo,String state,Date instalDt){
+	public DoorSensor(String id, String deviceDesc, int floorNo,int channelNo,String state,Date instalDt,String type){
 		super();
 		this.id = id; 
 		this.deviceDesc = deviceDesc;
@@ -78,6 +85,7 @@ public class DoorSensor {
 		this.channelNo = channelNo;
 		this.state = state; 
 		this.instalDt = instalDt;
+		this.type=type;
 	}
 	
 	

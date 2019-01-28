@@ -1,4 +1,4 @@
-package com.mm.bbs.util;
+package com.mm.bbs.common;
 
 public enum DoorStatus {
 	DOOR_OPEN("Open"), DOOR_CLOSE("Close"); 

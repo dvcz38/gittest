@@ -11,11 +11,11 @@ import javax.annotation.Resource;
 
 import org.hibernate.Query;
 import org.springframework.orm.hibernate4.HibernateTemplate;
-import org.springframework.stereotype.Repository; 
+import org.springframework.stereotype.Repository;
 
+import com.mm.bbs.common.CheckState;
 import com.mm.bbs.dao.DoorSensorDtlDao;
 import com.mm.bbs.pojo.DoorSensorDtl;
-import com.mm.bbs.util.CheckState;
 import com.mm.bbs.util.TimeUtil;
 
  

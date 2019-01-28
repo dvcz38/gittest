@@ -1,10 +1,10 @@
 package com.mm.bbs.common;
 
-public enum CheckState {
-	Autocheck("F"), Manulcheck("T"); 
+public enum DeviceType {
+	DOOR("D"), WATER("W"), CAR("C"), TEMPERATURE("T"); 
 	
 	private final String state;
-	private CheckState(String state) {
+	private DeviceType(String state) {
 		this.state=state;
 	}
 	

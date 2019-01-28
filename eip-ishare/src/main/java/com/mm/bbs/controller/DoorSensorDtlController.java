@@ -62,7 +62,7 @@ public class DoorSensorDtlController {
 		
 		//
 		DoorSensor ds=new DoorSensor();
-		ds.setId(Integer.parseInt(entity.getDeviceId()));
+		ds.setId(entity.getDeviceId());
 //		ds.setDeviceDesc(entity.getDeviceDesc());
 //		ds.setChannelNo(Integer.parseInt(entity.getChannelNo()));
 //		ds.setFloorNo(Integer.parseInt(entity.getFloorNo()));

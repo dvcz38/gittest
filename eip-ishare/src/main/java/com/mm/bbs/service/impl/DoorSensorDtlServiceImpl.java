@@ -16,11 +16,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mm.bbs.common.CheckState;
 import com.mm.bbs.dao.DoorSensorDtlDao;
 import com.mm.bbs.pojo.Admin;
 import com.mm.bbs.pojo.DoorSensorDtl; 
 import com.mm.bbs.service.DoorSensorDtlService;
-import com.mm.bbs.util.CheckState;
 
 @Service("doorSensorDtlService")
 public class DoorSensorDtlServiceImpl implements DoorSensorDtlService {
@@ -56,7 +56,7 @@ public class DoorSensorDtlServiceImpl implements DoorSensorDtlService {
 	@Override
 	public DoorSensorDtl findById(Serializable id) {
 		// TODO Auto-generated method stub
-		return doorSensorDtlDao.getById(DoorSensorDtl.class, id.toString());
+		return doorSensorDtlDao.getById(DoorSensorDtl.class, id);
 	}
 
 	@Override
@@ -122,7 +122,7 @@ public class DoorSensorDtlServiceImpl implements DoorSensorDtlService {
 		return doorSensorDtlDao.findDeviceByParamsOnHour(CheckState.Autocheck.getValue(), channelNo, doorStatus);
 	}
 	public XSSFWorkbook export(Date startDate, Date endDate) {
-		String[] excelHeader = { "Input Date","ID", "Device Name", "Channel No.", "Floor No.", "Door Distance", "Door Status","Battery Volume","Signal Power","Staff Check","Staff Name"};
+		String[] excelHeader = { "Input Date","ID", "Device", "Channel", "Floor", "Door Distance", "Door Status","Battery Volume","Signal Power","Staff Check","Staff Name"};
 		List<DoorSensorDtl> lists = getAll();
 		XSSFWorkbook wb = new XSSFWorkbook();
 		XSSFSheet sheet1 = wb.createSheet("Doorsensor Detail");

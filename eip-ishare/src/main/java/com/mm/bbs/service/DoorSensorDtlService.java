@@ -5,9 +5,9 @@ import java.util.List;
 
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import com.mm.bbs.common.CheckState;
 import com.mm.bbs.pojo.Admin;
-import com.mm.bbs.pojo.DoorSensorDtl;
-import com.mm.bbs.util.CheckState; 
+import com.mm.bbs.pojo.DoorSensorDtl; 
 
  
 //extends GenericInf<DoorSensorDtl, String>

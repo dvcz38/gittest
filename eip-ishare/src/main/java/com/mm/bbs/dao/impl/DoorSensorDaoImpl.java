@@ -5,29 +5,29 @@ import java.util.List;
 import org.hibernate.Query;
 import org.springframework.stereotype.Repository;
 
+import com.mm.bbs.common.CheckState;
 import com.mm.bbs.dao.DoorSensorDao; 
 import com.mm.bbs.pojo.DoorSensor;
-import com.mm.bbs.pojo.DoorSensorDtl;
-import com.mm.bbs.util.CheckState; 
+import com.mm.bbs.pojo.DoorSensorDtl; 
 
 @Repository("doorSensorDao")
 public class DoorSensorDaoImpl extends BaseDaoImpl<DoorSensor,String> implements DoorSensorDao{
 
 	@Override
-	public List<DoorSensor>  getChannel() {
+	public List<String>  getDoorChannel() {
 		// TODO Auto-generated method stub
 		Long i=(long) 0;
 		StringBuilder hql=new StringBuilder();
-		hql.append("from DoorSensor where state=1 group by channelNo");
+		hql.append("select distinct channelNo from DoorSensor where state=1 ");
  
 
 		Query query=this.getCurrentSession().createQuery(hql.toString());
-		List<DoorSensor> lst = (List<DoorSensor>)query.list();
+		List<String> lst = (List<String>)query.list();
 		return lst;
 	}
 	
 	@Override
-	public List<DoorSensor> findDoorSensor(String deviceId,String deviceDesc,String channelNo,String floorNo,String state) {
+	public List<DoorSensor> findDoorSensor(String deviceId,String deviceDesc,String channelNo,String floorNo,String state,String type) {
 		// TODO Auto-generated method stub
 		StringBuilder hql=new StringBuilder();
 		hql.append("from DoorSensor a where 1=1 "); 
@@ -47,6 +47,9 @@ public class DoorSensorDaoImpl extends BaseDaoImpl<DoorSensor,String> implements
 		}
 		if(state!=null) {
 			hql.append("and a.state=? ");
+		}
+		if(type!=null) {
+			hql.append("and a.type=? ");
 		}
 		 
 //		hql.append("order by a.channelNo, a.instalDt desc ");
@@ -74,6 +77,10 @@ public class DoorSensorDaoImpl extends BaseDaoImpl<DoorSensor,String> implements
 		}
 		if(state!=null) {
 			query.setString(position,state);  
+			position++;
+		}
+		if(type!=null) {
+			query.setString(position,type);  
 			position++;
 		}
 		List<DoorSensor> lst = (List<DoorSensor>)query.list();

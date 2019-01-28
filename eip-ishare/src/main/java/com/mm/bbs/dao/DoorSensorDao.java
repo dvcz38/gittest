@@ -7,9 +7,9 @@ import com.mm.bbs.pojo.DoorSensorDtl;
 
 public interface DoorSensorDao extends BaseDao<DoorSensor, String> {
 
-//	public Long getDoorSensorCountAll();
-
-	List<DoorSensor> findDoorSensor(String deviceId, String deviceDesc, String channelNo, String floorNo, String state);
-
-	List<DoorSensor> getChannel();
+ 
+	List<String> getDoorChannel();
+ 
+	List<DoorSensor> findDoorSensor(String deviceId, String deviceDesc, String channelNo, String floorNo, String state,
+			String type);
 }
