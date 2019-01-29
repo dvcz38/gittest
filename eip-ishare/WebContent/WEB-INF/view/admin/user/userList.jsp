@@ -23,7 +23,22 @@
  
 <script type="text/javascript" src="${ctx}/javascript/userPage/userlist.js"></script> 
 <script type="text/javascript">var ctx = "${ctx}"</script>	
-	 	
+<style type="text/css">
+    .panel-title {
+      font-size: 12px @!important;
+      font-weight: bold;
+      color: #0E2D5F;
+      height: 16px @!important;
+      line-height: 16px @!important;
+    }
+    .wu-text{
+        padding: 3px @!important;
+        border: 1px #95b8e7 solid @!important;
+        width: 260px @!important;
+        height: 14px @!important;
+        line-height: 14px @!important;
+    }
+</style>
 </head>
 
 
@@ -41,7 +56,7 @@
  
 <!-- 配置修改框面板 -->
     <div id="updateUser" class="easyui-dialog" title="Edit User Information"
-        style="width: 400px; height: 450px;" data-options="modal:true">
+        style="width: 400px; height: 450px;padding:10px" data-options="modal:true">
         
         <form id="upUserForm" method="post">
        
@@ -54,38 +69,39 @@
             </div>
             <table class="main">
          	<tr>
-            <td><span>Join Date</span></td>
+            <td width="60" align="right">Join Date:</td>
              <td> 
-               <input name="joindate" type="text" class="easyui-datetimebox"  >  
+               
+                <input name="joindate" type="text" class="easyui-datetimebox wu-text"  style="width:210px">  
              </td>
             </tr>
             <tr>
-	            <td><span>User Name</span></td>
+	            <td width="60" align="right">User Name:</td>
 	            <td>
-	            	<input class="easyui-textbox" name="name" style="width: 200px" required="required"> 
+	            	<input class="easyui-textbox wu-text" name="name" style="width: 200px" required="required"> 
 	            </td>
             </tr>
             
             <tr >
-	            <td><span>password</span></td>
+	            <td width="60" align="right">password:</td>
 	            <td>
-	            	  <input class="easyui-textbox" name="password" style="width: 200px" required="required">
+	            	  <input class="easyui-textbox wu-text" name="password" style="width: 200px" required="required" type="text" pattern="{6,}">
 	            </td>
             </tr>
             <tr>
-	             <td><span>Email</span></td>
+	             <td width="60" align="right">Email:</td>
 	             <td>
-	            	 <input class="easyui-textbox" name="email" style="width: 200px">
+	            	 <input class="easyui-textbox wu-text" name="email" style="width: 200px" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email">
 	             </td>
             </tr> 
             <tr>
-            	<td><span>Phone Number</span></td>
+            	<td width="120" align="right">Phone:</td>
              	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
+            		<input class="easyui-textbox wu-text" name="phone" style="width: 200px">
              	</td>
             </tr>
             <tr>
-            <td><span>Role</span></td>
+            <td width="60" align="right">Role:</td>
              <td> 
                <select id="role" class="easyui-combobox" name="role" style="width:200px;">
 				    <option value="3">COMMON</option>
@@ -96,7 +112,7 @@
             </tr>
             
             <tr>
-            <td><span>State</span></td>
+            <td width="60" align="right">State:</td>
              <td>  
                 <select id="state" class="easyui-combobox" name="state" style="width:200px;">
 				    <option value="1">WORK</option>
@@ -107,51 +123,55 @@
         </table>   
         </form>
         <div style="text-align: center; padding: 5px 0;">
-            <a href="javascript:void(0)" class="easyui-linkbutton"
-                onclick="updateForm()" style="width: 80px" id="tt">Submit</a> 
+           
+            <a href="javascript:void(0)" class="l-btn"
+                onclick="updateForm()" id="tt"><span class="l-btn-left"><span class="l-btn-text icon-ok l-btn-icon-left">submit</span></span></a> 
         </div>
     </div>
           <!-- 配置增加框 -->
     <div id="addUser" class="easyui-dialog" title="Add User Information"
-        style="width: 400px; height: 450px;" data-options="modal:true">
+        style="width: 400px; height: 450px;padding:10px;" data-options="modal:true">
         
         <form id="addUserForm" method="post">
            
                 </br>
            <table class="main">
             
-            <tr>
-            <td><span>Join Date</span></td>
-             <td> 
-               <input name="joindate" type="text" class="easyui-datetimebox"  >  
-             </td>
-            </tr>
+            
              <tr>
-	            <td><span>User Name</span></td>
+                <td width="60" align="right">User Name:</td>
+	           
 	            <td>
-	            	<input class="easyui-textbox" name="name" style="width: 200px" required="required"> 
+	            	<input class="easyui-textbox wu-text" name="name" style="width: 200px" required="required"> 
 	            </td>
             </tr>
              <tr >
-	            <td><span>password</span></td>
+	            <td width="60" align="right">password:</td>
 	            <td>
-	            	  <input class="easyui-textbox" name="password" style="width: 200px" required="required">
+	            	  <input class="easyui-textbox wu-text" name="password" style="width: 200px" required="required" type="text" pattern="{6,}">
 	            </td>
             </tr>
             <tr>
-	             <td><span>Email</span></td>
+	             <td width="60" align="right">Email:</td>
 	             <td>
-	            	 <input class="easyui-textbox" name="email" style="width: 200px">
+	            	 <input class="easyui-textbox wu-text" name="email" style="width: 200px" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email">
 	             </td>
             </tr> 
             <tr>
-            	<td><span>Phone Number</span></td>
+            	<td width="120" align="right">Phone:</td>
              	<td>
-            		<input class="easyui-textbox" name="phone" style="width: 200px">
+            		<input class="easyui-textbox wu-text" name="phone" style="width: 200px">
              	</td>
             </tr>
+            <tr>
+            <td width="60" align="right">Join Date:</td>
+            
+             <td> 
+               <input name="joindate" type="text" class="easyui-datetimebox wu-text"  style="width:210px">  
+             </td>
+            </tr>
              <tr>
-            <td><span>Role</span></td>
+            <td width="60" align="right">Role:</td>
              <td> 
                <select id="role" class="easyui-combobox" name="role" style="width:200px;">
 				    <option value="3">COMMON</option>
@@ -162,7 +182,7 @@
             </tr>
             
             <tr>
-            <td><span>State</span></td>
+            <td width="60" align="right">State:</td>
              <td>  
                 <select id="state" class="easyui-combobox" name="state" style="width:200px;">
 				    <option value="1">WORK</option>
@@ -172,10 +192,12 @@
             </tr>
         </table>   
         </form>
-        
+       
         <div style="text-align: center; padding: 5px 0;">
-            <a href="javascript:void(0)" class="easyui-linkbutton"
-                onclick="addForm()" style="width: 80px" id="tt">submit</a> 
+        
+
+            <a href="javascript:void(0)" class="l-btn"
+                onclick="addForm()" id="tt"><span class="l-btn-left"><span class="l-btn-text icon-ok l-btn-icon-left">submit</span></span></a> 
         </div>
     </div>
 	
