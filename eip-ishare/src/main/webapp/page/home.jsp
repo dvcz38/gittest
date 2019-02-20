@@ -75,15 +75,16 @@
                     <ul class="nav child_menu">
                       <li><a href="#" onclick="menuClick('main.html')">全局监控</a></li>  
                       <li><a href="#" onclick="menuClick('alarm.html')">故障监控</a></li>
-                      <!-- <li><a href="#" onclick="menuClick('alarm.html')">授权管理</a></li> -->
+                      <li><a href="#" onclick="menuClick('alarm2.html')">智能巡检</a></li>
                       <li><a href="#" onclick="menuClick('statistics.html')">数据统计</a></li>
                       <li><a href="#" onclick="menuClick('search2.html')">数据查询</a></li>
+                      <li><a href="#" onclick="menuClick('device.html')">设备信息</a></li>
                     </ul>
                   </li>
                   <li><a><i class="fa fa-edit"></i> 车位监控 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#" onclick="menuClick('carparking.html')">全局监控</a></li>
-                      <li><a href="#" onclick="menuClick('alarm.html')">故障监控</a></li>
+                      <li><a href="#" onclick="menuClick('alarm2.html')">故障监控</a></li>
                       <!-- <li><a href="#" onclick="menuClick('alarm.html')">授权管理</a></li> -->
                       <li><a href="#" onclick="menuClick('statistics.html')">数据统计</a></li>
                       <li><a href="#" onclick="menuClick('search2.html')">数据查询</a></li>
@@ -194,7 +195,7 @@
         <div class="right_col" role="main">
          <!-- 内容展示页 -->
  
-			<iframe id="iframe-page-content" src="main.html" frameborder="0"   marginwidth="0" marginheight="0"  scrolling="no"  style="width:100%;height:1400px;" allowtransparency="yes"></iframe>
+			<iframe id="iframe-page-content" src="main2.html" frameborder="0"   marginwidth="0" marginheight="0"  scrolling="no"  style="width:100%;height:1400px;" allowtransparency="yes"></iframe>
  
         </div>
         <!-- /page content -->
