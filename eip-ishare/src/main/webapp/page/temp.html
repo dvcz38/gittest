@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella </title>
+    <title>Gentelella Alela! | </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -20,12 +20,9 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-    <!--ly-->
-    <link rel="stylesheet" type="text/css" href="../css/laydate.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../css/yu/lynew.css" media="screen">
   </head>
 
-  <body class="nav-md" style="background:white">
+  <body class="nav-md">
     <div class="container body">
         <div class="main_container">
            
@@ -35,69 +32,34 @@
             <!-- /top navigation -->
 
             <!-- page content -->
-
-                <!--search  result-->
+            <div class="right_col" role="main" style="margin-left:0px;">
+                <!--REAL TIME-->
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                           <div class="x_title">
-                           	<div class="laydate-box" style="display:inline-block">
-								<input type="text" id="laydateInput" placeholder="xxxx年xx月xx日" />
-								<img src="../images/calendar.png" alt="" class="icon data-icon"/>
-								<div class="select-date" style="background:white;z-index:999">
-									<div class="select-date-header">
-										<ul class="heade-ul">
-											<li class="header-item header-item-one">
-												<select name="" id="yearList"></select>
-											</li>
-											<li class="header-item header-item-two" onselectstart="return false">
-												<select name="" id="monthList"></select>
-											</li>
-											<li class="header-item header-item-three" onselectstart="return false" >
-												<span class="reback">Today</span>
-											</li>
-										</ul>
-									</div>
-									<div class="select-date-body">
-										<ul class="week-list">
-											<li>Sun</li><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li>
-										</ul>
-										<ul class="day-tabel"></ul>
-									</div>
-								</div>
-							</div>
-		                    <div class="ly-select-device">
-		                        <span>Device:</span>
-		                        <select></select>
-		                    </div>
-							<div class="ly-select-time">
-								<span>Time start:</span>
-								<select class="start-hour"></select>
-								<select class="start-min"></select>
-							
-								<span>Time end:</span>
-								<select class="end-hour"></select>
-								<select class="end-min"></select>
-								
-								
-								<span class="btn btn-danger ly-search btn-xs">Search</span>
-								
-							</div>
+                            <h2>Temperature Sensor RealTime Record</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                             <!--  <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                              </li> -->
+                              
+                            </ul>
                             <div class="clearfix"></div>
                           </div>
 
                           <div class="x_content">
                             <div class="table-responsive">
-                              <table class="table table-striped jambo_table bulk_action ly-real">
+                              <table class="table table-striped jambo_table bulk_action ly-car">
                                 <thead>
                                   <tr class="headings">
                                     
                                     <th class="column-title">Time </th>
                                     <th class="column-title">Device</th>
-                                    <th class="column-title">State</th>
+                                    <th class="column-title">Status</th>
                                     <th class="column-title">Signal</th>
                                     <th class="column-title">BatVol</th>
-                                    <th class="column-title">DoorDistance</th>    
+                                    <th class="column-title">DataType</th>  
+                                    <th class="column-title">DataLength</th>    
                                   </tr>
                                 </thead>
 
@@ -111,7 +73,7 @@
                         </div>
                     </div>
                 </div>
-                
+             
             </div>
             
         </div>
@@ -137,10 +99,7 @@
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
     <!--ly-->
-    <script src="../js/yu/laydate.js"></script> 
-
-
-	<script type="text/javascript" src="../js/yu/search.js"></script>
+    <script src="../js/yu/carrrealtime.js"></script>
 
   </body>
 </html>

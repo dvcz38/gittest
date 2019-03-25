@@ -71,6 +71,7 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
+                  <li><a href="#" onclick="menuClick('main2.html')"><i class="fa fa-laptop"></i> 总控制台 <span class="label label-success pull-right">Coming Soon</span></a></li>
                   <li><a><i class="fa fa-home"></i> 安全门监控 <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                       <li><a href="#" onclick="menuClick('main.html')">全局监控</a></li>  
@@ -115,9 +116,10 @@
                 <h3>管理</h3>
                 <ul class="nav side-menu">
                   <li><a><i class="fa fa-bug"></i>权限管理 <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="e_commerce.html">用户角色</a></li>
-                      <li><a href="projects.html">可执行操作</a></li> 
+                    <ul class="nav child_menu"> 
+                      <li><a href="#" onclick="menuClick('role.html')">用户角色</a></li>
+                      <li><a href="#" onclick="menuClick('role.html')">角色操作</a></li>
+
                     </ul>
                   </li>
                   <li><a><i class="fa fa-windows"></i> 用户设置 <span class="fa fa-chevron-down"></span></a>
