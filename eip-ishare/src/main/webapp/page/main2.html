@@ -276,31 +276,31 @@
                                 <tbody>
                                   
                                   <tr>
-                                  	<td>设备1</td>
+                                  	<td><a href="device.html" >设备1</a></td>
                                   	<td>通道1-2楼</td>
                                   	<td>开门</td> 
                                   	<td>未处理</td>  
                                   </tr>
                                   <tr>
-                                  	<td>设备2</td>
+                                  	<td><a href="device.html" >设备2</a></td>
                                   	<td>通道1-2楼</td>
                                   	<td>开门</td> 
                                   	<td>未处理</td>  
                                   </tr>
                                   <tr>
-                                  	<td>设备3</td>
+                                  	<td><a href="device.html" >设备3</a></td>
                                   	<td>通道1-2楼</td>
                                   	<td>开门</td> 
                                   	<td>未处理</td>  
                                   </tr>
                                  <tr>
-                                  	<td>设备4</td>
+                                  	<td><a href="device.html" >设备4</a></td>
                                   	<td>通道1-2楼</td>
                                   	<td>开门</td> 
                                   	<td>未处理</td>  
                                   </tr>
                                   <tr>
-                                  	<td>设备5</td>
+                                  	<td><a href="device.html" >设备5</a></td>
                                   	<td>通道1-2楼</td>
                                   	<td>开门</td> 
                                   	<td>未处理</td>  
@@ -338,15 +338,21 @@
                 </div>
                 <div class="x_content">
                    <div class="row" style="text-align: center;">
-                           
+                          <!---新增两个 仪表器--->
                           <div class="col-md-6">
-                            <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-                            <h4 style="margin:0">自动巡检</h4>
+                            <span class="chart" data-percent="86">
+                              <span class="percent"></span>
+                            </span>
+                            <h4>自动巡检</h4>
                           </div>
                           <div class="col-md-6">
-                            <canvas class="canvasDoughnut" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas>
-                            <h4 style="margin:0">人工巡检</h4>
+                            <!-- <canvas class="canvasDoughnut1" height="110" width="110" style="margin: 5px 10px 10px 0"></canvas> -->
+                            <span class="chart" data-percent="46">
+                              <span class="percent"></span>
+                            </span>
+                            <h4>人工巡检</h4>
                           </div>
+                          <!---仪表器结束-->
                   </div>
                   <div class="dashboard-widget-content">
 
@@ -435,6 +441,11 @@
     
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    <!---新增js 仪表器--->
+  
+    <!-- easy-pie-chart -->
+    <script src="../vendors/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+
     <!--ly-->
     <script src="../js/yu/ly.js"></script>
     
