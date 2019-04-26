@@ -1,146 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella </title>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-    <!-- NProgress -->
-    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-    <!-- iCheck -->
-   <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+  <title>Gentelella </title>
 
-    <!-- Custom Theme Style -->
-    <link href="../build/css/custom.min.css" rel="stylesheet">
-    <!--ly-->
-    <link rel="stylesheet" type="text/css" href="../css/laydate.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="../css/yu/lynew.css" media="screen">
-  </head>
+  <!-- Bootstrap -->
+  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <!-- NProgress -->
+  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+  <!-- iCheck -->
+  <link href="../vendors/iCheck/skins/flat/green.css" rel="stylesheet">
 
-  <body class="nav-md" style="background:white">
-    <div class="container body">
-        <div class="main_container">
-           
+  <!-- Custom Theme Style -->
+  <link href="../build/css/custom.min.css" rel="stylesheet">
+  <!--ly-->
+  <link rel="stylesheet" type="text/css" href="../css/laydate.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="../css/yu/lynew.css" media="screen">
+</head>
 
-            <!-- top navigation -->
-           
-            <!-- /top navigation -->
+<body class="nav-md" style="background:white;overflow-x: hidden">
+  <div class="container body">
+    <div class="main_container">
 
-            <!-- page content -->
+             
 
-                <!--search  result-->
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-xs-12">
-                        <div class="x_panel">
-                          <div class="x_title">
-                           	<div class="laydate-box" style="display:inline-block">
-								<input type="text" id="laydateInput" placeholder="xxxx年xx月xx日" />
-								<img src="../images/calendar.png" alt="" class="icon data-icon"/>
-								<div class="select-date" style="background:white;z-index:999">
-									<div class="select-date-header">
-										<ul class="heade-ul">
-											<li class="header-item header-item-one">
-												<select name="" id="yearList"></select>
-											</li>
-											<li class="header-item header-item-two" onselectstart="return false">
-												<select name="" id="monthList"></select>
-											</li>
-											<li class="header-item header-item-three" onselectstart="return false" >
-												<span class="reback">Today</span>
-											</li>
-										</ul>
-									</div>
-									<div class="select-date-body">
-										<ul class="week-list">
-											<li>Sun</li><li>Mon</li><li>Tue</li><li>Wed</li><li>Thu</li><li>Fri</li><li>Sat</li>
-										</ul>
-										<ul class="day-tabel"></ul>
-									</div>
-								</div>
-							</div>
-		                    <div class="ly-select-device">
-		                        <span>Device:</span>
-		                        <select></select>
-		                    </div>
-							<div class="ly-select-time">
-								<span>Time start:</span>
-								<select class="start-hour"></select>
-								<select class="start-min"></select>
-							
-								<span>Time end:</span>
-								<select class="end-hour"></select>
-								<select class="end-min"></select>
-								
-								
-								<span class="btn btn-danger ly-search btn-xs">Search</span>
-								
-							</div>
-                            <div class="clearfix"></div>
-                          </div>
+      <!-- /top navigation -->
 
-                          <div class="x_content">
-                            <div class="table-responsive">
-                              <table class="table table-striped jambo_table bulk_action ly-real">
-                                <thead>
-                                  <tr class="headings">
-                                    
-                                    <th class="column-title">Time </th>
-                                    <th class="column-title">Device</th>
-                                    <th class="column-title">State</th>
-                                    <th class="column-title">Signal</th>
-                                    <th class="column-title">BatVol</th>
-                                    <th class="column-title">DoorDistance</th>    
-                                  </tr>
-                                </thead>
+      <!-- page content -->
 
-                                <tbody>
-                                  
-                                  
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
+      <!--search  result-->
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <div class="laydate-box" style="display:inline-block">
+                <input type="text" id="laydateInput" placeholder="xxxx年xx月xx日" />
+                <img src="../images/calendar.png" alt="" class="icon data-icon" />
+                <div class="select-date" style="background:white;z-index:999">
+                  <div class="select-date-header">
+                    <ul class="heade-ul">
+                      <li class="header-item header-item-one">
+                        <select name="" id="yearList"></select>
+                      </li>
+                      <li class="header-item header-item-two" onselectstart="return false">
+                        <select name="" id="monthList"></select>
+                      </li>
+                      <li class="header-item header-item-three" onselectstart="return false">
+                        <span class="reback">Today</span>
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="select-date-body">
+                    <ul class="week-list">
+                      <li>Sun</li>
+                      <li>Mon</li>
+                      <li>Tue</li>
+                      <li>Wed</li>
+                      <li>Thu</li>
+                      <li>Fri</li>
+                      <li>Sat</li>
+                    </ul>
+                    <ul class="day-tabel"></ul>
+                  </div>
                 </div>
-                
-            </div>
-            
-        </div>
-        <!-- /page content -->
+              </div>
+              <div class="ly-select-device">
+                <span>Device:</span>
+                <select></select>
+              </div>
+              <div class="ly-select-time">
+                <span>Time start:</span>
+                <select class="start-hour"></select>
+                <select class="start-min"></select>
 
-        <!-- footer content -->
-       
-        <!-- /footer content -->
+                <span>Time end:</span>
+                <select class="end-hour"></select>
+                <select class="end-min"></select>
+
+
+                <span class="btn btn-danger ly-search btn-xs">Search</span>
+                <span class="ly-download"></span>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content">
+              <div class="table-responsive">
+                <table class="table table-striped jambo_table bulk_action ly-real">
+                  <thead>
+                    <tr class="headings">
+
+                      <th class="column-title">Time </th>
+                      <th class="column-title">Device</th>
+                      <th class="column-title">State</th>
+                      <th class="column-title">Signal</th>
+                      <th class="column-title">BatVol</th>
+                      <th class="column-title">DoorDistance</th>
+                    </tr>
+                  </thead>
+
+                  <tbody>
+
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+
     </div>
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-    <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- iCheck -->
-    <script src="../vendors/iCheck/icheck.min.js"></script>
-    
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
-    <!--ly-->
-    <script src="../js/yu/laydate.js"></script> 
+  </div>
+  <!-- /page content -->
+
+  <!-- footer content -->
+
+  <!-- /footer content -->
+  </div>
+  </div>
+
+  <!-- jQuery -->
+  <script src="../vendors/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap -->
+  <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- FastClick -->
+  <script src="../vendors/fastclick/lib/fastclick.js"></script>
+  <!-- NProgress -->
+  <script src="../vendors/nprogress/nprogress.js"></script>
+  <!-- iCheck -->
+  <script src="../vendors/iCheck/icheck.min.js"></script>
+
+  <!-- Custom Theme Scripts -->
+  <script src="../build/js/custom.min.js"></script>
+  <!-- Datatables -->
+  <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="../vendors/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+  <script src="../vendors/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+  <script src="../vendors/datatables.net-buttons-bs/js/buttons.bootstrap.min.js"></script>
+  <!-- <script src="../vendors/datatables.net-buttons/js/buttons.flash.min.js"></script> -->
+  <script src="../vendors/datatables.net-buttons/js/buttons.html5.min.js"></script>
+  <!-- <script src="../vendors/datatables.net-buttons/js/buttons.print.min.js"></script> -->
+  <script src="../vendors/datatables.net-fixedheader/js/dataTables.fixedHeader.min.js"></script>
+  <script src="../vendors/datatables.net-keytable/js/dataTables.keyTable.min.js"></script>
+  <script src="../vendors/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+  <script src="../vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js"></script>
+  <script src="../vendors/datatables.net-scroller/js/dataTables.scroller.min.js"></script>
+  <script src="../vendors/jszip/dist/jszip.min.js"></script>
+  <!-- <script src="../vendors/pdfmake/build/pdfmake.min.js"></script> -->
+  <!-- <script src="../vendors/pdfmake/build/vfs_fonts.js"></script> -->
+
+  <!--ly-->
+  <script src="../js/yu/laydate.js"></script>
 
 
-	<script type="text/javascript" src="../js/yu/search.js"></script>
+  <script type="text/javascript" src="../js/yu/search.js"></script>
 
-  </body>
+</body>
+
 </html>
