@@ -9,3 +9,10 @@
 	color:white !important;
 	margin-left: 10px;
 }
+.dt-buttons .red{
+	color: red;
+	background: #ececdf;
+	width: 80px;
+	height: 30px;
+	font-size: 12px;
+  }
